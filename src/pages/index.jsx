@@ -1,7 +1,7 @@
 import React from 'react';
 import DateFnsUtils from '@date-io/date-fns';
 
-import SentenVisitor from '../components/sentenVisitor/sentenVisitor'
+import SentenVisitor from '../components/sentenVisitor/index';
 import Dialog from '../components/dialog/entryData';
 
 

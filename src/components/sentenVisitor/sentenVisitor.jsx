@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  // th: {
+  //   borderStyle: 'solid',
+  //   borderWidth: '1px',
+  //   color: 'blue',
+  // },
 }));
 
 const SentenVisitor = () => {
@@ -24,22 +29,30 @@ const SentenVisitor = () => {
 
   return (
     <div>
+      <div className="senten-visitor-head">
+        <Grid item>
+          head
+        </Grid>
+      </div>
       <div className="senten-visitor-meta">
+        <Grid>
+          <NameField />
+          <BirthField />
+        </Grid>
         <p>
           today:
           {today.getMonth() + 1}
           {today.getDate()}
         </p>
         <div className="senten-visitor-imput">
-          <NameField />
-          <BirthField />
+
         </div>
         <div className="senten-visitor-body">
           <Grid item>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12} sm={8}>
               <Paper className={classes.paper}>xs=6 sm=3</Paper>
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid item xs={12} sm={4}>
               <Paper className={classes.paper}>xs=6 sm=3</Paper>
             </Grid>
           </Grid>
