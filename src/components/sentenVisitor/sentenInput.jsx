@@ -8,6 +8,10 @@ import BirthField from '../atoms/textField.birth';
 
 
 const useStyles = makeStyles({
+  // field: {
+  //   maxWideth: '600px',
+  //   backgroundColor: 'blue',
+  // },
   date: {
     textAlign: 'end',
     margin: '0',
@@ -20,7 +24,7 @@ const SentenInput = ({ name, birthday }) => {
 
   return (
     <div>
-      <Grid>
+      <Grid container>
         <p className={classes.date}>
           診断日&emsp;
           {today.getMonth() + 1}

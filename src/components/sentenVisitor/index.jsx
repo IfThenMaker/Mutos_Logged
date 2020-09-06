@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
+import SentenHeader from './sentenHeader';
 import SentenInput from './sentenInput';
 import SentenTable from './sentenTable';
 import SentenJintai from './sentenJintai';
@@ -17,7 +18,9 @@ const useStyles = makeStyles({
   table: {
     margin: '12px 0',
   },
-  space: {
+
+  jintai: {
+    minWidth: '400px',
     margin: '12px 0',
   },
 });
@@ -25,14 +28,17 @@ const useStyles = makeStyles({
 const SentenVisitor = () => {
   const classes = useStyles();
   return (
-    <Grid className={classes.wrapper} container>
+    <Grid className={classes.wrapper} container justify="center">
+      <Grid className={classes.imput} item xs={12}>
+        <SentenHeader />
+      </Grid>
       <Grid className={classes.imput} item xs={12}>
         <SentenInput />
       </Grid>
-      <Grid className={classes.table} item xs={12} sm={7}>
+      <Grid className={classes.table} item centor xs={12} sm={6}>
         <SentenTable />
       </Grid>
-      <Grid className={classes.jintai} item xs={12} sm={3}>
+      <Grid className={classes.jintai} item xs={12} sm={4}>
         <SentenJintai />
       </Grid>
     </Grid>
