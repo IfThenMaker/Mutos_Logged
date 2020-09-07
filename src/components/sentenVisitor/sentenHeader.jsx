@@ -1,38 +1,41 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Jintai from '../../assets/jintai.svg';
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   base: {
-    height: '56px',
+    height: '50px',
     width: '100%',
-    backgroundColor: 'blue',
-    // color: 'blue',
+    margin: '20px 0',
+    background: 'linear-gradient(to right, #CCFFCC, #CCFFFF, #FFCCCC, #FFFFCC, #FFCCCC, #CCFFFF, #CCFFCC)',
+    [theme.breakpoints.up('sm')]: {
+      height: '56px',
+    },
   },
-});
+  caption: {
+    color: 'red',
+    lineHeight: '50px',
+    fontSize: '20px',
+    fontWeight: 'bold',
+    letterSpacing: '0.5em',
+    [theme.breakpoints.up('sm')]: {
+      lineHeight: '56px',
+    },
+  },
+}));
 
 const SentenHeader = () => {
   const classes = useStyles();
 
   return (
     <Grid container>
-      <div className={classes.base}> </div>
+      <Grid className={classes.base} container justify="center">
+        <p className={classes.caption}>先天予定運</p>
+      </Grid>
     </Grid>
   );
 };
-// SentenJintai.defaultProps = {
-//   base: 'gray',
-//   obal: 'red',
-//   jintai: 'blue',
-// };
-// SentenJintai.propTypes = {
-//   base: PropTypes.string,
-//   obal: PropTypes.string,
-//   jintai: PropTypes.string,
-// };
 
 
 export default SentenHeader;

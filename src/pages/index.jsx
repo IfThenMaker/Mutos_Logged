@@ -3,6 +3,7 @@ import DateFnsUtils from '@date-io/date-fns';
 
 import SentenVisitor from '../components/sentenVisitor/index';
 import Dialog from '../components/dialog/entryData';
+import './index.scss';
 
 
 const IndexPage = () => (

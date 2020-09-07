@@ -24,7 +24,7 @@ const SentenInput = ({ name, birthday }) => {
 
   return (
     <div>
-      <Grid container>
+      <Grid>
         <p className={classes.date}>
           診断日&emsp;
           {today.getMonth() + 1}

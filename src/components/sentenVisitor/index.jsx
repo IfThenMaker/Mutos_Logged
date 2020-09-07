@@ -10,6 +10,8 @@ import SentenJintai from './sentenJintai';
 
 const useStyles = makeStyles({
   wrapper: {
+    maxWidth: '840px',
+    margin: '0 auto',
     padding: '10px',
   },
   imput: {

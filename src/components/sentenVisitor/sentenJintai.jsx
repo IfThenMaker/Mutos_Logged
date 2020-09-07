@@ -47,9 +47,9 @@ const SentenJintai = ({ base, obal, jintai }) => {
   );
 };
 SentenJintai.defaultProps = {
-  base: 'gray',
-  obal: 'red',
-  jintai: 'blue',
+  base: '#EEEEEE',
+  obal: '#CCCCCC',
+  jintai: '#AAAAAA',
 };
 SentenJintai.propTypes = {
   base: PropTypes.string,

@@ -13,13 +13,10 @@ const useStyles = makeStyles({
   table: {
     borderStyle: 'solid',
     borderWidth: '1px',
-    // color: 'blue',
-    // minWidth: 650,
   },
   th: {
     borderStyle: 'solid',
     borderWidth: '1px',
-    // color: 'blue',
   },
 });
 
@@ -36,13 +33,13 @@ const SentenTable = (props) => {
   ];
 
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
+    <TableContainer className={classes.th}>
+      <Table>
         <TableBody>
           {rows.map(
             (row) => (
               <TableRow key={row.title}>
-                <TableCell className={classes.th} component="th" scope="row">
+                <TableCell className={classes.th} component="th">
                   {row.title}
                 </TableCell>
                 <TableCell className={classes.th} align="left">{row.value}</TableCell>
