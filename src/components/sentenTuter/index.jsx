@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
@@ -7,7 +6,6 @@ import SentenHeader from './sentenHeader';
 import SentenInput from './sentenInput';
 import SentenTable from './sentenTable';
 import SentenJintai from './sentenJintai';
-import { teikeimei, bodykashin } from '../worker/worker';
 
 
 const useStyles = makeStyles({
@@ -20,7 +18,7 @@ const useStyles = makeStyles({
     margin: '12px 0',
   },
   cap: {
-    margin: '20px 0 0 0',
+    margin: '17px 0 0 0',
     '& h4': {
       marginBottom: '5px',
     },
@@ -34,19 +32,15 @@ const useStyles = makeStyles({
   },
 });
 
-
-const SentenVisitor = ({ birthDate, cosName }) => {
+const SentenVisitor = () => {
   const classes = useStyles();
-  console.log('vis', birthDate);
-  // console.log('bd', teikeimei({ birthday: birthDate }));
-
   return (
     <Grid className={classes.wrapper} container justify="center">
       <Grid className={classes.imput} item xs={12}>
         <SentenHeader />
       </Grid>
       <Grid className={classes.imput} item xs={12}>
-        <SentenInput birthDate={birthDate} />
+        <SentenInput />
       </Grid>
       <Grid className={classes.cap} item xs={12}>
         <h4>診断結果</h4>
@@ -60,15 +54,6 @@ const SentenVisitor = ({ birthDate, cosName }) => {
     </Grid>
   );
 };
-SentenVisitor.defaultProps = {
-  cosName: 'yamada',
-  birthDate: '1950-01-01',
-};
-SentenVisitor.propTypes = {
-  cosName: PropTypes.string,
-  birthDate: PropTypes.string,
-};
-
 
 export default SentenVisitor;
 

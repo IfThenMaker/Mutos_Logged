@@ -9,7 +9,7 @@ const NameField = ({ name }) => (
     required
     margin="dense"
     id="name"
-    label="Name"
+    label="お名前"
     type="text"
     value={name}
     fullWidth

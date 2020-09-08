@@ -56,6 +56,14 @@ const SentenTable = (props) => {
       <p>貴方の魂と２神のバランス</p>
       <Table>
         <TableBody>
+          <TableRow>
+            <TableCell component="th"> </TableCell>
+            <TableCell component="th"> </TableCell>
+            <TableCell component="th"> </TableCell>
+            <TableCell component="th">強弱</TableCell>
+            <TableCell component="th">陰陽</TableCell>
+            <TableCell component="th">男女性</TableCell>
+          </TableRow>
           {rows.map(
             (row) => (
               <TableRow key={row.title}>
@@ -66,7 +74,10 @@ const SentenTable = (props) => {
                   <p className={classes.main}>{titleJa[row.title].main}</p>
                   <p className={classes.sub}>{titleJa[row.title].sub}</p>
                 </TableCell>
-                <TableCell className={classes.th}>{row.value}</TableCell>
+                <TableCell className={classes.th}>{row.value.moji}</TableCell>
+                <TableCell className={classes.th}>{row.value.highlow}</TableCell>
+                <TableCell className={classes.th}>{row.value.inyo}</TableCell>
+                <TableCell className={classes.th}>{row.value.danjyo}</TableCell>
               </TableRow>
             ),
           )}
@@ -77,9 +88,24 @@ const SentenTable = (props) => {
 };
 
 SentenTable.defaultProps = {
-  teikeimei: 'inochi',
-  syugokashin: 'kashin',
-  bodykashin: 'bodys',
+  teikeimei: {
+    moji: 'inochi',
+    highlow: 1,
+    inyo: 1,
+    danjyo: 1,
+  },
+  syugokashin: {
+    moji: 'kashin',
+    highlow: 1,
+    inyo: 1,
+    danjyo: 1,
+  },
+  bodykashin: {
+    moji: 'bodys',
+    highlow: 1,
+    inyo: 1,
+    danjyo: 1,
+  },
 };
 SentenTable.propTypes = {
   teikeimei: PropTypes.string,

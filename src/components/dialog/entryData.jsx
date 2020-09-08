@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
 
-import NameField from '../textField.name';
-import BirthField from '../textField.birth';
+import NameField from '../atoms/textField.name';
+import BirthField from '../atoms/textField.birth';
 
 
-const EntryData = () => {
+const EntryData = (props) => {
+  const {
+    cosNameDispatch,
+    birthDateDispatch,
+  } = props;
   const [open, setOpen] = useState(true);
 
   const handleClickOpen = () => {
@@ -21,6 +25,7 @@ const EntryData = () => {
   const handleClose = () => {
     setOpen(false);
   };
+  console.log('cosNameDispatch', birthDateDispatch);
 
 
   return (
@@ -31,8 +36,8 @@ const EntryData = () => {
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
         <DialogContent>
-          <NameField />
-          <BirthField />
+          <NameField dispatch={cosNameDispatch} />
+          <BirthField dispatch={birthDateDispatch} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -46,5 +51,14 @@ const EntryData = () => {
     </>
   );
 };
+EntryData.defaultProps = {
+  cosNameDispatch: () => {},
+  birthDateDispatch: () => {},
+};
+EntryData.propTypes = {
+  cosNameDispatch: PropTypes.func,
+  birthDateDispatch: PropTypes.func,
+};
+
 
 export default EntryData;

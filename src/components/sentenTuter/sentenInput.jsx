@@ -13,12 +13,11 @@ const useStyles = makeStyles({
     margin: '0',
   },
   input: {
-    maxWidth: '600px',
-    margin: '18px 0',
+    margin: '15px 0',
   },
 });
 
-const SentenInput = ({ name, birthDate }) => {
+const SentenInput = ({ name, birthday }) => {
   const classes = useStyles();
   const today = new Date();
 
@@ -38,7 +37,7 @@ const SentenInput = ({ name, birthDate }) => {
         <NameField name={name} />
       </Grid>
       <Grid className={classes.input} item>
-        <BirthField birthDate={birthDate} />
+        <BirthField birthday={birthday} />
       </Grid>
     </div>
   );
@@ -46,11 +45,11 @@ const SentenInput = ({ name, birthDate }) => {
 
 SentenInput.defaultProps = {
   name: 'some one you loved',
-  birthDate: '1940-01-01',
+  birthday: '1940-01-01',
 };
 SentenInput.propTypes = {
   name: PropTypes.string,
-  birthDate: PropTypes.string,
+  birthday: PropTypes.string,
 };
 
 
