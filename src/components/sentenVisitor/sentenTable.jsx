@@ -25,8 +25,8 @@ const useStyles = makeStyles({
 const createData = (title, value) => ({ title, value });
 
 
-const SentenTable = (props) => {
-  const { teikeimei, syugokashin, bodykashin } = props;
+const SentenTable = ({ teikeimei, syugokashin, bodykashin }) => {
+  // const { teikeimei, syugokashin, bodykashin } = props;
   const classes = useStyles();
   const rows = [
     createData('teikeimei', teikeimei),

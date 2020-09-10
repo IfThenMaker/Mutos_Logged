@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
 import InputData from '../atoms/textField.inputData';
-import BirthField from '../atoms/textField.birth';
 
 
 const useStyles = makeStyles({
@@ -19,17 +18,8 @@ const useStyles = makeStyles({
   },
 });
 
-const TextField = ({ index, value }) => {
-  return (
-    <Grid>
-      <p>{index}</p>
-      <p>{value}</p>
-      <Divider />
-    </Grid>
-  );
-};
 
-const SentenInput = ({ name, birthDate }) => {
+const SentenInput = ({ cosName, birthDate }) => {
   const classes = useStyles();
   const today = new Date();
   console.log('sentenINp', birthDate);
@@ -46,24 +36,21 @@ const SentenInput = ({ name, birthDate }) => {
         </p>
       </Grid>
       <Grid className={classes.input} item>
-        <InputData index="namae" value="gomber" />
-        <InputData index="tanjyoubi" value="1-1-1" />
-      </Grid>
-      <Grid className={classes.input} item>
-
+        <InputData index="namae" value={cosName} />
+        <InputData index="tanjyoubi" value={birthDate} />
       </Grid>
     </div>
   );
 };
 
 SentenInput.defaultProps = {
-  name: 'some one you loved',
-  birthDate: '1940-01-01',
+  cosName: 'input',
+  birthDate: '1950-03-01',
 };
 SentenInput.propTypes = {
-  name: PropTypes.string,
+  cosName: PropTypes.string,
   birthDate: PropTypes.string,
 };
-// <NameField name={name} />
+
 
 export default SentenInput;

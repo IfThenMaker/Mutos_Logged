@@ -3,29 +3,22 @@ import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
 
-const BirthField = ({ birthDate, dispatch }) => {
-  console.log('dis', dispatch);
+const BirthField = ({ dispatch }) => {
   return (
     <TextField
       id="date"
       label="birthDate"
       type="date"
-      defaultValue={birthDate}
-      value={birthDate}
-      onChange={(e) => {
-        console.log('ee', e.target.value);
-        dispatch(e.target.value);
-      }}
+      defaultValue="1940-01-01"
+      onChange={(e) => dispatch(e.target.value)}
       fullWidth
     />
   );
 };
 BirthField.defaultProps = {
-  birthDate: '1950-01-01',
-  dispatch: () => {},
+  dispatch: (e) => e,
 };
 BirthField.propTypes = {
-  birthDate: PropTypes.string,
   dispatch: PropTypes.func,
 };
 

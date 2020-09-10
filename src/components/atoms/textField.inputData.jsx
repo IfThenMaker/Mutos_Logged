@@ -37,7 +37,7 @@ InputData.defaultProps = {
 };
 InputData.propTypes = {
   index: PropTypes.string,
-  value: PropTypes.func,
+  value: PropTypes.string,
 };
 
 

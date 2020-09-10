@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
 
-const NameField = ({ name }) => (
+const NameField = ({ dispatch }) => (
   <TextField
     autoFocus
     required
@@ -11,15 +11,15 @@ const NameField = ({ name }) => (
     id="name"
     label="お名前"
     type="text"
-    value={name}
     fullWidth
+    onChange={(e) => dispatch(e.target.value)}
   />
 );
 NameField.defaultProps = {
-  name: 'some one you loved',
+  dispatch: (e) => e,
 };
 NameField.propTypes = {
-  name: PropTypes.string,
+  dispatch: PropTypes.func,
 };
 
 export default NameField;

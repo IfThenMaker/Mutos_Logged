@@ -1,5 +1,6 @@
 import data from './base_data';
 import teikeimeiData from './teikeimei';
+import bodykashinData from './bodykashin';
 // console.log('data', data);
 
 const testData = {
@@ -12,14 +13,14 @@ const dateData = ({ birthday }) => ({
   day: birthday.slice(8, 10),
 });
 
-export const teikeimei = ({ birthday }) => {
-  console.log('b', birthday);
+export const teikeimeiCalc = ({ birthday }) => {
+  // console.log('b', birthday);
   const year = birthday.slice(0, 4);
   const month = birthday.slice(5, 7).replace('0', '');
   const day = birthday.slice(8, 10);
-  console.log('y', day);
+  // console.log('y', day);
   const kihon = data[year].month[month];
-  console.log('kihon', kihon);
+  // console.log('kihon', kihon);
   const mesu = (() => {
     let kari = Number(kihon) + Number(day) - 8;
     if (kari > 60) {
@@ -27,20 +28,15 @@ export const teikeimei = ({ birthday }) => {
     }
     return kari;
   })();
-  console.log('mesu', mesu);
+  // console.log('mesu', mesu);
   const himeguri = mesu % 10;
-  console.log('himegu', himeguri);
+  // console.log('himegu', himeguri);
   return teikeimeiData[himeguri];
 };
 
-const syugokashin = ({ birthday }) => {
+const syugokashinCalc = ({ birthday }) => {
   const { year, month, day } = dateData({ birthday });
   const dateArr = data[year].date;
-  // const arr = Object.keys(dateArr).filter(
-  //   (k) => k.slice(0, 2) || k.slice(
-  //     k.indexOf('-') + 1, k.indexOf('-') + 3,
-  //   ) === `${month}/`,
-  // );
   const arr = Object.keys(dateArr).filter(
     (k) => k.slice(0, 2) === `${month}/`,
   );
@@ -53,7 +49,7 @@ const syugokashin = ({ birthday }) => {
   console.log('dateArr', dateArr);
 };
 
-export const bodykashin = ({ birthday }) => {
+export const bodykashinCalc = ({ birthday }) => {
   const { year, month, day } = dateData({ birthday });
   const strSum = (word) => {
     const arr = word.split('');
@@ -71,13 +67,14 @@ export const bodykashin = ({ birthday }) => {
   if (f >= 10) {
     f = Math.floor(f / 10) + (f % 10);
   }
+
   // console.log('f', f);
-  return f;
+  return bodykashinData[f];
 };
 
-teikeimei(testData);
+// teikeimei(testData);
 // syugokashin(testData);
-bodykashin(testData);
+// bodykashin(testData);
 
 
 //

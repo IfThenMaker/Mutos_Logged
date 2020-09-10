@@ -14,7 +14,6 @@ const useStyles = makeStyles({
     height: '400px',
     margin: 'auto',
     borderRadius: '10px',
-    background: 'linear-gradient(#e66465, #9198e5)',
   },
   obal: {
     display: 'flex',
@@ -27,16 +26,16 @@ const useStyles = makeStyles({
   jintai: {
     width: '140px',
     height: '330px',
-    // backgroundColor: ' transparent',
-    fill: 'gray',
   },
 });
 
-const SentenJintai = ({ base, obal, jintai }) => {
+const SentenJintai = ({
+  jinColor, syugoColor, bodyColor,
+}) => {
   const classes = useStyles();
-  const baseColor = { background: base };
-  const obalColor = { background: obal };
-  const jintaiColor = { fill: jintai };
+  const baseColor = { background: syugoColor };
+  const obalColor = { background: bodyColor };
+  const jintaiColor = { fill: jinColor };
 
   return (
     <Grid container>
@@ -49,17 +48,14 @@ const SentenJintai = ({ base, obal, jintai }) => {
   );
 };
 SentenJintai.defaultProps = {
-  // base: '#EEEEEE',
-  base: 'radial-gradient(silver, skyblue)',
-  // obal: '#CCCCCC',
-  obal: 'linear-gradient(black, cornsilk)',
-  // jintai: '#AAAAAA',
-  jintai: 'radial-gradient(silver, skyblue)',
+  jinColor: '#AAAAAA',
+  syugoColor: '#EEEEEE',
+  bodyColor: '#CCCCCC',
 };
 SentenJintai.propTypes = {
-  base: PropTypes.string,
-  obal: PropTypes.string,
-  jintai: PropTypes.string,
+  jinColor: PropTypes.string,
+  syugoColor: PropTypes.string,
+  bodyColor: PropTypes.string,
 };
 
 

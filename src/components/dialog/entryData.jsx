@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -29,26 +30,22 @@ const EntryData = (props) => {
 
 
   return (
-    <>
+    <Grid>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
         Open form dialog
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
         <DialogContent>
           <NameField dispatch={cosNameDispatch} />
           <BirthField dispatch={birthDateDispatch} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
+            確定
           </Button>
         </DialogActions>
       </Dialog>
-    </>
+    </Grid>
   );
 };
 EntryData.defaultProps = {
