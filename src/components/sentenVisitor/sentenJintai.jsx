@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Jintai from '../../assets/jintai.svg';
+// import Jimage from './jintai.jintai';
 
 
 const useStyles = makeStyles({
@@ -13,7 +14,7 @@ const useStyles = makeStyles({
     height: '400px',
     margin: 'auto',
     borderRadius: '10px',
-    backgroundColor: 'blue',
+    background: 'linear-gradient(#e66465, #9198e5)',
   },
   obal: {
     display: 'flex',
@@ -26,14 +27,15 @@ const useStyles = makeStyles({
   jintai: {
     width: '140px',
     height: '330px',
-    backgroundColor: ' transparent',
+    // backgroundColor: ' transparent',
+    fill: 'gray',
   },
 });
 
 const SentenJintai = ({ base, obal, jintai }) => {
   const classes = useStyles();
-  const baseColor = { backgroundColor: base };
-  const obalColor = { backgroundColor: obal };
+  const baseColor = { background: base };
+  const obalColor = { background: obal };
   const jintaiColor = { fill: jintai };
 
   return (
@@ -47,9 +49,12 @@ const SentenJintai = ({ base, obal, jintai }) => {
   );
 };
 SentenJintai.defaultProps = {
-  base: '#EEEEEE',
-  obal: '#CCCCCC',
-  jintai: '#AAAAAA',
+  // base: '#EEEEEE',
+  base: 'radial-gradient(silver, skyblue)',
+  // obal: '#CCCCCC',
+  obal: 'linear-gradient(black, cornsilk)',
+  // jintai: '#AAAAAA',
+  jintai: 'radial-gradient(silver, skyblue)',
 };
 SentenJintai.propTypes = {
   base: PropTypes.string,
@@ -59,3 +64,6 @@ SentenJintai.propTypes = {
 
 
 export default SentenJintai;
+
+
+// <Jintai className={classes.jintai} style={jintaiColor} />

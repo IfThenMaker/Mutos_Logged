@@ -8,7 +8,10 @@ import './index.scss';
 
 import '../components/worker';
 
-const reducer = (s) => s;
+import Test from '../components/sentenVisitor/test';
+
+
+const reducer = (s, a) => a;
 
 const IndexPage = () => {
   const [cosName, cosNameDispatch] = useReducer(reducer, 'hello');
@@ -16,10 +19,10 @@ const IndexPage = () => {
   console.log('bir', birthDate);
   // console.log('ff', birthDateDispatch);
   // birthDateDispatch('1940-01-01');
-  useEffect(() => {
-    console.log('aft', birthDate);
-    birthDateDispatch('1940-01-01');
-  }, []);
+  // useEffect(() => {
+  //   console.log('aft', birthDate);
+  //   birthDateDispatch('1940-01-01');
+  // }, []);
 
   return (
     <div>
@@ -27,6 +30,7 @@ const IndexPage = () => {
         cosNameDispatch={cosNameDispatch}
         birthDateDispatch={birthDateDispatch}
       />
+      <Test />
       <SentenVisitor
         cosName={cosName}
         birthDate={birthDate}

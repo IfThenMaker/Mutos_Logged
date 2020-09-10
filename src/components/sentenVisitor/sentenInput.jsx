@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
 
-import NameField from '../atoms/textField.name';
+import InputData from '../atoms/textField.inputData';
 import BirthField from '../atoms/textField.birth';
 
 
@@ -18,10 +19,20 @@ const useStyles = makeStyles({
   },
 });
 
+const TextField = ({ index, value }) => {
+  return (
+    <Grid>
+      <p>{index}</p>
+      <p>{value}</p>
+      <Divider />
+    </Grid>
+  );
+};
+
 const SentenInput = ({ name, birthDate }) => {
   const classes = useStyles();
   const today = new Date();
-
+  console.log('sentenINp', birthDate);
   return (
     <div>
       <Grid item>
@@ -35,10 +46,11 @@ const SentenInput = ({ name, birthDate }) => {
         </p>
       </Grid>
       <Grid className={classes.input} item>
-        <NameField name={name} />
+        <InputData index="namae" value="gomber" />
+        <InputData index="tanjyoubi" value="1-1-1" />
       </Grid>
       <Grid className={classes.input} item>
-        <BirthField birthDate={birthDate} />
+
       </Grid>
     </div>
   );
@@ -52,6 +64,6 @@ SentenInput.propTypes = {
   name: PropTypes.string,
   birthDate: PropTypes.string,
 };
-
+// <NameField name={name} />
 
 export default SentenInput;
