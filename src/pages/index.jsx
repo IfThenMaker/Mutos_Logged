@@ -20,13 +20,11 @@ const IndexPage = () => {
 
   return (
     <div>
-      <Dialog
-        cosNameDispatch={cosNameDispatch}
-        birthDateDispatch={birthDateDispatch}
-      />
+
       <SentenVisitor
         cosName={cosName}
         birthDate={birthDate}
+        dialog={Dialog({ cosNameDispatch, birthDateDispatch })}
       />
     </div>
   );

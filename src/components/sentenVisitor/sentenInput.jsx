@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 });
 
 
-const SentenInput = ({ cosName, birthDate }) => {
+const SentenInput = ({ dialog, cosName, birthDate }) => {
   const classes = useStyles();
   const today = new Date();
   console.log('sentenINp', birthDate);
@@ -36,18 +36,25 @@ const SentenInput = ({ cosName, birthDate }) => {
         </p>
       </Grid>
       <Grid className={classes.input} item>
-        <InputData index="namae" value={cosName} />
-        <InputData index="tanjyoubi" value={birthDate} />
+        <Grid item xs={12} sm={7}>
+          <InputData index="namae" value={cosName} />
+          <InputData index="tanjyoubi" value={birthDate} />
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          {dialog}
+        </Grid>
       </Grid>
     </div>
   );
 };
 
 SentenInput.defaultProps = {
+  dialog: {},
   cosName: 'input',
   birthDate: '1950-03-01',
 };
 SentenInput.propTypes = {
+  dialog: PropTypes.object,
   cosName: PropTypes.string,
   birthDate: PropTypes.string,
 };

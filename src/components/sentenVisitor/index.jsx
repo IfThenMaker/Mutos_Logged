@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
+import Dialog from '../dialog/entryData';
 import SentenHeader from './sentenHeader';
 import SentenInput from './sentenInput';
 import SentenTable from './sentenTable';
@@ -35,7 +36,7 @@ const useStyles = makeStyles({
 });
 
 
-const SentenVisitor = ({ birthDate, cosName }) => {
+const SentenVisitor = ({ birthDate, cosName, dialog }) => {
   const classes = useStyles();
   console.log('vis', birthDate);
   const { teikeimei, jinColor } = teikeimeiCalc({ birthday: birthDate });
@@ -50,7 +51,7 @@ const SentenVisitor = ({ birthDate, cosName }) => {
         <SentenHeader />
       </Grid>
       <Grid className={classes.imput} item xs={12}>
-        <SentenInput birthDate={birthDate} cosName={cosName} />
+        <SentenInput birthDate={birthDate} cosName={cosName} dialog={dialog} />
       </Grid>
       <Grid className={classes.cap} item xs={12}>
         <h4>診断結果</h4>
@@ -65,10 +66,12 @@ const SentenVisitor = ({ birthDate, cosName }) => {
   );
 };
 SentenVisitor.defaultProps = {
+  dialog: {},
   cosName: 'index',
   birthDate: '1950-01-01',
 };
 SentenVisitor.propTypes = {
+  dialog: PropTypes.object,
   cosName: PropTypes.string,
   birthDate: PropTypes.string,
 };
