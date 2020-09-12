@@ -1,10 +1,21 @@
 import data from './base_data';
-import teikeimeiData from './teikeimei';
-import bodykashinData from './bodykashin';
+import jinColorData from './jinColor';
+import syugoColorData from './syugoColor';
+import bodyColorData from './bodyColor';
+
+
+import syugoIndex from './syugoIndex';
+import syugokashinData from './syugokashinData';
+// import teikeimeiData from './teikeimei';
+// import bodykashinData from './bodykashin';
+
+// import syugoColor from './syugokashin';
+// import kashin from './kashiname';
 // console.log('data', data);
 
 const testData = {
   birthday: '1932-03-03',
+  teikeimeiNum: '10',
 };
 
 const dateData = ({ birthday }) => ({
@@ -30,23 +41,35 @@ export const teikeimeiCalc = ({ birthday }) => {
   })();
   // console.log('mesu', mesu);
   const himeguri = mesu % 10;
-  // console.log('himegu', himeguri);
-  return teikeimeiData[himeguri];
+  console.log('himegu', himeguri);
+  return jinColorData[himeguri];
 };
 
-const syugokashinCalc = ({ birthday }) => {
+export const syugokashinCalc = ({ birthday, teikeimeiNum }) => {
   const { year, month, day } = dateData({ birthday });
-  const dateArr = data[year].date;
-  const arr = Object.keys(dateArr).filter(
-    (k) => k.slice(0, 2) === `${month}/`,
-  );
-  const arr2 = Object.keys(dateArr).filter(
-    (k) => k.slice(
-      k.indexOf('-') + 1, k.indexOf('-') + 3,
-    ) === `${month}/`,
-  );
-  console.log('arr', arr);
-  console.log('dateArr', dateArr);
+  // console.log(syugokashinData);
+  const ydata = syugokashinData[year];
+  // console.log(ydata);
+  const date = `${`00${month}`.slice(-2)}/${`00${day}`.slice(-2)}`;
+  // console.log('ydata', ydata);
+  const kashinsu = ydata[date];
+  console.log('kashinsu', kashinsu);
+  console.log('teikeiNum', teikeimeiNum);
+  const kashin = syugoIndex[kashinsu][teikeimeiNum].syugoNum;
+  console.log('kashinRow', kashin);
+  // const result =
+  return syugoColorData[kashin];
+  // const dateArr = data[year].date;
+  // const arr = Object.keys(dateArr).filter(
+  //   (k) => k.slice(0, 2) === `${month}/`,
+  // );
+  // const arr2 = Object.keys(dateArr).filter(
+  //   (k) => k.slice(
+  //     k.indexOf('-') + 1, k.indexOf('-') + 3,
+  //   ) === `${month}/`,
+  // );
+  // console.log('arr', arr);
+  // console.log('dateArr', dateArr);
 };
 
 export const bodykashinCalc = ({ birthday }) => {
@@ -69,11 +92,11 @@ export const bodykashinCalc = ({ birthday }) => {
   }
 
   // console.log('f', f);
-  return bodykashinData[f];
+  return bodyColorData[f];
 };
 
 // teikeimei(testData);
-// syugokashin(testData);
+syugokashinCalc(testData);
 // bodykashin(testData);
 
 

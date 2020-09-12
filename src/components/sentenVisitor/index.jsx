@@ -8,7 +8,7 @@ import SentenHeader from './sentenHeader';
 import SentenInput from './sentenInput';
 import SentenTable from './sentenTable';
 import SentenJintai from './sentenJintai';
-import { teikeimeiCalc, bodykashinCalc } from '../worker/worker';
+import { teikeimeiCalc, syugokashinCalc, bodykashinCalc } from '../worker/worker';
 
 
 const useStyles = makeStyles({
@@ -39,8 +39,15 @@ const useStyles = makeStyles({
 const SentenVisitor = ({ birthDate, cosName, dialog }) => {
   const classes = useStyles();
   console.log('vis', birthDate);
-  const { teikeimei, jinColor } = teikeimeiCalc({ birthday: birthDate });
-  console.log('tk', teikeimei, jinColor);
+  const {
+    teikeimei, teikeimeiNum, jinColor,
+  } = teikeimeiCalc({ birthday: birthDate });
+  console.log('tk', teikeimei, jinColor, teikeimeiNum);
+  const { syugokashin, syugoColor } = syugokashinCalc({
+    birthday: birthDate,
+    teikeimeiNum,
+  });
+  console.log('syu', syugokashin, syugoColor);
   const { bodykashin, bodyColor } = bodykashinCalc({ birthday: birthDate });
   // console.log('tk', teikeimei, jinColor);
   console.log(bodykashinCalc({ birthday: birthDate }));
@@ -57,10 +64,10 @@ const SentenVisitor = ({ birthDate, cosName, dialog }) => {
         <h4>診断結果</h4>
       </Grid>
       <Grid className={classes.table} item xs={12} sm={6}>
-        <SentenTable teikeimei={teikeimei} bodykashin={bodykashin} />
+        <SentenTable teikeimei={teikeimei} syugokashin={syugokashin} bodykashin={bodykashin} />
       </Grid>
       <Grid className={classes.jintai} item xs={12} sm={4}>
-        <SentenJintai jinColor={jinColor} bodyColor={bodyColor} />
+        <SentenJintai jinColor={jinColor} syugoColor={syugoColor} bodyColor={bodyColor} />
       </Grid>
     </Grid>
   );

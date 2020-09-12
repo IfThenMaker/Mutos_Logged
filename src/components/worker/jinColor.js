@@ -1,5 +1,5 @@
 export default {
-  10: {
+  0: {
     teikeimei: '湖水命',
     jinColor: 'violet',
     teikeimeiNum: '10',
