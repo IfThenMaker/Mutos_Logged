@@ -7,7 +7,7 @@ const BirthField = ({ dispatch }) => {
   return (
     <TextField
       id="date"
-      label="birthDate"
+      label="生年月日"
       type="date"
       defaultValue="1940-01-01"
       onChange={(e) => dispatch(e.target.value)}

@@ -32,7 +32,7 @@ const EntryData = (props) => {
   return (
     <Grid>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Open form dialog
+        訂正
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogContent>

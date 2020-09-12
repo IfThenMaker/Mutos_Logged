@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
 
 import InputData from '../atoms/textField.inputData';
 
@@ -13,8 +12,8 @@ const useStyles = makeStyles({
     margin: '0',
   },
   input: {
-    maxWidth: '600px',
-    margin: '18px 0',
+    // maxWidth: '700px',
+    // margin: '18px 0',
   },
 });
 
@@ -35,12 +34,18 @@ const SentenInput = ({ dialog, cosName, birthDate }) => {
           日
         </p>
       </Grid>
-      <Grid className={classes.input} item>
-        <Grid item xs={12} sm={7}>
-          <InputData index="namae" value={cosName} />
-          <InputData index="tanjyoubi" value={birthDate} />
+      <Grid
+        className={classes.input}
+        container
+        spacing={5}
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item xs={12} sm={8}>
+          <InputData index="お名前" value={cosName} />
+          <InputData index="生年月日" value={birthDate} />
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={4}>
           {dialog}
         </Grid>
       </Grid>
