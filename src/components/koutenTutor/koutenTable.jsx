@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -15,70 +16,72 @@ const useStyles = makeStyles({
 
 });
 
+const heads = [
+  'index', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+];
+
+const bodys = {}
+
 const createData = (title, value) => ({ title, value });
 
+const Kami = ({ megurihanagami }) => (
+  <TableRow>
+    <TableCell>index</TableCell>
+    {Object.keys(megurihanagami).map((num) => (
+      <TableCell key={`kami${num}`}>
+        <Grid>
+          {megurihanagami[num].kami}
+        </Grid>
+        <Grid>
+          {megurihanagami[num].jyoutai}
+        </Grid>
+        <Grid>
+          {megurihanagami[num].ten}
+        </Grid>
+      </TableCell>
+    ))}
+  </TableRow>
+);
 
-const SentenTable = ({ teikeimei, syugokashin, bodykashin }) => {
-  // const { teikeimei, syugokashin, bodykashin } = props;
+
+
+const KoutenTable = ({
+  megurihanagami, megurinen, megurituki,
+}) => {
   const classes = useStyles();
-  const rows = [
-    createData('teikeimei', teikeimei),
-    createData('syugokashin', syugokashin),
-    createData('bodykashin', bodykashin),
-  ];
-  const titleJa = {
-    teikeimei: {
-      num: '①',
-      main: '提携命',
-      sub: '（魂・深層願望）',
-    },
-    syugokashin: {
-      num: '②',
-      main: '守護華神',
-      sub: '（守り神・一生のテーマ）',
-    },
-    bodykashin: {
-      num: '③',
-      main: 'ボディ華神',
-      sub: '（印象・仮のテーマ）',
-    },
-  };
 
   return (
-    <TableContainer className={classes.th}>
-      <p>貴方の魂と２神のバランス</p>
-      <Table>
+    <Paper>
+      <TableContainer>
+        <TableHead>
+          <TableRow>
+            {heads.map((h) => (
+              <TableCell
+                key={`kt${h}`}
+              >
+                {h}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
         <TableBody>
-          {rows.map(
-            (row) => (
-              <TableRow key={row.title}>
-                <TableCell className={classes.th} component="th">
-                  <p className={classes.num}>{titleJa[row.title].num}</p>
-                </TableCell>
-                <TableCell className={classes.th}>
-                  <p className={classes.main}>{titleJa[row.title].main}</p>
-                  <p className={classes.sub}>{titleJa[row.title].sub}</p>
-                </TableCell>
-                <TableCell className={classes.th}>{row.value}</TableCell>
-              </TableRow>
-            ),
-          )}
+          <Kami megurihanagami={megurihanagami} />
         </TableBody>
-      </Table>
-    </TableContainer>
+      </TableContainer>
+    </Paper>
   );
 };
 
-SentenTable.defaultProps = {
-  teikeimei: 'inochi',
-  syugokashin: 'kashin',
-  bodykashin: 'bodys',
+KoutenTable.defaultProps = {
+  megurihanagami: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
+  megurinen: 'kashin',
+  megurituki: 'bodys',
 };
-SentenTable.propTypes = {
-  teikeimei: PropTypes.string,
-  syugokashin: PropTypes.string,
-  bodykashin: PropTypes.string,
+KoutenTable.propTypes = {
+  megurihanagami: PropTypes.object,
+  megurinen: PropTypes.object,
+  megurituki: PropTypes.object,
 };
 
 
-export default SentenTable;
+export default KoutenTable;

@@ -4,6 +4,7 @@ import SentenVisitor from '../components/sentenVisitor/index';
 import Dialog from '../components/dialog/entryData';
 import './index.scss';
 
+import KoutenTable from '../components/koutenTutor/koutenTable';
 // import Test from '../components/sentenVisitor/test';
 
 
@@ -15,6 +16,7 @@ const IndexPage = () => {
 
   return (
     <div>
+      <KoutenTable />
       <SentenVisitor
         cosName={cosName}
         birthDate={birthDate}
