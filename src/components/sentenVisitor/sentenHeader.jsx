@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   caption: {
+    margin: 0,
     color: 'red',
     lineHeight: '50px',
     fontSize: '20px',

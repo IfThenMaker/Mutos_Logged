@@ -16,11 +16,6 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-  // th: {
-  //   borderStyle: 'solid',
-  //   borderWidth: '1px',
-  //   color: 'blue',
-  // },
 }));
 
 const SentenVisitor = () => {

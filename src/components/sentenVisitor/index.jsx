@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-import Dialog from '../dialog/entryData';
 import SentenHeader from './sentenHeader';
 import SentenInput from './sentenInput';
 import SentenTable from './sentenTable';
@@ -85,7 +84,3 @@ SentenVisitor.propTypes = {
 
 
 export default SentenVisitor;
-
-// <MuiPickersUtilsProvider utils={DateFnsUtils}>
-//   <Dialog />
-// </MuiPickersUtilsProvider>
