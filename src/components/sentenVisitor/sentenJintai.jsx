@@ -6,8 +6,6 @@ import Favorite from '@material-ui/icons/Favorite';
 
 import Jintai from '../../assets/jintai.svg';
 import Num from './sentenJintai.number';
-import Hart from './sentenJintai.hart';
-
 
 
 const useStyles = makeStyles({
@@ -36,7 +34,7 @@ const useStyles = makeStyles({
 });
 
 const SentenJintai = ({
-  hartColor, syugoColor, bodyColor,
+  jinColor, syugoColor, bodyColor,
 }) => {
   const classes = useStyles();
   const baseColor = { background: syugoColor };
@@ -47,7 +45,7 @@ const SentenJintai = ({
     top: '103px',
     left: '133px',
     fontSize: '38',
-    color: hartColor,
+    color: jinColor,
   };
   const styleOne = {
     top: '90px',
@@ -78,12 +76,12 @@ const SentenJintai = ({
   );
 };
 SentenJintai.defaultProps = {
-  hartColor: '#AAAAAA',
+  jinColor: '#AAAAAA',
   syugoColor: '#EEEEEE',
   bodyColor: '#CCCCCC',
 };
 SentenJintai.propTypes = {
-  hartColor: PropTypes.string,
+  jinColor: PropTypes.string,
   syugoColor: PropTypes.string,
   bodyColor: PropTypes.string,
 };

@@ -60,7 +60,7 @@ const SentenVisitor = ({ birthDate, cosName, dialog }) => {
         <SentenInput birthDate={birthDate} cosName={cosName} dialog={dialog} />
       </Grid>
       <Grid className={classes.cap} item xs={12}>
-        <h4>診断結果</h4>
+
       </Grid>
       <Grid className={classes.table} item xs={12} sm={6}>
         <SentenTable teikeimei={teikeimei} syugokashin={syugokashin} bodykashin={bodykashin} />
@@ -81,6 +81,5 @@ SentenVisitor.propTypes = {
   cosName: PropTypes.string,
   birthDate: PropTypes.string,
 };
-
 
 export default SentenVisitor;
