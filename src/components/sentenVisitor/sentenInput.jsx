@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     textAlign: 'end',
     margin: '0',
   },
-  input: {
+  dialog: {
     // maxWidth: '700px',
     // margin: '18px 0',
   },

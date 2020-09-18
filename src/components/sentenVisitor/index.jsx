@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     margin: '12px 0',
   },
   jintai: {
-    minWidth: '400px',
+    minWidth: '320px',
     margin: '12px 0',
   },
 });
@@ -37,19 +37,19 @@ const useStyles = makeStyles({
 
 const SentenVisitor = ({ birthDate, cosName, dialog }) => {
   const classes = useStyles();
-  console.log('vis', birthDate);
+  // console.log('vis', birthDate);
   const {
     teikeimei, teikeimeiNum, jinColor,
   } = teikeimeiCalc({ birthday: birthDate });
-  console.log('tk', teikeimei, jinColor, teikeimeiNum);
+  // console.log('tk', teikeimei, jinColor, teikeimeiNum);
   const { syugokashin, syugoColor } = syugokashinCalc({
     birthday: birthDate,
     teikeimeiNum,
   });
-  console.log('syu', syugokashin, syugoColor);
+  // console.log('syu', syugokashin, syugoColor);
   const { bodykashin, bodyColor } = bodykashinCalc({ birthday: birthDate });
   // console.log('tk', teikeimei, jinColor);
-  console.log(bodykashinCalc({ birthday: birthDate }));
+  // console.log(bodykashinCalc({ birthday: birthDate }));
 
   return (
     <Grid className={classes.wrapper} container justify="center">
@@ -60,12 +60,13 @@ const SentenVisitor = ({ birthDate, cosName, dialog }) => {
         <SentenInput birthDate={birthDate} cosName={cosName} dialog={dialog} />
       </Grid>
       <Grid className={classes.cap} item xs={12}>
-
+        <h4>診断結果</h4>
       </Grid>
       <Grid className={classes.table} item xs={12} sm={6}>
         <SentenTable teikeimei={teikeimei} syugokashin={syugokashin} bodykashin={bodykashin} />
       </Grid>
       <Grid className={classes.jintai} item xs={12} sm={4}>
+        <h4>イメージカラー</h4>
         <SentenJintai jinColor={jinColor} syugoColor={syugoColor} bodyColor={bodyColor} />
       </Grid>
     </Grid>

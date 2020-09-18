@@ -53,7 +53,7 @@ const SentenTable = (props) => {
 
   return (
     <TableContainer className={classes.th}>
-      <p>貴方の魂と２神のバランス</p>
+      <h4>貴方の魂と２神のバランス</h4>
       <Table>
         <TableBody>
           <TableRow>
