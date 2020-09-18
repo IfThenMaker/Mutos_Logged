@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 import SentenHeader from './sentenHeader';
@@ -31,6 +32,10 @@ const useStyles = makeStyles({
   jintai: {
     minWidth: '320px',
     margin: '12px 0',
+  },
+  link: {
+    backgroundColor: '#ffaa56',
+    margin: '30px auto',
   },
 });
 
@@ -69,12 +74,23 @@ const SentenVisitor = ({ birthDate, cosName, dialog }) => {
         <h4>イメージカラー</h4>
         <SentenJintai jinColor={jinColor} syugoColor={syugoColor} bodyColor={bodyColor} />
       </Grid>
+      <Grid container justify="center" alignItems="center">
+        <Button
+          className={classes.link}
+          size="large"
+          variant="contained"
+          color="primary"
+          href=""
+        >
+          詳しく知りたい
+        </Button>
+      </Grid>
     </Grid>
   );
 };
 SentenVisitor.defaultProps = {
   dialog: {},
-  cosName: 'index',
+  cosName: '',
   birthDate: '1950-01-01',
 };
 SentenVisitor.propTypes = {
