@@ -16,6 +16,8 @@ const EntryData = (props) => {
     cosNameDispatch,
     birthDateDispatch,
   } = props;
+  const [name, setName] = useState();
+  const [birth, setBirth] = useState();
   const [open, setOpen] = useState(true);
 
   const handleClickOpen = () => {
