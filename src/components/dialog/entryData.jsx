@@ -20,11 +20,15 @@ const EntryData = (props) => {
   const [birth, setBirth] = useState();
   const [open, setOpen] = useState(true);
 
+  console.log('n,b', name, birth);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    cosNameDispatch(name);
+    birthDateDispatch(birth);
     setOpen(false);
   };
   console.log('cosNameDispatch', birthDateDispatch);
@@ -37,8 +41,8 @@ const EntryData = (props) => {
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogContent>
-          <NameField dispatch={cosNameDispatch} />
-          <BirthField dispatch={birthDateDispatch} />
+          <NameField dispatch={setName} />
+          <BirthField dispatch={setBirth} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
