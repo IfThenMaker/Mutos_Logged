@@ -12,18 +12,20 @@ const testData = {
   teikeimeiNum: '10',
 };
 
-const dateData = ({ birthday }) => ({
-  year: birthday.slice(0, 4),
-  month: birthday.slice(5, 7).replace('0', ''),
-  day: birthday.slice(8, 10),
-});
+const dateData = ({ birthday }) => {
+  const mo = birthday.slice(5, 7);
+  // console.log('nmi', mo.slice(0, 1));
+  return {
+    year: birthday.slice(0, 4),
+    month: mo.slice(1, 2) === '0' ? mo : mo.replace('0', ''),
+    day: birthday.slice(8, 10),
+  };
+};
 
 export const teikeimeiCalc = ({ birthday }) => {
   // console.log('b', birthday);
-  const year = birthday.slice(0, 4);
-  const month = birthday.slice(5, 7).replace('0', '');
-  const day = birthday.slice(8, 10);
-  // console.log('y', day);
+  const { year, month, day } = dateData({ birthday });
+  // console.log('date', year, month, day);
   const kihon = data[year].month[month];
   // console.log('kihon', kihon);
   const mesu = (() => {
@@ -73,10 +75,3 @@ export const bodykashinCalc = ({ birthday }) => {
   }
   return bodyColorData[f];
 };
-
-// teikeimei(testData);
-// syugokashinCalc(testData);
-// bodykashin(testData);
-
-
-//

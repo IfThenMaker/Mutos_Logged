@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 import SentenHeader from './sentenHeader';
@@ -29,27 +30,31 @@ const useStyles = makeStyles({
     margin: '12px 0',
   },
   jintai: {
-    minWidth: '400px',
+    minWidth: '320px',
     margin: '12px 0',
+  },
+  link: {
+    backgroundColor: '#ffaa56',
+    margin: '30px auto',
   },
 });
 
 
 const SentenVisitor = ({ birthDate, cosName, dialog }) => {
   const classes = useStyles();
-  console.log('vis', birthDate);
+  // console.log('vis', birthDate);
   const {
     teikeimei, teikeimeiNum, jinColor,
   } = teikeimeiCalc({ birthday: birthDate });
-  console.log('tk', teikeimei, jinColor, teikeimeiNum);
+  // console.log('tk', teikeimei, jinColor, teikeimeiNum);
   const { syugokashin, syugoColor } = syugokashinCalc({
     birthday: birthDate,
     teikeimeiNum,
   });
-  console.log('syu', syugokashin, syugoColor);
+  // console.log('syu', syugokashin, syugoColor);
   const { bodykashin, bodyColor } = bodykashinCalc({ birthday: birthDate });
   // console.log('tk', teikeimei, jinColor);
-  console.log(bodykashinCalc({ birthday: birthDate }));
+  // console.log(bodykashinCalc({ birthday: birthDate }));
 
   return (
     <Grid className={classes.wrapper} container justify="center">
@@ -66,14 +71,26 @@ const SentenVisitor = ({ birthDate, cosName, dialog }) => {
         <SentenTable teikeimei={teikeimei} syugokashin={syugokashin} bodykashin={bodykashin} />
       </Grid>
       <Grid className={classes.jintai} item xs={12} sm={4}>
+        <h4>イメージカラー</h4>
         <SentenJintai jinColor={jinColor} syugoColor={syugoColor} bodyColor={bodyColor} />
+      </Grid>
+      <Grid container justify="center" alignItems="center">
+        <Button
+          className={classes.link}
+          size="large"
+          variant="contained"
+          color="primary"
+          href=""
+        >
+          詳しく知りたい
+        </Button>
       </Grid>
     </Grid>
   );
 };
 SentenVisitor.defaultProps = {
   dialog: {},
-  cosName: 'index',
+  cosName: '',
   birthDate: '1950-01-01',
 };
 SentenVisitor.propTypes = {
@@ -81,6 +98,5 @@ SentenVisitor.propTypes = {
   cosName: PropTypes.string,
   birthDate: PropTypes.string,
 };
-
 
 export default SentenVisitor;

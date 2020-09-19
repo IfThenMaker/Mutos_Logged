@@ -1,27 +1,27 @@
 export default {
   0: {
     teikeimei: '湖水命',
-    jinColor: 'violet',
+    jinColor: 'lavenderblush',
     teikeimeiNum: '10',
   },
   1: {
     teikeimei: '豪風命',
-    jinColor: 'orange',
+    jinColor: 'palegreen',
     teikeimeiNum: '1',
   },
   2: {
     teikeimei: '微風命',
-    jinColor: 'orange',
+    jinColor: 'palegreen',
     teikeimeiNum: '2',
   },
   3: {
     teikeimei: '陽照命',
-    jinColor: 'magenta',
+    jinColor: 'red',
     teikeimeiNum: '3',
   },
   4: {
     teikeimei: '灯篭命',
-    jinColor: 'magenta',
+    jinColor: 'red',
     teikeimeiNum: '4',
   },
   5: {
@@ -36,17 +36,17 @@ export default {
   },
   7: {
     teikeimei: '轟音命',
-    jinColor: 'gold',
+    jinColor: 'yellow',
     teikeimeiNum: '7',
   },
   8: {
     teikeimei: '閃光命',
-    jinColor: 'gold',
+    jinColor: 'yellow',
     teikeimeiNum: '8',
   },
   9: {
     teikeimei: '海水命',
-    jinColor: 'indigo',
+    jinColor: 'blue',
     teikeimeiNum: '9',
   },
 };

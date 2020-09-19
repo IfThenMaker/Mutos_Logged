@@ -53,7 +53,7 @@ const SentenTable = ({ teikeimei, syugokashin, bodykashin }) => {
 
   return (
     <TableContainer className={classes.th}>
-      <p>貴方の魂と２神のバランス</p>
+      <h4>貴方の魂と２神のバランス</h4>
       <Table>
         <TableBody>
           {rows.map(
