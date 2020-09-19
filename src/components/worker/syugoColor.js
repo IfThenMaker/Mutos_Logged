@@ -13,7 +13,7 @@ export default {
   },
   4: {
     syugokashin: '雷 神',
-    bodyColor: 'linear-gradient(gold, yellow, lemonchiffon)',
+    syugoColor: 'linear-gradient(gold, yellow, lemonchiffon)',
   },
   5: {
     syugokashin: '山の神',

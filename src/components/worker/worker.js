@@ -52,7 +52,7 @@ export const syugokashinCalc = ({ birthday, teikeimeiNum }) => {
   // console.log('kashinsu', kashinsu);
   // console.log('teikeiNum', teikeimeiNum);
   const kashin = syugoIndex[kashinsu][teikeimeiNum].syugoNum;
-  // console.log('kashinRow', kashin);
+  // console.log('kashinRow', kashin, syugoColorData[kashin]);
   return syugoColorData[kashin];
 };
 
