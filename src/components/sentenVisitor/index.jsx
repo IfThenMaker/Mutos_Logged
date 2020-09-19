@@ -57,7 +57,12 @@ const SentenVisitor = ({ birthDate, cosName, dialog }) => {
   // console.log(bodykashinCalc({ birthday: birthDate }));
 
   return (
-    <Grid className={classes.wrapper} container justify="center">
+    <Grid
+      className={classes.wrapper}
+      container
+      justify="center"
+      spacing={3}
+    >
       <Grid className={classes.imput} item xs={12}>
         <SentenHeader />
       </Grid>
