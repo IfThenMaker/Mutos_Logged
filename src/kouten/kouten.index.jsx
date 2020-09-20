@@ -12,7 +12,9 @@ const useStyles = makeStyles({
 });
 
 
-const Kouten = () => {
+const Kouten = ({
+  megurihanagami, megurinen, megurituki,
+}) => {
 
   return (
     <Grid
@@ -21,19 +23,23 @@ const Kouten = () => {
       spacing={3}
     >
       <Head />
-
+      <KoutenTable
+        megurihanagami={megurihanagami}
+        megurinen={megurinen}
+        megurituki={megurituki}
+      />
     </Grid>
   );
 };
 Kouten.defaultProps = {
-  // dialog: {},
-  // cosName: '',
-  // birthDate: '1950-01-01',
+  megurihanagami: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
+  megurinen: 'kashin',
+  megurituki: 'bodys',
 };
 Kouten.propTypes = {
-  // dialog: PropTypes.object,
-  // cosName: PropTypes.string,
-  // birthDate: PropTypes.string,
+  megurihanagami: PropTypes.object,
+  megurinen: PropTypes.object,
+  megurituki: PropTypes.object,
 };
 
 export default Kouten;

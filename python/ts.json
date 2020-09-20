@@ -1,0 +1,52 @@
+{
+  "豪風命": {
+    "kashin": "雷神",
+    "megurikashin": "雷光",
+    "saikuru": "計画/破"
+  },
+  "微風命": {
+    "kashin": "雷神",
+    "megurikashin": "雷鳴",
+    "saikuru": "実行/破"
+  },
+  "陽照命": {
+    "kashin": "風神",
+    "megurikashin": "幻風",
+    "saikuru": "見直/離"
+  },
+  "灯篭命": {
+    "kashin": "大地",
+    "megurikashin": "豊土",
+    "saikuru": "調整/守"
+  },
+  "厳山命": {
+    "kashin": "天空",
+    "megurikashin": "宇宙",
+    "saikuru": "確認/離"
+  },
+  "砂丘命": {
+    "kashin": "山の神",
+    "megurikashin": "山天",
+    "saikuru": "成果/守"
+  },
+  "轟音命": {
+    "kashin": "天空",
+    "megurikashin": "大気",
+    "saikuru": "拡大/守"
+  },
+  "閃光命": {
+    "kashin": "水神",
+    "megurikashin": "流水",
+    "saikuru": "集積/守"
+  },
+  "海水命": {
+    "kashin": "聖湖",
+    "megurikashin": "湖天",
+    "saikuru": "吸収/守"
+  },
+  "湖水命": {
+    "kashin": "火の神",
+    "megurikashin": "火炎",
+    "saikuru": "転換/破"
+  }
+}
