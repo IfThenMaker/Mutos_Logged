@@ -17,6 +17,7 @@ const useStyles = makeStyles({
     height: '400px',
     margin: 'auto',
     borderRadius: '10px',
+    border: '2px solid rgb(0,0,0,0.77)',
   },
   obal: {
     display: 'flex',
@@ -62,7 +63,6 @@ const SentenJintai = ({
 
   return (
     <Grid container>
-
       <div className={classes.base} style={baseColor}>
         <Favorite style={hart} />
         <Num number="1" styleSet={styleOne} />

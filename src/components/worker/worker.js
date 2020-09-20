@@ -23,7 +23,7 @@ const dateData = ({ birthday }) => {
 };
 
 export const teikeimeiCalc = ({ birthday }) => {
-  // console.log('b', birthday);
+  console.log('b', birthday);
   const { year, month, day } = dateData({ birthday });
   // console.log('date', year, month, day);
   const kihon = data[year].month[month];
