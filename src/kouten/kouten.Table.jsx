@@ -11,6 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 
+import kashinData from './datas/megurikashin';
 
 const useStyles = makeStyles({
 
@@ -20,33 +21,43 @@ const heads = [
   'index', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
 ];
 
+console.log(heads.slice(1));
+
 const bodys = {}
 
 const createData = (title, value) => ({ title, value });
 
-const Kami = ({ megurihanagami }) => (
-  <TableRow>
-    <TableCell>index</TableCell>
-    {Object.keys(megurihanagami).map((num) => (
-      <TableCell key={`kami${num}`}>
-        <Grid>
-          {megurihanagami[num].kami}
-        </Grid>
-        <Grid>
-          {megurihanagami[num].jyoutai}
-        </Grid>
-        <Grid>
-          {megurihanagami[num].ten}
-        </Grid>
-      </TableCell>
-    ))}
-  </TableRow>
-);
-
+const Kami = ({ teikeimei }) => {
+  console.log('kaka', kashinData);
+  console.log('teikei', teikeimei);
+  console.log('tete', kashinData[teikeimei]);
+  return (
+    <TableRow>
+      <TableCell>index</TableCell>
+      {heads.slice(1).map((num) => {
+        const index = `0${num}`.slice(-2);
+        // const index = num.slice(0, 1) === '0' ? num.slice(1, 2) : num;
+        return (
+          <TableCell key={`kami${index}`}>
+            <Grid>
+              {kashinData[teikeimei][index].kashin}
+            </Grid>
+            <Grid>
+              {kashinData[teikeimei][index].megurikashin}
+            </Grid>
+            <Grid>
+              {kashinData[teikeimei][index].saikuru}
+            </Grid>
+          </TableCell>
+        );
+      })}
+    </TableRow>
+  );
+};
 
 
 const KoutenTable = ({
-  megurihanagami, megurinen, megurituki,
+  teikeimei, megurinen, megurituki,
 }) => {
   const classes = useStyles();
 
@@ -65,7 +76,7 @@ const KoutenTable = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          <Kami megurihanagami={megurihanagami} />
+          <Kami teikeimei={teikeimei} />
         </TableBody>
       </TableContainer>
     </Paper>
@@ -73,12 +84,14 @@ const KoutenTable = ({
 };
 
 KoutenTable.defaultProps = {
-  megurihanagami: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
-  megurinen: 'kashin',
-  megurituki: 'bodys',
+  teikeimei: '豪風命',
+  megurikashin: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
+  megurinen: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
+  megurituki: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
 };
 KoutenTable.propTypes = {
-  megurihanagami: PropTypes.object,
+  teikeimei: PropTypes.string,
+  megurikashin: PropTypes.object,
   megurinen: PropTypes.object,
   megurituki: PropTypes.object,
 };

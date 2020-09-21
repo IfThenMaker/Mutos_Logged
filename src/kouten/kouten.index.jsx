@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 
 import Head from './kouten.HeadTable';
 import KoutenTable from './kouten.Table';
+import meruikashinData from './datas/megurikashin';
 
 const useStyles = makeStyles({
 
