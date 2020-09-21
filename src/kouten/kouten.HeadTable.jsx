@@ -16,7 +16,7 @@ const TableA = ({
 }) => {
   const data = {
     生年巡数: seinenjyunsu,
-    生月巡数: seigetujyunsu,
+    '生月巡数・大巡スタート数': seigetujyunsu,
     生月干支: seigetueto,
     生日巡数: seijitujyunsu,
     命数: meisu,
@@ -55,19 +55,64 @@ TableA.propTypes = {
   meisu: PropTypes.string,
 };
 
+const TableB = ({
+  inyou, jyunsetu, kaminashisetu, goujyun,
+}) => {
+  const data = {
+    '陽巡／陰巡': inyou,
+    巡節: jyunsetu,
+    神無節: kaminashisetu,
+    合巡: goujyun,
+  };
+  return (
+    <Grid item>
+      <Table>
+        <TableBody>
+          {Object.keys(data).map((k) => (
+            <TableRow key={k}>
+              <TableCell>
+                {k}
+              </TableCell>
+              <TableCell>
+                {data[k]}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Grid>
+  );
+};
+TableB.defaultProps = {
+  inyou: '8',
+  jyunsetu: '7',
+  kaminashisetu: '戌',
+  goujyun: '1',
+};
+TableB.propTypes = {
+  inyou: PropTypes.string,
+  jyunsetu: PropTypes.string,
+  kaminashisetu: PropTypes.string,
+  goujyun: PropTypes.string,
+};
+
 
 const Head = ({
   seinenjyunsu, seigetujyunsu, seigetueto, seijitujyunsu, meisu,
+  inyou, jyunsetu, kaminashisetu, goujyun,
 }) => {
   return (
-    <Grid container>
-      <Grid item>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
         <h4>
           あなたの巡華神サイクル
         </h4>
       </Grid>
       {TableA({
         seinenjyunsu, seigetujyunsu, seigetueto, seijitujyunsu, meisu,
+      })}
+      {TableB({
+        inyou, jyunsetu, kaminashisetu, goujyun,
       })}
     </Grid>
   );
@@ -78,6 +123,10 @@ Head.defaultProps = {
   seigetueto: '戌',
   seijitujyunsu: '1',
   meisu: '3',
+  inyou: '8',
+  jyunsetu: '7',
+  kaminashisetu: '戌',
+  goujyun: '1',
 };
 Head.propTypes = {
   seinenjyunsu: PropTypes.string,
@@ -85,6 +134,10 @@ Head.propTypes = {
   seigetueto: PropTypes.string,
   seijitujyunsu: PropTypes.string,
   meisu: PropTypes.string,
+  inyou: PropTypes.string,
+  jyunsetu: PropTypes.string,
+  kaminashisetu: PropTypes.string,
+  goujyun: PropTypes.string,
 };
 // (
 //   <Grid container>
