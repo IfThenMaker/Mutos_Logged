@@ -31,6 +31,7 @@ const useStyles = makeStyles({
   jintai: {
     width: '140px',
     height: '330px',
+    filter: 'drop-shadow(0px 0px 2px black)',
   },
 });
 
@@ -44,13 +45,15 @@ const SentenJintai = ({
   const hart = {
     position: 'absolute',
     top: '103px',
-    left: '133px',
+    left: '130px',
     fontSize: '38',
     color: jinColor,
+    zIndex: '1',
   };
   const styleOne = {
     top: '90px',
-    left: '165px',
+    left: '160px',
+    zIndex: '1',
   };
   const styleTwo = {
     top: '20px',
