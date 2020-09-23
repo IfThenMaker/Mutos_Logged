@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 import SentenHeader from './sentenHeader';
 import SentenInput from './sentenInput';
 import SentenTable from './sentenTable.tutor';
 import SentenJintai from './sentenJintai';
+import Senkou from '../atoms/button.senKou';
 import { teikeimeiCalc, syugokashinCalc, bodykashinCalc } from '../worker/worker';
+
 
 
 const useStyles = makeStyles({
@@ -80,15 +81,7 @@ const SentenVisitor = ({ birthDate, cosName, dialog }) => {
         <SentenJintai jinColor={jinColor} syugoColor={syugoColor} bodyColor={bodyColor} />
       </Grid>
       <Grid container justify="center" alignItems="center">
-        <Button
-          className={classes.link}
-          size="large"
-          variant="contained"
-          color="primary"
-          href=""
-        >
-          詳しく知りたい
-        </Button>
+        <Senkou />
       </Grid>
     </Grid>
   );
