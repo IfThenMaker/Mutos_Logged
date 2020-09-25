@@ -11,7 +11,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 
+import Meguri from './kouten.Table.meguri';
 import kashinData from './datas/megurikashin';
+
 
 const useStyles = makeStyles({
 
@@ -77,6 +79,7 @@ const KoutenTable = ({
         </TableHead>
         <TableBody>
           <Kami teikeimei={teikeimei} />
+          <Meguri />
         </TableBody>
       </TableContainer>
     </Paper>

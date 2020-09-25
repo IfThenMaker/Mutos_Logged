@@ -1,4 +1,4 @@
-import data from './base_data';
+import data from './himeguri';
 import jinColorData from './jinColor';
 import syugoColorData from './syugoColor';
 import bodyColorData from './bodyColor';
@@ -37,7 +37,7 @@ export const teikeimeiCalc = ({ birthday }) => {
   })();
   // console.log('mesu', mesu);
   const himeguri = mesu % 10;
-  // console.log('himegu', himeguri);
+  console.log('himegu', himeguri);
   return jinColorData[himeguri];
 };
 
