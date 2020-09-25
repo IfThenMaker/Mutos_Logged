@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 
-import Senten from '../components/sentenTutor/index';
+import SentenVisitor from '../components/sentenVisitor/index';
 import Dialog from '../components/dialog/entryData';
 import './index.scss';
 
@@ -15,7 +15,7 @@ const IndexPage = () => {
 
   return (
     <div>
-      <Senten
+      <SentenVisitor
         cosName={cosName}
         birthDate={birthDate}
         dialog={Dialog({ cosNameDispatch, birthDateDispatch })}

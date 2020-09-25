@@ -5,11 +5,26 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import { makeStyles } from '@material-ui/core/styles';
 
 import NameField from '../atoms/textField.name';
 import BirthField from '../atoms/textField.birth';
 
+
+const dateValidate = (dateStr) => {
+  const stDate = new Date('1912');
+  const endDate = new Date('2040');
+  const chDate = new Date(dateStr);
+  console.log(stDate, endDate);
+  console.log(chDate < stDate);
+  if (chDate < stDate) {
+    alert('1912年～2040年の範囲で入力してください');
+  } else if (chDate > endDate) {
+    alert('1912年～2040年の範囲で入力してください');
+  } else {
+    return true;
+  }
+  return false;
+};
 
 const EntryData = (props) => {
   const {
@@ -28,8 +43,11 @@ const EntryData = (props) => {
 
   const handleClose = () => {
     cosNameDispatch(name);
-    birthDateDispatch(birth);
-    setOpen(false);
+    const check = dateValidate(birth);
+    if (check) {
+      birthDateDispatch(birth);
+      setOpen(false);
+    }
   };
   console.log('cosNameDispatch', birthDateDispatch);
 
@@ -37,7 +55,7 @@ const EntryData = (props) => {
   return (
     <Grid>
       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        訂正
+        変更
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogContent>
@@ -46,7 +64,7 @@ const EntryData = (props) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            確定
+            登録
           </Button>
         </DialogActions>
       </Dialog>
