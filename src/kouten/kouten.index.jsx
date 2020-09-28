@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-import Head from './kouten.HeadTable';
-
-// import Year from './kouten.Table.nen';
-// import Month from './kouten.Table.getu';
 import KoutenTable from './kouten.Table';
-// import meruikashinData from './datas/megurikashin';
 
 
 const useStyles = makeStyles({
@@ -18,7 +13,7 @@ const useStyles = makeStyles({
 
 
 const Kouten = ({
-  megurihanagami, megurinen, megurituki,
+  // megurihanagami, megurinen, megurituki,
 }) => {
   return (
     <Grid
@@ -30,19 +25,19 @@ const Kouten = ({
     </Grid>
   );
 };
-Kouten.defaultProps = {
-  megurihanagami: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
-  megurinen: 'kashin',
-  megurituki: 'bodys',
-};
-Kouten.propTypes = {
-  megurihanagami: PropTypes.object,
-  megurinen: PropTypes.object,
-  megurituki: PropTypes.object,
-};
+// Kouten.defaultProps = {
+//   megurihanagami: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
+//   megurinen: 'kashin',
+//   megurituki: 'bodys',
+// };
+// Kouten.propTypes = {
+//   megurihanagami: PropTypes.object,
+//   megurinen: PropTypes.object,
+//   megurituki: PropTypes.object,
+// };
 
 export default Kouten;
-      // <Head />
+// <Head />
 // <KoutenTable
 //   megurihanagami={megurihanagami}
 //   megurinen={megurinen}

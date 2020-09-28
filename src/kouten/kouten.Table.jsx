@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 // import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-// import Table from '@material-ui/core/Table';
+import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 // import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
@@ -28,30 +28,32 @@ const KoutenTable = ({
   return (
     <Paper>
       <TableContainer>
-        <TableHead>
-          <Year />
-        </TableHead>
-        <TableBody>
-          <Month />
-          <Kashin />
-        </TableBody>
+        <Table>
+          <TableHead>
+            <Year />
+          </TableHead>
+          <TableBody>
+            <Month />
+            <Kashin />
+          </TableBody>
+        </Table>
       </TableContainer>
     </Paper>
   );
 };
 
-KoutenTable.defaultProps = {
-  teikeimei: '豪風命',
-  megurikashin: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
-  megurinen: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
-  megurituki: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
-};
-KoutenTable.propTypes = {
-  teikeimei: PropTypes.string,
-  megurikashin: PropTypes.object,
-  megurinen: PropTypes.object,
-  megurituki: PropTypes.object,
-};
+// KoutenTable.defaultProps = {
+//   teikeimei: '豪風命',
+//   megurikashin: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
+//   megurinen: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
+//   megurituki: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
+// };
+// KoutenTable.propTypes = {
+//   teikeimei: PropTypes.string,
+//   megurikashin: PropTypes.object,
+//   megurinen: PropTypes.object,
+//   megurituki: PropTypes.object,
+// };
 
 
 export default KoutenTable;
