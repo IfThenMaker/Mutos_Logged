@@ -5,8 +5,12 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
 import Head from './kouten.HeadTable';
+
+// import Year from './kouten.Table.nen';
+// import Month from './kouten.Table.getu';
 import KoutenTable from './kouten.Table';
-import meruikashinData from './datas/megurikashin';
+// import meruikashinData from './datas/megurikashin';
+
 
 const useStyles = makeStyles({
 
@@ -16,19 +20,13 @@ const useStyles = makeStyles({
 const Kouten = ({
   megurihanagami, megurinen, megurituki,
 }) => {
-
   return (
     <Grid
       container
       justify="center"
       spacing={3}
     >
-      <Head />
-      <KoutenTable
-        megurihanagami={megurihanagami}
-        megurinen={megurinen}
-        megurituki={megurituki}
-      />
+      <KoutenTable />
     </Grid>
   );
 };
@@ -44,3 +42,9 @@ Kouten.propTypes = {
 };
 
 export default Kouten;
+      // <Head />
+// <KoutenTable
+//   megurihanagami={megurihanagami}
+//   megurinen={megurinen}
+//   megurituki={megurituki}
+// />

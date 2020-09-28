@@ -1,65 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
+// import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
+// import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
+// import TablePagination from '@material-ui/core/TablePagination';
+// import TableRow from '@material-ui/core/TableRow';
 
-import Meguri from './kouten.Table.meguri';
-import kashinData from './datas/megurikashin';
-
+import Year from './kouten.Table.nen';
+import Month from './kouten.Table.getu';
+import Kashin from './kouten.Table.kashin';
 
 const useStyles = makeStyles({
 
 });
 
-const heads = [
-  'index', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
-];
-
-console.log(heads.slice(1));
-
-const bodys = {}
-
-const createData = (title, value) => ({ title, value });
-
-const Kami = ({ teikeimei }) => {
-  console.log('kaka', kashinData);
-  console.log('teikei', teikeimei);
-  console.log('tete', kashinData[teikeimei]);
-  return (
-    <TableRow>
-      <TableCell>index</TableCell>
-      {heads.slice(1).map((num) => {
-        const index = `0${num}`.slice(-2);
-        // const index = num.slice(0, 1) === '0' ? num.slice(1, 2) : num;
-        return (
-          <TableCell key={`kami${index}`}>
-            <Grid>
-              {kashinData[teikeimei][index].kashin}
-            </Grid>
-            <Grid>
-              {kashinData[teikeimei][index].megurikashin}
-            </Grid>
-            <Grid>
-              {kashinData[teikeimei][index].saikuru}
-            </Grid>
-          </TableCell>
-        );
-      })}
-    </TableRow>
-  );
-};
-
 
 const KoutenTable = ({
-  teikeimei, megurinen, megurituki,
+  // teikeimei, megurinen, megurituki,
 }) => {
   const classes = useStyles();
 
@@ -67,19 +29,11 @@ const KoutenTable = ({
     <Paper>
       <TableContainer>
         <TableHead>
-          <TableRow>
-            {heads.map((h) => (
-              <TableCell
-                key={`kt${h}`}
-              >
-                {h}
-              </TableCell>
-            ))}
-          </TableRow>
+          <Year />
         </TableHead>
         <TableBody>
-          <Kami teikeimei={teikeimei} />
-          <Meguri />
+          <Month />
+          <Kashin />
         </TableBody>
       </TableContainer>
     </Paper>
