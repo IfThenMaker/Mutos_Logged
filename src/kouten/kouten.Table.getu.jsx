@@ -1,34 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
-import { genYearArr } from './kouten.worker';
-import eto from './datas/eto';
+import Cells from './kouten.Table.cells';
+import { genGetuArr, genGetuEtoArr } from './kouten.worker';
+
 
 const useStyles = makeStyles({
 
 });
 
-
-const Cells = ({ index, arr }) => (
-  arr.map((value) => (
-    <TableCell key={`${index}${value}`}>{value}</TableCell>
-  ))
-);
-Cells.defaultProps = {
-  index: 'test',
-  arr: genYearArr(),
-};
-Cells.propTypes = {
-  index: PropTypes.string,
-  arr: PropTypes.array,
-};
-
 const Getu = () => {
-  const monthArr = [...Array(13).keys()].slice(1);
-  const monthEto = monthArr.map((m) => eto[m]);
+  const monthArr = genGetuArr();
+  const monthEto = genGetuEtoArr();
   return (
     <>
       <TableRow>
@@ -42,6 +27,13 @@ const Getu = () => {
     </>
   );
 };
-
+// Getu.defaultProps = {
+//   teikeimei: '厳山命',
+//   inyou: true,
+// };
+// Getu.propTypes = {
+//   teikeimei: PropTypes.string,
+//   inyou: PropTypes.bool,
+// };
 
 export default Getu;

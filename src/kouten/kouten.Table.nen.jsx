@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 import Cells from './kouten.Table.cells';
-import { genYearArr, genYearEtoArr } from './kouten.worker';
+import { genNenArr, genEtoArr } from './kouten.worker';
 
 
 const useStyles = makeStyles({
@@ -13,25 +12,8 @@ const useStyles = makeStyles({
 });
 
 
-const KoutenTable = ({ index, arr }) => (
-  <TableRow>
-    <TableCell>{index}</TableCell>
-    {arr.map((value) => (
-      <TableCell key={`${index}${value}`}>{value}</TableCell>
-    ))}
-  </TableRow>
-);
-KoutenTable.defaultProps = {
-  index: 'test',
-  arr: genYearArr(),
-};
-KoutenTable.propTypes = {
-  index: PropTypes.string,
-  arr: PropTypes.array,
-};
-
 const Nen = () => {
-  const yearArr = genYearArr();
+  const yearArr = genNenArr();
   const firstYear = { firstYear: yearArr[0] };
   return (
     <>
@@ -41,7 +23,7 @@ const Nen = () => {
       </TableRow>
       <TableRow>
         <TableCell>年干支</TableCell>
-        <Cells index="neneto" arr={genYearEtoArr(firstYear)} />
+        <Cells index="neneto" arr={genEtoArr(firstYear)} />
       </TableRow>
     </>
   );

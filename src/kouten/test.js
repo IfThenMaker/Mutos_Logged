@@ -1,12 +1,24 @@
-const date = new Date('2012')
-console.log(date)
-const ddate = new Date('2020-09-28')
+const a = 10;
 
-console.log(date >= ddate);
+const b = a % 2;
+
+// let c = a;
+//
+// c = a.toString();
+
+console.log(a, b);
 
 
-const num = 1029
-console.log(num % 10);
+
+// const date = new Date('2012')
+// console.log(date)
+// const ddate = new Date('2020-09-28')
+//
+// console.log(date >= ddate);
+//
+//
+// const num = 1029
+// console.log(num % 10);
 // const eto = {
 //   1: '子',
 //   2: '丑',

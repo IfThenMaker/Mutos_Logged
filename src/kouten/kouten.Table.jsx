@@ -14,6 +14,7 @@ import TableHead from '@material-ui/core/TableHead';
 import Year from './kouten.Table.nen';
 import Month from './kouten.Table.getu';
 import Kashin from './kouten.Table.kashin';
+import Omeguri from './kouten.Table.omeguri';
 
 const useStyles = makeStyles({
 
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
 
 
 const KoutenTable = ({
-  // teikeimei, megurinen, megurituki,
+  seinen, seibetu,
 }) => {
   const classes = useStyles();
 
@@ -35,6 +36,7 @@ const KoutenTable = ({
           <TableBody>
             <Month />
             <Kashin />
+            <Omeguri seinen={seinen} seibetu={seibetu} />
           </TableBody>
         </Table>
       </TableContainer>
@@ -42,18 +44,16 @@ const KoutenTable = ({
   );
 };
 
-// KoutenTable.defaultProps = {
-//   teikeimei: '豪風命',
-//   megurikashin: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
-//   megurinen: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
-//   megurituki: { 1: { kami: 'ksai', jyoutai: 'ten,syu', ten: '8' } },
-// };
-// KoutenTable.propTypes = {
-//   teikeimei: PropTypes.string,
-//   megurikashin: PropTypes.object,
-//   megurinen: PropTypes.object,
-//   megurituki: PropTypes.object,
-// };
+KoutenTable.defaultProps = {
+  seinen: '1940-01-01',
+  seibetu: 'male',
+  teikeimei: '微風命',
+};
+KoutenTable.propTypes = {
+  seinen: PropTypes.string,
+  seibetu: PropTypes.string,
+  teikeimei: PropTypes.string,
+};
 
 
 export default KoutenTable;

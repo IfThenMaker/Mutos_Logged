@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 });
 
 
-const Kashin = ({ teikeimei, inyou }) => {
+const Kashin = ({ teikeimei }) => {
   const kashinArr = genJyunkashinArr({ teikeimei });
   console.log('kashin', kashinArr);
   return (
@@ -34,11 +34,11 @@ const Kashin = ({ teikeimei, inyou }) => {
 };
 Kashin.defaultProps = {
   teikeimei: '厳山命',
-  inyou: true,
+  // inyou: true,
 };
 Kashin.propTypes = {
   teikeimei: PropTypes.string,
-  inyou: PropTypes.bool,
+  // inyou: PropTypes.bool,
 };
 
 export default Kashin;
