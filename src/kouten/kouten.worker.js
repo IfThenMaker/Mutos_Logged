@@ -97,28 +97,40 @@ export const genEtoArr = ({ firstYear }) => {
   return arr.map((m) => etoData[m]);
 };
 
-/*  kouten.Table.getu   */
-export const genGetuArr = () => {
-  const jyunsu = genJyunsu();
-  const jyunArr = genTenArr(jyunsu.year);
-  console.log('nenArr', jyunsu);
-  // const def = junsu.year - jyunsu.month;
-  // const monSt = def > 0 ? jyunsu.month +
-  const monStart = genTenArr(jyunsu.month).slice(0, 10).indexOf(1) + 1;
-  console.log('mon', monStart);
-  return genTwelveArr(monStart);
+export const genNenJyunsuArr = () => (
+  genTenArr(genJyunsu().year)
+);
 
-  const stMonth = () => {
-    let def = jyunsu.year - jyunsu.month;
-    if (def < 0) { def = 11 - def; }
-    return def;
-  };
-  return genTwelveArr(stMonth());
-};
+
+/*  kouten.Table.getu   */
+export const genGetuArr = () => (
+  Array.from({ length: 12 }, (v, k) => k + 1)
+);
 
 export const genGetuEtoArr = () => genGetuArr().map(
   (m) => etoData[m],
 );
+
+export const genGetuJyunsuArr = () => (
+  genTenArr(genJyunsu().month)
+);
+
+// export const genGetuArr = () => {
+//   const jyunsu = genJyunsu();
+//   const jyunArr = genTenArr(jyunsu.year);
+//   console.log('nenArr', jyunsu);
+//   // const def = junsu.year - jyunsu.month;
+//   // const monSt = def > 0 ? jyunsu.month +
+//   const monStart = genTenArr(jyunsu.month).slice(0, 10).indexOf(1) + 1;
+//   console.log('mon', monStart);
+//   return genTwelveArr(monStart);
+//   const stMonth = () => {
+//     let def = jyunsu.year - jyunsu.month;
+//     if (def < 0) { def = 11 - def; }
+//     return def;
+//   };
+//   return genTwelveArr(stMonth());
+// };
 
 /*  kouten.Table.kashin   */
 export const genJyunkashinArr = ({ teikeimei }) => {
@@ -132,6 +144,10 @@ export const genJyunkashinArr = ({ teikeimei }) => {
 
 
 /*  kouten.Table.kashin   */
+
+
+
+/*  kouten.Table.omeguri   */
 const inyoChecker = ({ seinen, seibetu }) => {
   const checkedDate = setuChecker(seinen);
   const y = checkedDate.slice(0, 4);
@@ -142,6 +158,7 @@ const inyoChecker = ({ seinen, seibetu }) => {
   if (!check && seibetu === 'male') { inyo = false; }
   return inyo;
 };
+
 const genTukijyunsu = ({ seinen }) => {
   const checkedDate = setuChecker(seinen);
   const y = checkedDate.slice(0, 4);
@@ -150,15 +167,39 @@ const genTukijyunsu = ({ seinen }) => {
 
 export const genDaijyunArr = ({ seinen, seibetu }) => {
   const inyo = inyoChecker({ seinen, seibetu });
+  const date = new Date(seinen);
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  console.log(month, day);
   console.log(inyo);
   const tukijyunsu = genTukijyunsu({ seinen });
   console.log('tuki', tukijyunsu);
-  // const
+  const jyunsetu = inyo ? junsetuYou : junsetuIn;
+  const setusu = Number(jyunsetu[month][day]);
+  const setuArr = Array.from({ length: 12 }, (v, k) => (
+    `${setusu + (k - 1) * 10 > 0
+      ? setusu + (k - 1) * 10 : 0} ~ ${setusu + k * 10}歳`));
+  // [`0-${setusu}`];
+  console.log(setusu, jyunsetu);
+  console.log(setuArr);
+  return setuArr;
 };
 
+const genGetuRevArr = () => {
+  const arr = [1]
+  const adarr = Array.from({ length: 11 }, (v, k) => k + 2).reverse();
+  console.log(arr.concat(adarr));
+  return arr.concat(adarr);
 
+  // console.log(arr, adarr);
+};
 
-
+export const genDaijyunEtoArr = ({ seinen, seibetu }) => {
+  const inyo = inyoChecker({ seinen, seibetu });
+  const you = genGetuEtoArr();
+  const inn = genGetuRevArr().map((m) => etoData[m]);
+  return inyo ? you : inn;
+};
 
 
 //   creage nenjyunsu from date string

@@ -4,16 +4,22 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 import Cells from './kouten.Table.cells';
-import { genGetuArr, genGetuEtoArr } from './kouten.worker';
+import {
+  genGetuArr, genGetuEtoArr, genGetuJyunsuArr,
+} from './kouten.worker';
 
 
 const useStyles = makeStyles({
-
+  keisen: {
+    borderBottom: 'double 2px rgba(0,0,0,0.55)',
+  },
 });
 
 const Getu = () => {
+  const classes = useStyles();
   const monthArr = genGetuArr();
   const monthEto = genGetuEtoArr();
+  const monthJyunArr = genGetuJyunsuArr();
   return (
     <>
       <TableRow>
@@ -23,6 +29,10 @@ const Getu = () => {
       <TableRow>
         <TableCell>月干支</TableCell>
         <Cells index="tukieto" arr={monthEto} />
+      </TableRow>
+      <TableRow className={classes.keisen}>
+        <TableCell>月巡数</TableCell>
+        <Cells index="tukijyun" arr={monthJyunArr} />
       </TableRow>
     </>
   );

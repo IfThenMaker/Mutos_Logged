@@ -17,9 +17,6 @@ const Kouten = ({
 }) => {
   return (
     <Grid
-      container
-      justify="center"
-      spacing={3}
     >
       <KoutenTable />
     </Grid>

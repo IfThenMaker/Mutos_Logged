@@ -7,7 +7,7 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 // import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
+import Divider from '@material-ui/core/Divider';
 // import TablePagination from '@material-ui/core/TablePagination';
 // import TableRow from '@material-ui/core/TableRow';
 
@@ -17,7 +17,11 @@ import Kashin from './kouten.Table.kashin';
 import Omeguri from './kouten.Table.omeguri';
 
 const useStyles = makeStyles({
-
+  table: {
+    '& td': {
+      minWidth: '65px',
+    },
+  },
 });
 
 
@@ -28,15 +32,13 @@ const KoutenTable = ({
 
   return (
     <Paper>
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <Year />
-          </TableHead>
+      <TableContainer className={classes.table}>
+        <Table size="small">
           <TableBody>
+            <Year />
             <Month />
-            <Kashin />
             <Omeguri seinen={seinen} seibetu={seibetu} />
+            <Kashin />
           </TableBody>
         </Table>
       </TableContainer>

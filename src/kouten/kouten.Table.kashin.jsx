@@ -20,7 +20,7 @@ const Kashin = ({ teikeimei }) => {
     <TableRow>
       <TableCell>巡華神</TableCell>
       {kashinArr.map((data, num) => (
-        <TableCell key={`kami${num}`}>
+        <TableCell key={`kami${num}`} align="center">
           <Grid>
             {data.kashin}
           </Grid>
