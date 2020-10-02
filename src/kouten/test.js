@@ -5,11 +5,31 @@ const b = a % 2;
 // let c = a;
 //
 // c = a.toString();
+// const arr = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"]
 
-console.log(a, b);
+const arr = [ 1 ]
 
+console.log(1 in arr);
 
+const test = 12;
 
+const check = (v) => {
+  switch (v) {
+    case v > 1 <= 10:
+      console.log(v);
+      return 10;
+      // break;
+    case v > 11 <= 20:
+      console.log(20);
+      return 20;
+    default:
+      break;
+  }
+  return ' ';
+};
+check(test);
+
+// break;
 // const date = new Date('2012')
 // console.log(date)
 // const ddate = new Date('2020-09-28')

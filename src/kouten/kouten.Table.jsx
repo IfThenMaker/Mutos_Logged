@@ -15,6 +15,9 @@ import Year from './kouten.Table.nen';
 import Month from './kouten.Table.getu';
 import Kashin from './kouten.Table.kashin';
 import Omeguri from './kouten.Table.omeguri';
+import Kaminashi from './kouten.Table.kaminashi';
+import Goujyun from './kouten.Table.goujyun';
+
 
 const useStyles = makeStyles({
   table: {
@@ -39,6 +42,8 @@ const KoutenTable = ({
             <Month />
             <Omeguri seinen={seinen} seibetu={seibetu} />
             <Kashin />
+            <Kaminashi seinen={seinen} />
+            <Goujyun seinen={seinen} />
           </TableBody>
         </Table>
       </TableContainer>

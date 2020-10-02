@@ -5,6 +5,9 @@ import setuData from './datas/setu';
 import jyunsuData from './datas/jyunsu';
 import junsetuYou from './datas/jyunsetuYou';
 import junsetuIn from './datas/jyunsetuIn';
+import himeguriData from './datas/himeguri';
+import kaminashiData from './datas/kaminashi';
+import goujyunData from './datas/goujyun';
 
 
 //   pass num return 12nums array
@@ -111,9 +114,13 @@ export const genGetuEtoArr = () => genGetuArr().map(
   (m) => etoData[m],
 );
 
-export const genGetuJyunsuArr = () => (
-  genTenArr(genJyunsu().month)
-);
+export const genGetuJyunsuArr = () => {
+  const gArr = genTenArr(genJyunsu().month);
+  console.log('gg', gArr);
+  const nArr = genGetuArr().map((m) => gArr.indexOf(m));
+  console.log(nArr);
+  return genTenArr(genJyunsu().month);
+};
 
 // export const genGetuArr = () => {
 //   const jyunsu = genJyunsu();
@@ -131,6 +138,7 @@ export const genGetuJyunsuArr = () => (
 //   };
 //   return genTwelveArr(stMonth());
 // };
+
 
 /*  kouten.Table.kashin   */
 export const genJyunkashinArr = ({ teikeimei }) => {
@@ -200,6 +208,127 @@ export const genDaijyunEtoArr = ({ seinen, seibetu }) => {
   const inn = genGetuRevArr().map((m) => etoData[m]);
   return inyo ? you : inn;
 };
+
+
+/*  kouten.Table.kaminashi   */
+const dateData = ({ seinen }) => {
+  const mo = seinen.slice(5, 7);
+  return {
+    year: seinen.slice(0, 4),
+    month: mo.slice(1, 2) === '0' ? mo : mo.replace('0', ''),
+    day: seinen.slice(8, 10),
+  };
+};
+
+const genTeikeimei = ({ seinen }) => {
+  console.log('b', seinen);
+  const { year, month, day } = dateData({ seinen });
+  const kihon = himeguriData[year].month[month];
+  console.log('kihon', kihon);
+  const mesu = () => {
+    let kari = Number(kihon) + Number(day) - 8;
+    if (kari > 60) {
+      kari -= 60;
+    }
+    return kari;
+  };
+  return mesu();
+};
+
+export const genKaminashiNeniArr = ({ seinen }) => {
+  const teikeimei = genTeikeimei({ seinen });
+  console.log(teikeimei);
+  let kaminashi = {};
+  if (teikeimei <= 10) {
+    kaminashi = kaminashiData[1];
+  } else if (teikeimei <= 20) {
+    kaminashi = kaminashiData[2];
+  } else if (teikeimei <= 30) {
+    kaminashi = kaminashiData[3];
+  } else if (teikeimei <= 40) {
+    kaminashi = kaminashiData[4];
+  } else if (teikeimei <= 50) {
+    kaminashi = kaminashiData[5];
+  } else if (teikeimei <= 60) {
+    kaminashi = kaminashiData[6];
+  }
+  console.log(kaminashi.eto);
+  const EtoArr = genEtoArr({ firstYear: genNenArr()[0] });
+  console.log(EtoArr);
+  const etoNashiArr = EtoArr.map((v) => (
+    kaminashi.eto.indexOf(v) > -1 ? '●' : ' '
+  ));
+  console.log(etoNashiArr);
+  return etoNashiArr;
+};
+
+export const genKaminashiTukiArr = ({ seinen }) => {
+  const teikeimei = genTeikeimei({ seinen });
+  console.log(teikeimei);
+  let kaminashi = {};
+  if (teikeimei <= 10) {
+    kaminashi = kaminashiData[1];
+  } else if (teikeimei <= 20) {
+    kaminashi = kaminashiData[2];
+  } else if (teikeimei <= 30) {
+    kaminashi = kaminashiData[3];
+  } else if (teikeimei <= 40) {
+    kaminashi = kaminashiData[4];
+  } else if (teikeimei <= 50) {
+    kaminashi = kaminashiData[5];
+  } else if (teikeimei <= 60) {
+    kaminashi = kaminashiData[6];
+  }
+  console.log(kaminashi.tuki);
+  const tukiArr = genGetuArr();
+  console.log(tukiArr);
+  const NashiArr = tukiArr.map((v) => (
+    kaminashi.tuki.indexOf(v) > -1 ? '●' : ' '
+  ));
+  console.log(NashiArr);
+  return NashiArr;
+};
+
+const genNenjyunsu = ({ seinen }) => {
+  const checkedDate = setuChecker(seinen);
+  const y = checkedDate.slice(0, 4);
+  return jyunsuData[Number(y) % 10].year;
+};
+
+/*  kouten.Table.goujyun   */
+export const genGoujyunArr = ({ seinen }) => {
+  const teikeisu = genTeikeimei({ seinen });
+  const nenjyun = genNenjyunsu({ seinen });
+  const tukijyun = genTukijyunsu({ seinen });
+  const nichijyun = teikeisu % 10 ? teikeisu % 10 : 10;
+  const nenJyunsuArr = genNenJyunsuArr();
+  console.log(nenjyun, tukijyun, nichijyun);
+  console.log(nenJyunsuArr);
+  const checker = (i) => {
+    if (i === nenjyun) { return 'nen'; }
+    if (i === tukijyun) { return 'tuki'; }
+    if (i === nichijyun) { return 'nichi'; }
+    return ' ';
+  }
+  const check = [nenjyun, tukijyun, nichijyun];
+  const result = nenJyunsuArr.map((i) => checker(i));
+  console.log(result);
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //   creage nenjyunsu from date string

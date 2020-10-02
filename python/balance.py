@@ -75,7 +75,7 @@ def to_json(dict_file, name):
     with open(name, 'w', encoding='utf-8') as f:
         json.dump(dict_file, f, indent=2, ensure_ascii=False)
 
-def main():
+# def main():
 
 
 
@@ -83,7 +83,7 @@ def main():
 if __name__ == '__main__':
     na = 'setuAtoSu'
     file = os.path.join(os.getcwd(),f'python/{na}.txt')
-    main()
+    # main()
 
     # na = 'setuAtoSuHead'
     # file = os.path.join(os.getcwd(),f'python/{na}.txt')
@@ -93,9 +93,9 @@ if __name__ == '__main__':
 
     # name = os.path.join(os.getcwd(), f'python/json/{na}')
     # to_json(js, name)
+    import keyword
 
-
-
+    print(keyword.iskeyword('str'))
 
 
 

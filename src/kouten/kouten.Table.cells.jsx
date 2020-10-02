@@ -10,8 +10,8 @@ const useStyles = makeStyles({
 
 
 const Cells = ({ index, arr }) => (
-  arr.map((value) => (
-    <TableCell key={`${index}${value}`} align="center">{value}</TableCell>
+  arr.map((value, i) => (
+    <TableCell key={`${index}${i}`} align="center">{value}</TableCell>
   ))
 );
 Cells.defaultProps = {
