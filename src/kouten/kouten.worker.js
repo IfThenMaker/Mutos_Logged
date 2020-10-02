@@ -302,17 +302,19 @@ export const genGoujyunArr = ({ seinen }) => {
   const tukijyun = genTukijyunsu({ seinen });
   const nichijyun = teikeisu % 10 ? teikeisu % 10 : 10;
   const nenJyunsuArr = genNenJyunsuArr();
-  console.log(nenjyun, tukijyun, nichijyun);
-  console.log(nenJyunsuArr);
+  // console.log(nenjyun, tukijyun, nichijyun);
+  // console.log(nenJyunsuArr);
   const checker = (i) => {
-    if (i === nenjyun) { return 'nen'; }
-    if (i === tukijyun) { return 'tuki'; }
-    if (i === nichijyun) { return 'nichi'; }
-    return ' ';
-  }
-  const check = [nenjyun, tukijyun, nichijyun];
+    let res = [];
+    if (i === nenjyun) { res.push('nen'); console.log('nen', i, res); }
+    if (i === tukijyun) { res.push('tuki'); }
+    if (i === nichijyun) { res.push('nichi'); }
+    // if (!res.length) { res = ''; }
+    // console.log('re', i, res);
+    return res;
+  };
   const result = nenJyunsuArr.map((i) => checker(i));
-  console.log(result);
+  return result;
 };
 
 

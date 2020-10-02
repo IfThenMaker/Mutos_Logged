@@ -7,9 +7,10 @@ const b = a % 2;
 // c = a.toString();
 // const arr = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"]
 
-const arr = [ 1 ]
+const arr = [ ]
 
-console.log(1 in arr);
+
+console.log(is arr.length);
 
 const test = 12;
 
