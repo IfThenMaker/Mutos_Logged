@@ -181,26 +181,26 @@ export const genDaijyunArr = ({ seinen, seibetu }) => {
   const date = new Date(seinen);
   const month = date.getMonth() + 1;
   const day = date.getDate();
-  console.log(month, day);
-  console.log(inyo);
+  // console.log(month, day);
+  // console.log(inyo);
   const tukijyunsu = genTukijyunsu({ seinen });
-  console.log('tuki', tukijyunsu);
+  // console.log('tuki', tukijyunsu);
   const jyunsetu = inyo ? junsetuYou : junsetuIn;
   const setusu = Number(jyunsetu[month][day]);
-  console.log('sese', setusu);
-  const setuArr = Array.from({ length: 12 }, (v, k) => (
-    `${setusu + (k - 1) * 10 > 0
-      ? setusu + (k - 1) * 10 : 0} ~ ${setusu - 1 + k * 10}歳`));
-  // [`0-${setusu}`];
-  console.log(setusu, jyunsetu);
-  // console.log(setuArr);
+  // console.log('sese', setusu);
+  const setuArr = Array.from({ length: 12 }, (v, k) => {
+    const res = `${setusu + (k - 1) * 10 > 0
+      ? setusu + (k - 1) * 10 : 0} ~ ${setusu - 1 + k * 10}歳`;
+    return res === '0 ~ 0歳' ? '0歳' : res;
+  });
+  // console.log(setusu, jyunsetu);
   return setuArr;
 };
 
 const genGetuRevArr = () => {
   const arr = [1]
   const adarr = Array.from({ length: 11 }, (v, k) => k + 2).reverse();
-  console.log(arr.concat(adarr));
+  // console.log(arr.concat(adarr));
   return arr.concat(adarr);
 
   // console.log(arr, adarr);
