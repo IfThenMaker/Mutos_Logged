@@ -106,21 +106,24 @@ export const genNenJyunsuArr = () => (
 
 
 /*  kouten.Table.getu   */
-export const genGetuArr = () => (
-  Array.from({ length: 12 }, (v, k) => k + 1)
-);
+export const genGetuArr = () => {
+  const tukiSt = genTenArr(genJyunsu().month).indexOf(1) + 1;
+  return genTwelveArr(tukiSt);
+  // const nenDef = 13 - genNenJyunsuArr().indexOf(1);
+  // const tukiArr = genTwelveArr(genJyunsu().month + (nenDef === 13 ? 1 : nenDef));
+  // console.log(genJyunsu());
+  // console.log('tukiSt', tukiSt);
+  // console.log('tuki', tukiArr);
+  // return Array.from({ length: 12 }, (v, k) => k + 1);
+};
 
 export const genGetuEtoArr = () => genGetuArr().map(
   (m) => etoData[m],
 );
 
-export const genGetuJyunsuArr = () => {
-  const gArr = genTenArr(genJyunsu().month);
-  console.log('gg', gArr);
-  const nArr = genGetuArr().map((m) => gArr.indexOf(m));
-  console.log(nArr);
-  return genTenArr(genJyunsu().month);
-};
+export const genGetuJyunsuArr = () => (
+  genTenArr(genJyunsu().month)
+);
 
 // export const genGetuArr = () => {
 //   const jyunsu = genJyunsu();
@@ -184,12 +187,13 @@ export const genDaijyunArr = ({ seinen, seibetu }) => {
   console.log('tuki', tukijyunsu);
   const jyunsetu = inyo ? junsetuYou : junsetuIn;
   const setusu = Number(jyunsetu[month][day]);
+  console.log('sese', setusu);
   const setuArr = Array.from({ length: 12 }, (v, k) => (
     `${setusu + (k - 1) * 10 > 0
-      ? setusu + (k - 1) * 10 : 0} ~ ${setusu + k * 10}歳`));
+      ? setusu + (k - 1) * 10 : 0} ~ ${setusu - 1 + k * 10}歳`));
   // [`0-${setusu}`];
   console.log(setusu, jyunsetu);
-  console.log(setuArr);
+  // console.log(setuArr);
   return setuArr;
 };
 
@@ -256,7 +260,7 @@ export const genKaminashiNeniArr = ({ seinen }) => {
   const EtoArr = genEtoArr({ firstYear: genNenArr()[0] });
   console.log(EtoArr);
   const etoNashiArr = EtoArr.map((v) => (
-    kaminashi.eto.indexOf(v) > -1 ? '●' : ' '
+    kaminashi.eto.indexOf(v) > -1 ? 'nen' : ' '
   ));
   console.log(etoNashiArr);
   return etoNashiArr;
@@ -283,7 +287,7 @@ export const genKaminashiTukiArr = ({ seinen }) => {
   const tukiArr = genGetuArr();
   console.log(tukiArr);
   const NashiArr = tukiArr.map((v) => (
-    kaminashi.tuki.indexOf(v) > -1 ? '●' : ' '
+    kaminashi.tuki.indexOf(v) > -1 ? 'tuki' : ' '
   ));
   console.log(NashiArr);
   return NashiArr;

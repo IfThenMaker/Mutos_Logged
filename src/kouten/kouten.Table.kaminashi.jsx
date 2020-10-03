@@ -28,12 +28,22 @@ const useStyles = makeStyles({
 });
 
 
+const zip = (arr, Arr) => {
+  const nArr = [];
+  arr.forEach((item, i) => {
+    const inArr = [];
+    if (item) { inArr.push(item); }
+    if (Arr[i]) { inArr.push(Arr[i]); }
+    nArr.push(inArr);
+  });
+  return nArr;
+};
+
 const Kaminashi = ({ seinen }) => {
   const classes = useStyles();
   const ToP = (i) => {
-    if (i === '●') { return <Favorite key="a1" className={classes.nen} />; }
+    if (i === 'nen') { return <Favorite key="a1" className={classes.nen} />; }
     if (i === 'tuki') { return <Favorite key="a2" className={classes.tuki} />; }
-    if (i === 'nichi') { return <Favorite key="a3" className={classes.nichi} />; }
     return '';
   };
   const InCell = (v) => {
@@ -41,19 +51,15 @@ const Kaminashi = ({ seinen }) => {
     return ' ';
   };
   const kaminashiNen = genKaminashiNeniArr({ seinen }).map((v) => InCell(v));
-  const kaminashiTuki = genKaminashiTukiArr({ seinen });
+  const kaminashiTuki = genKaminashiTukiArr({ seinen }).map((v) => InCell(v));
+  const kaminashi = zip(kaminashiNen, kaminashiTuki);
+  console.log('kaminashi', kaminashi);
 
   return (
-    <>
-      <TableRow>
-        <TableCell>神無節年</TableCell>
-        <Cells index="nashinen" arr={kaminashiNen} />
-      </TableRow>
-      <TableRow>
-        <TableCell>神無節月</TableCell>
-        <Cells index="nashituki" arr={kaminashiTuki} />
-      </TableRow>
-    </>
+    <TableRow>
+      <TableCell>神無節</TableCell>
+      <Cells index="nashituki" arr={kaminashi} />
+    </TableRow>
   );
 };
 Kaminashi.defaultProps = {

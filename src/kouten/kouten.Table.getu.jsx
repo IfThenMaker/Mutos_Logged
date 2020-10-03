@@ -30,10 +30,6 @@ const Getu = () => {
         <TableCell>月干支</TableCell>
         <Cells index="tukieto" arr={monthEto} />
       </TableRow>
-      <TableRow className={classes.keisen}>
-        <TableCell>月巡数</TableCell>
-        <Cells index="tukijyun" arr={monthJyunArr} />
-      </TableRow>
     </>
   );
 };
@@ -47,3 +43,8 @@ const Getu = () => {
 // };
 
 export default Getu;
+
+// <TableRow className={classes.keisen}>
+//   <TableCell>月巡数</TableCell>
+//   <Cells index="tukijyun" arr={monthJyunArr} />
+// </TableRow>

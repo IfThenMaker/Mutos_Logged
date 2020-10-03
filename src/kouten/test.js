@@ -1,34 +1,32 @@
-const a = 10;
+const setusu = 2;
 
-const b = a % 2;
+const setuArr = Array.from({ length: 12 }, (v, k) => (
+  // `${setusu + (k - 1) * 10 > 0
+  //   ? setusu + (k - 1) * 10 : 0} ~ ${setusu + k * 10}歳`
+  `${setusu + (k - 1) * 10 > 0
+    ? setusu + (k - 1) * 10 : 0} ~ ${setusu - 1 + k * 10}歳`
+));
 
-// let c = a;
+console.log(setuArr);
+// console.log(is arr.length);
 //
-// c = a.toString();
-// const arr = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"]
-
-const arr = [ ]
-
-
-console.log(is arr.length);
-
-const test = 12;
-
-const check = (v) => {
-  switch (v) {
-    case v > 1 <= 10:
-      console.log(v);
-      return 10;
-      // break;
-    case v > 11 <= 20:
-      console.log(20);
-      return 20;
-    default:
-      break;
-  }
-  return ' ';
-};
-check(test);
+// const test = 12;
+//
+// const check = (v) => {
+//   switch (v) {
+//     case v > 1 <= 10:
+//       console.log(v);
+//       return 10;
+//       // break;
+//     case v > 11 <= 20:
+//       console.log(20);
+//       return 20;
+//     default:
+//       break;
+//   }
+//   return ' ';
+// };
+// check(test);
 
 // break;
 // const date = new Date('2012')
