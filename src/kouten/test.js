@@ -1,15 +1,34 @@
-const a = 10;
+const setusu = 2;
 
-const b = a % 2;
+const setuArr = Array.from({ length: 12 }, (v, k) => (
+  // `${setusu + (k - 1) * 10 > 0
+  //   ? setusu + (k - 1) * 10 : 0} ~ ${setusu + k * 10}歳`
+  `${setusu + (k - 1) * 10 > 0
+    ? setusu + (k - 1) * 10 : 0} ~ ${setusu - 1 + k * 10}歳`
+));
 
-// let c = a;
+console.log(setuArr);
+// console.log(is arr.length);
 //
-// c = a.toString();
+// const test = 12;
+//
+// const check = (v) => {
+//   switch (v) {
+//     case v > 1 <= 10:
+//       console.log(v);
+//       return 10;
+//       // break;
+//     case v > 11 <= 20:
+//       console.log(20);
+//       return 20;
+//     default:
+//       break;
+//   }
+//   return ' ';
+// };
+// check(test);
 
-console.log(a, b);
-
-
-
+// break;
 // const date = new Date('2012')
 // console.log(date)
 // const ddate = new Date('2020-09-28')

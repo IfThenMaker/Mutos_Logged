@@ -29,13 +29,13 @@ const Nen = () => {
         <TableCell>年干支</TableCell>
         <Cells index="neneto" arr={eto} />
       </TableRow>
-      <TableRow className={classes.keisen}>
-        <TableCell>年巡数</TableCell>
-        <Cells index="nenjyun" arr={nenJyunsuArr} />
-      </TableRow>
     </>
   );
 };
 
 
 export default Nen;
+// <TableRow className={classes.keisen}>
+//   <TableCell>年巡数</TableCell>
+//   <Cells index="nenjyun" arr={nenJyunsuArr} />
+// </TableRow>
