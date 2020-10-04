@@ -19,7 +19,7 @@ const Getu = () => {
   const classes = useStyles();
   const monthArr = genGetuArr();
   const monthEto = genGetuEtoArr();
-  const monthJyunArr = genGetuJyunsuArr();
+  // const monthJyunArr = genGetuJyunsuArr();
   return (
     <>
       <TableRow>

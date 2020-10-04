@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     borderBottom: 'double 2px rgba(0,0,0,0.55)',
   },
   nen: {
-    fill: 'gray',
+    fill: 'red',
   },
   tuki: {
     fill: 'green',
@@ -26,6 +26,7 @@ const useStyles = makeStyles({
 
 
 const Kaminashi = ({ seinen }) => {
+  console.log('kaminashi', seinen);
   const classes = useStyles();
   const ToP = (i) => {
     if (i === 'nen') { return <Favorite key="a1" className={classes.nen} />; }
@@ -38,7 +39,7 @@ const Kaminashi = ({ seinen }) => {
     return ' ';
   };
   const goujyunArr = genGoujyunArr({ seinen }).map((v) => InCell(v));
-  console.log('gou', goujyunArr);
+  // console.log('gou', goujyunArr);
 
   return (
     <TableRow>

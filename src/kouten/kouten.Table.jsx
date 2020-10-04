@@ -31,23 +31,22 @@ const useStyles = makeStyles({
 const KoutenTable = ({
   seinen, seibetu,
 }) => {
+  console.log('table', seinen, seibetu);
   const classes = useStyles();
 
   return (
-    <Paper>
-      <TableContainer className={classes.table}>
-        <Table size="small">
-          <TableBody>
-            <Year />
-            <Month />
-            <Omeguri seinen={seinen} seibetu={seibetu} />
-            <Kashin />
-            <Kaminashi seinen={seinen} />
-            <Goujyun seinen={seinen} />
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper>
+    <TableContainer className={classes.table}>
+      <Table size="small">
+        <TableBody>
+          <Year />
+          <Month />
+          <Omeguri seinen={seinen} seibetu={seibetu} />
+          <Kashin />
+          <Kaminashi seinen={seinen} />
+          <Goujyun seinen={seinen} />
+        </TableBody>
+      </Table>
+    </TableContainer>
   );
 };
 

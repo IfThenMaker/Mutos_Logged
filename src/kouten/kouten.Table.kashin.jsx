@@ -14,8 +14,9 @@ const useStyles = makeStyles({
 
 
 const Kashin = ({ teikeimei }) => {
+  console.log('teikeimei', teikeimei);
   const kashinArr = genJyunkashinArr({ teikeimei });
-  console.log('kashin', kashinArr);
+  // console.log('kashin', kashinArr);
   return (
     <TableRow>
       <TableCell>巡華神</TableCell>

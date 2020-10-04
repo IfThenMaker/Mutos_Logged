@@ -23,7 +23,7 @@ const indexes = [
 ];
 
 const Meguri = ({ meguri }) => {
-  console.log('megi', meguriData);
+  console.log('meguri', meguri);
   return (
     <TableRow>
       <TableCell>index</TableCell>
