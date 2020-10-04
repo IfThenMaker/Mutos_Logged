@@ -198,9 +198,10 @@ export const genDaijyunArr = ({ seinen, seibetu }) => {
     return res === '0 ~ 0歳' ? '0歳' : res;
   });
   const tukiArr = genGetuArr();
+  console.log('tukiarr', tukiArr);
   const newArr = tukiArr.map((i) => setuArr[i - 1]);
   // console.log('nn', newArr);
-  return newArr;
+  return setuArr;
 };
 
 const genGetuRevArr = () => {
