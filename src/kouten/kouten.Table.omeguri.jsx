@@ -26,7 +26,7 @@ const Omeguri = ({ seinen, seibetu }) => {
         <TableCell>大巡運</TableCell>
         <Cells index="daijyun" arr={daijyunArr} />
       </TableRow>
-      <TableRow className={classes.keisen}>
+      <TableRow>
         <TableCell>大巡干支</TableCell>
         <Cells index="neneto" arr={eto} />
       </TableRow>

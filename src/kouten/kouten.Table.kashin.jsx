@@ -9,12 +9,15 @@ import { genJyunkashinArr } from './kouten.worker';
 
 
 const useStyles = makeStyles({
-
+  keisen: {
+    borderBottom: 'double 2px rgba(0,0,0,0.55)',
+  },
 });
 
 
 const Kashin = ({ teikeimei }) => {
   console.log('teikeimei', teikeimei);
+  const classes = useStyles();
   const kashinArr = genJyunkashinArr({ teikeimei });
   // console.log('kashin', kashinArr);
   return (
