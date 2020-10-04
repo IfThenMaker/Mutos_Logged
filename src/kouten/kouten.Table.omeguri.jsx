@@ -16,6 +16,7 @@ const useStyles = makeStyles({
 
 
 const Omeguri = ({ seinen, seibetu }) => {
+  console.log('omeguri', seinen, seibetu);
   const classes = useStyles();
   const daijyunArr = genDaijyunArr({ seinen, seibetu });
   const eto = genDaijyunEtoArr({ seinen, seibetu });

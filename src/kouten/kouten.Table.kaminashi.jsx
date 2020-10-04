@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     borderBottom: 'double 2px rgba(0,0,0,0.55)',
   },
   nen: {
-    fill: 'gray',
+    fill: 'red',
   },
   tuki: {
     fill: 'green',
@@ -40,6 +40,7 @@ const zip = (arr, Arr) => {
 };
 
 const Kaminashi = ({ seinen }) => {
+  console.log('kaminashi', seinen);
   const classes = useStyles();
   const ToP = (i) => {
     if (i === 'nen') { return <Favorite key="a1" className={classes.nen} />; }
@@ -53,7 +54,7 @@ const Kaminashi = ({ seinen }) => {
   const kaminashiNen = genKaminashiNeniArr({ seinen }).map((v) => InCell(v));
   const kaminashiTuki = genKaminashiTukiArr({ seinen }).map((v) => InCell(v));
   const kaminashi = zip(kaminashiNen, kaminashiTuki);
-  console.log('kaminashi', kaminashi);
+  // console.log('kaminashi', kaminashi);
 
   return (
     <TableRow>

@@ -8,6 +8,10 @@ const setuArr = Array.from({ length: 12 }, (v, k) => (
 ));
 
 console.log(setuArr);
+
+const arr = ["a", "b", "c",];
+const narr = arr.map((v, i) => console.log(i));
+console.log(narr);
 // console.log(is arr.length);
 //
 // const test = 12;
