@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-import InputData from '../components/textField.inputData';
+import InputData from './input.textField';
 
 
 const useStyles = makeStyles({

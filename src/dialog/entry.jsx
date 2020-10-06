@@ -62,9 +62,9 @@ const EntryData = (props) => {
         color="primary"
         size="large"
         onClick={handleClickOpen}
-        style={{ fontWeight: 'bold' }}
+        style={{ fontWeight: 'bold', letterSpacing: '0.2em' }}
       >
-        　変　更　
+        変更
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogContent>
@@ -81,10 +81,10 @@ const EntryData = (props) => {
             variant="contained"
             color="primary"
             size="large"
-            style={{ fontWeight: 'bold' }}
+            style={{ fontWeight: 'bold', letterSpacing: '0.2em' }}
             onClick={handleClose}
           >
-            　登　録　
+            登録
           </Button>
         </DialogActions>
       </Dialog>
