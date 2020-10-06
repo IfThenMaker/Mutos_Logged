@@ -11,6 +11,7 @@ const useStyles = makeStyles({
   link: {
     margin: '30px auto',
     fontWeight: 'bold',
+    letterSpacing: '0.2em',
   },
 });
 
