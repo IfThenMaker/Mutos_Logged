@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
@@ -26,17 +27,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SentenHeader = () => {
+const Header = ({ title }) => {
   const classes = useStyles();
 
   return (
     <Grid container>
       <Grid className={classes.base} container justify="center">
-        <p className={classes.caption}>先天予定運</p>
+        <p className={classes.caption}>{title}</p>
       </Grid>
     </Grid>
   );
 };
+Header.defaultProps = {
+  title: 'title',
+};
+Header.propTypes = {
+  title: PropTypes.string,
+};
 
-
-export default SentenHeader;
+export default Header;

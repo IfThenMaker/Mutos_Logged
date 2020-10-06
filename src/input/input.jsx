@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-import InputData from '../components/atoms/textField.inputData';
+import InputData from '../components/textField.inputData';
 
 
 const useStyles = makeStyles({
@@ -14,8 +14,8 @@ const useStyles = makeStyles({
 });
 
 
-const KoutenInput = ({
-  dialog, cosName, seinen, seibetu,
+const Input = ({
+  seinen, seibetu, cosName, dialog,
 }) => {
   const classes = useStyles();
   const today = new Date();
@@ -56,18 +56,18 @@ const KoutenInput = ({
   );
 };
 
-KoutenInput.defaultProps = {
-  dialog: {},
-  cosName: 'お客様名',
+Input.defaultProps = {
   seinen: '1940-01-01',
   seibetu: 'male',
+  cosName: 'お客様名',
+  dialog: {},
 };
-KoutenInput.propTypes = {
-  dialog: PropTypes.object,
-  cosName: PropTypes.string,
+Input.propTypes = {
   seinen: PropTypes.string,
   seibetu: PropTypes.string,
+  cosName: PropTypes.string,
+  dialog: PropTypes.object,
 };
 
 
-export default KoutenInput;
+export default Input;

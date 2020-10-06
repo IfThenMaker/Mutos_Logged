@@ -4,11 +4,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
-import SentenHeader from './sentenHeader';
-import SentenInput from './sentenInput';
-import SentenTable from './sentenTable';
-import SentenJintai from './sentenJintai';
-import { teikeimeiCalc, syugokashinCalc, bodykashinCalc } from '../worker/worker';
+import SentenHeader from './senten.header';
+import SentenInput from '../input/input';
+import SentenTable from './senten.table';
+import SentenJintai from './senten.jintai';
+import {
+  teikeimeiCalc, syugokashinCalc, bodykashinCalc,
+} from './senten.worker';
 
 
 const useStyles = makeStyles({
@@ -40,7 +42,7 @@ const useStyles = makeStyles({
 });
 
 
-const SentenVisitor = ({ birthDate, cosName, dialog }) => {
+const Senten = ({ birthDate, cosName, dialog }) => {
   const classes = useStyles();
   // console.log('vis', birthDate);
   const {
@@ -93,15 +95,15 @@ const SentenVisitor = ({ birthDate, cosName, dialog }) => {
     </Grid>
   );
 };
-SentenVisitor.defaultProps = {
+Senten.defaultProps = {
   dialog: {},
   cosName: '',
   birthDate: '1950-01-01',
 };
-SentenVisitor.propTypes = {
+Senten.propTypes = {
   dialog: PropTypes.object,
   cosName: PropTypes.string,
   birthDate: PropTypes.string,
 };
 
-export default SentenVisitor;
+export default Senten;
