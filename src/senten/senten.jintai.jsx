@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Favorite from '@material-ui/icons/Favorite';
 
-import Jintai from '../../assets/jintai.svg';
-import Num from './sentenJintai.number';
+import Jintai from '../assets/jintai.svg';
+import Num from './senten.jintai.number';
 
 
 const useStyles = makeStyles({

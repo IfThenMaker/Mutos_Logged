@@ -1,16 +1,10 @@
-import data from './himeguri';
-import jinColorData from './jinColor';
-import syugoColorData from './syugoColor';
-import bodyColorData from './bodyColor';
+import data from './datas/himeguri';
+import jinColorData from './datas/jinColor';
+import syugoColorData from './datas/syugoColor';
+import bodyColorData from './datas/bodyColor';
+import syugoIndex from './datas/syugoIndex';
+import syugokashinData from './datas/syugokashinData';
 
-import syugoIndex from './syugoIndex';
-import syugokashinData from './syugokashinData';
-
-
-const testData = {
-  birthday: '1932-03-03',
-  teikeimeiNum: '10',
-};
 
 const dateData = ({ birthday }) => {
   const mo = birthday.slice(5, 7);
@@ -23,7 +17,7 @@ const dateData = ({ birthday }) => {
 };
 
 export const teikeimeiCalc = ({ birthday }) => {
-  console.log('b', birthday);
+  // console.log('b', birthday);
   const { year, month, day } = dateData({ birthday });
   // console.log('date', year, month, day);
   const kihon = data[year].month[month];
@@ -37,7 +31,7 @@ export const teikeimeiCalc = ({ birthday }) => {
   })();
   // console.log('mesu', mesu);
   const himeguri = mesu % 10;
-  console.log('himegu', himeguri);
+  // console.log('himegu', himeguri);
   return jinColorData[himeguri];
 };
 

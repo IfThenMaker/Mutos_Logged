@@ -6,16 +6,15 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 
-import NameField from '../atoms/textField.name';
-import BirthField from '../atoms/textField.birth';
+import NameField from './entry.textField.name';
+import BirthField from './entry.textField.seinen';
+import SexField from './entry.textField.seibetu';
 
 
 const dateValidate = (dateStr) => {
   const stDate = new Date('1912');
   const endDate = new Date('2040');
   const chDate = new Date(dateStr);
-  console.log(stDate, endDate);
-  console.log(chDate < stDate);
   if (chDate < stDate) {
     alert('1912年～2040年の範囲で入力してください');
   } else if (chDate > endDate) {
@@ -26,16 +25,19 @@ const dateValidate = (dateStr) => {
   return false;
 };
 
+
 const EntryData = (props) => {
   const {
+    seinenDispatch,
+    seibetuDispatch,
     cosNameDispatch,
-    birthDateDispatch,
   } = props;
   const [name, setName] = useState();
   const [birth, setBirth] = useState();
+  const [sex, setSex] = useState();
   const [open, setOpen] = useState(true);
 
-  console.log('n,b', name, birth);
+  // console.log('n,b', name, birth);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -43,28 +45,46 @@ const EntryData = (props) => {
 
   const handleClose = () => {
     cosNameDispatch(name);
+    seibetuDispatch(sex);
     const check = dateValidate(birth);
     if (check) {
-      birthDateDispatch(birth);
+      seinenDispatch(birth);
       setOpen(false);
     }
   };
-  console.log('cosNameDispatch', birthDateDispatch);
+  // console.log('cosNameDispatch', birthDateDispatch);
 
 
   return (
     <Grid>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        変更
+      <Button
+        variant="contained"
+        color="primary"
+        size="large"
+        onClick={handleClickOpen}
+        style={{ fontWeight: 'bold' }}
+      >
+        　変　更　
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogContent>
           <NameField dispatch={setName} />
+          <SexField dispatch={setSex} />
           <BirthField dispatch={setBirth} />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            登録
+        <DialogActions style={{
+          justifyContent: 'center',
+          marginBottom: '20px',
+        }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            style={{ fontWeight: 'bold' }}
+            onClick={handleClose}
+          >
+            　登　録　
           </Button>
         </DialogActions>
       </Dialog>
@@ -72,12 +92,14 @@ const EntryData = (props) => {
   );
 };
 EntryData.defaultProps = {
+  seinenDispatch: () => {},
+  seibetuDispatch: () => {},
   cosNameDispatch: () => {},
-  birthDateDispatch: () => {},
 };
 EntryData.propTypes = {
+  seinenDispatch: PropTypes.func,
+  seibetuDispatch: PropTypes.func,
   cosNameDispatch: PropTypes.func,
-  birthDateDispatch: PropTypes.func,
 };
 
 
