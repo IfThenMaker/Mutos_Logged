@@ -19,7 +19,11 @@ const Kouten = ({
   return (
     <Grid container>
       <Grid item xs={12}>
-        <KoutenTable />
+        <KoutenTable
+          teikeimei={teikeimei}
+          seinen={seinen}
+          seibetu={seibetu}
+        />
       </Grid>
       <Grid item xs={12} style={{ overflow: 'auto' }}>
         <KoutenChart

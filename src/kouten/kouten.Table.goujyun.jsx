@@ -35,7 +35,13 @@ const Kaminashi = ({ seinen }) => {
     return '';
   };
   const InCell = (arr) => {
-    if (arr.length) { return arr.map((data) => ToP(data)); }
+    // if (arr.length) { return arr.map((data) => ToP(data)); }
+    if (arr.length) {
+      return arr.map((data, i) => (data !== ' '
+        ? <Favorite key={`ore${i}`} style={{ fill: 'pink' }} />
+        : ' '
+      ));
+    }
     return ' ';
   };
   const goujyunArr = genGoujyunArr({ seinen }).map((v) => InCell(v));

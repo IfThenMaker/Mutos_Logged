@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import Favorite from '@material-ui/icons/Favorite';
+import Favorite from '@material-ui/icons/Brightness4';
 
 import Cells from './kouten.Table.cells';
 import {
