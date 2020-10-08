@@ -18,39 +18,39 @@ const useStyles = makeStyles({
 });
 
 
-// const data = [
-//   { jyunsu: 1, value: 3 },
-//   { jyunsu: 2, value: 5 },
-//   { jyunsu: 3, value: 2 },
-// ];
-
 const Chart = ({ teikeimei, seinen, seibetu }) => {
   console.log('chart', teikeimei, seinen, seibetu);
   const unseiData = genUnseiData({ teikeimei, seinen, seibetu });
-  // console.log('un', unseiData);
-  // const data = genKashinData({ teikeimei });
-  // const kashinData = genKashinData( {kashinData} )
-  // const nenData = genNenData({ teikeimei });
-  // console.log('nendata', nenData);
-  // const getuData = genGetuData({ teikeimei });
-  // console.log('getuData', getuData);
-  // const omeguriData = genOmeguriData({ teikeimei, seinen, seibetu });
-  // console.log('omeguri', omeguriData);
+  const labelJa = {
+    kashin: '巡華神',
+    nen: '該当年',
+    getu: '該当月',
+    omeguri: '大巡運',
+  };
+  const formatter = (v, name) => [v, labelJa[name]];
+  const colorText = (value, entry) => {
+    const { color } = entry;
+    return (
+      <span style={{ color, margin: '0 10px 0 3px' }}>{labelJa[value]}</span>
+    );
+  };
 
   return (
     <LineChart
       width={1361}
       height={250}
       data={unseiData}
-      margin={{
-        top: 5, right: 30, left: 20, bottom: 5,
-      }}
     >
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="colmn" />
       <YAxis />
-      <Tooltip />
-      <Legend />
+      <Tooltip
+        formatter={formatter}
+      />
+      <Legend
+        align="left"
+        formatter={colorText}
+      />
       <Line dataKey="kashin" stroke="black" />
       <Line dataKey="nen" stroke="red" />
       <Line dataKey="getu" stroke="green" />
