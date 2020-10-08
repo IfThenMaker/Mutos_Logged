@@ -1,17 +1,24 @@
-const setusu = 2;
+const date = new Date('2020-01-01');
 
-const setuArr = Array.from({ length: 12 }, (v, k) => (
-  // `${setusu + (k - 1) * 10 > 0
-  //   ? setusu + (k - 1) * 10 : 0} ~ ${setusu + k * 10}歳`
-  `${setusu + (k - 1) * 10 > 0
-    ? setusu + (k - 1) * 10 : 0} ~ ${setusu - 1 + k * 10}歳`
-));
+console.log(date.getDate());
 
-console.log(setuArr);
 
-const arr = ["a", "b", "c",];
-const narr = arr.map((v, i) => console.log(i));
-console.log(narr);
+
+
+// const setusu = 2;
+//
+// const setuArr = Array.from({ length: 12 }, (v, k) => (
+//   // `${setusu + (k - 1) * 10 > 0
+//   //   ? setusu + (k - 1) * 10 : 0} ~ ${setusu + k * 10}歳`
+//   `${setusu + (k - 1) * 10 > 0
+//     ? setusu + (k - 1) * 10 : 0} ~ ${setusu - 1 + k * 10}歳`
+// ));
+//
+// console.log(setuArr);
+//
+// const arr = ["a", "b", "c",];
+// const narr = arr.map((v, i) => console.log(i));
+// console.log(narr);
 // console.log(is arr.length);
 //
 // const test = 12;
