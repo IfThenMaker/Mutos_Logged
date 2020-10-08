@@ -8,7 +8,10 @@ import KoutenChart from './kouten.chart';
 
 
 const useStyles = makeStyles({
-
+  chart: {
+    marginTop: '30px',
+    overflow: 'auto',
+  },
 });
 
 const Kouten = ({
@@ -25,7 +28,11 @@ const Kouten = ({
           seibetu={seibetu}
         />
       </Grid>
-      <Grid item xs={12} style={{ overflow: 'auto' }}>
+      <Grid
+        className={classes.chart}
+        item
+        xs={12}
+      >
         <KoutenChart
           teikeimei={teikeimei}
           seinen={seinen}
