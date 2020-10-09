@@ -386,16 +386,50 @@ export const genKaminashiTukiArr = ({ seinen }) => {
   return NashiArr;
 };
 
+export const genkaminashiDaiArr = ({ seinen, seibetu }) => {
+  const teikeimei = genMesu({ seinen });
+  // console.log(teikeimei);
+  let kaminashi = {};
+  if (teikeimei <= 10) {
+    kaminashi = kaminashiData[1];
+  } else if (teikeimei <= 20) {
+    kaminashi = kaminashiData[2];
+  } else if (teikeimei <= 30) {
+    kaminashi = kaminashiData[3];
+  } else if (teikeimei <= 40) {
+    kaminashi = kaminashiData[4];
+  } else if (teikeimei <= 50) {
+    kaminashi = kaminashiData[5];
+  } else if (teikeimei <= 60) {
+    kaminashi = kaminashiData[6];
+  }
+
+  const etoArr = genDaijyunEtoArr({ seinen, seibetu });
+  const NashiArr = etoArr.map((v) => {
+    // console.log(v, kaminashi.eto);
+    const e = kaminashi.eto;
+    return (
+      v === e[0] || v === e[1] ? 'dai' : ' '
+    );
+  });
+  console.log('dai', NashiArr);
+  return NashiArr;
+};
+
+
+
+
+
+
+/*
+  -------- kouten.Table.goujyun  ----------
+*/
 const genNenjyunsu = ({ seinen }) => {
   const checkedDate = setuChecker(seinen);
   const y = checkedDate.slice(0, 4);
   return jyunsuData[Number(y) % 10].year;
 };
 
-
-/*
-  -------- kouten.Table.goujyun  ----------
-*/
 export const genGoujyunArr = ({ seinen }) => {
   const teikeisu = genMesu({ seinen });
   const nenjyun = genNenjyunsu({ seinen });
