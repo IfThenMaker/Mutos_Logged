@@ -42,7 +42,7 @@ const zip = (arr, Arr, sArr) => {
 };
 
 const Kaminashi = ({ seinen, seibetu }) => {
-  console.log('kaminashi', seinen);
+  // console.log('kaminashi', seinen);
   const classes = useStyles();
   const ToP = (i) => {
     if (i === 'nen') { return <Favorite key="a1" className={classes.nen} />; }
