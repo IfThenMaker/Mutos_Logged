@@ -286,11 +286,14 @@ export const genDaijyunEtoArr = ({ seinen, seibetu }) => {
     ? genTwelveArr(daijyunsu + 1)
     : genGetuRevArr(daijyunsu + 1));
   console.log('arr', arr);
-  const tuki = new Date(seinen).getMonth() + 1;
+  const tuki = new Date(setuChecker(seinen)).getMonth() + 1;
   console.log('ge', tuki);
-  const tukiArr = genTwelveArr(tuki).map((m) => etoData[m]);
+  const tukiArr = genTwelveArr(tuki).map((m) => (inyo
+    ? etoData[m]
+    : etoData[13 - m]
+  ));
   console.log('etoarr', tukiArr);
-  const resultArr = arr.map((m) => tukiArr[m - 1]);
+  const resultArr = arr.map((m) => tukiArr[m]);
   resultArr[10] = '-';
   resultArr[11] = '-';
   return resultArr;
