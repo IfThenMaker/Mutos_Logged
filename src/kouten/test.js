@@ -1,6 +1,10 @@
 const date = new Date('2020-01-01');
 
-console.log(date.getDate());
+const arr =  ["辰", "巳"]
+const am = '辰';
+
+
+console.log(am === arr[0]);
 
 
 

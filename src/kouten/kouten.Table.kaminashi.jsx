@@ -9,6 +9,7 @@ import Cells from './kouten.Table.cells';
 import {
   genKaminashiNeniArr,
   genKaminashiTukiArr,
+  genkaminashiDaiArr,
 } from './kouten.worker';
 
 
@@ -22,29 +23,31 @@ const useStyles = makeStyles({
   tuki: {
     fill: 'green',
   },
-  nichi: {
+  dai: {
     fill: 'blue',
   },
 });
 
 
-const zip = (arr, Arr) => {
+const zip = (arr, Arr, sArr) => {
   const nArr = [];
   arr.forEach((item, i) => {
     const inArr = [];
     if (item) { inArr.push(item); }
     if (Arr[i]) { inArr.push(Arr[i]); }
+    if (sArr[i]) { inArr.push(sArr[i]); }
     nArr.push(inArr);
   });
   return nArr;
 };
 
-const Kaminashi = ({ seinen }) => {
-  console.log('kaminashi', seinen);
+const Kaminashi = ({ seinen, seibetu }) => {
+  // console.log('kaminashi', seinen);
   const classes = useStyles();
   const ToP = (i) => {
     if (i === 'nen') { return <Favorite key="a1" className={classes.nen} />; }
     if (i === 'tuki') { return <Favorite key="a2" className={classes.tuki} />; }
+    if (i === 'dai') { return <Favorite key="a3" className={classes.dai} />; }
     return '';
   };
   const InCell = (v) => {
@@ -53,7 +56,9 @@ const Kaminashi = ({ seinen }) => {
   };
   const kaminashiNen = genKaminashiNeniArr({ seinen }).map((v) => InCell(v));
   const kaminashiTuki = genKaminashiTukiArr({ seinen }).map((v) => InCell(v));
-  const kaminashi = zip(kaminashiNen, kaminashiTuki);
+  const kaminashiDai = genkaminashiDaiArr({ seinen, seibetu }).map((v) => InCell(v));
+  const kaminashi = zip(kaminashiNen, kaminashiTuki, kaminashiDai);
+
   // console.log('kaminashi', kaminashi);
 
   return (
@@ -65,9 +70,11 @@ const Kaminashi = ({ seinen }) => {
 };
 Kaminashi.defaultProps = {
   seinen: '1940-01-01',
+  seibetu: 'male',
 };
 Kaminashi.propTypes = {
   seinen: PropTypes.string,
+  seibetu: PropTypes.string,
 };
 
 //

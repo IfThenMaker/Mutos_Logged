@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 
 
 const Kashin = ({ teikeimei }) => {
-  console.log('teikeimei', teikeimei);
+  // console.log('teikeimei', teikeimei);
   const classes = useStyles();
   const kashinArr = genJyunkashinArr({ teikeimei });
   // console.log('kashin', kashinArr);

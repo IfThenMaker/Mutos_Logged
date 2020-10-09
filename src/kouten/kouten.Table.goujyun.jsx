@@ -6,12 +6,15 @@ import TableCell from '@material-ui/core/TableCell';
 import Favorite from '@material-ui/icons/Favorite';
 
 import Cells from './kouten.Table.cells';
-import { genGoujyunArr } from './kouten.worker';
+import { genGoujyunArr, OldgenGoujyunArr } from './kouten.worker';
 
 
 const useStyles = makeStyles({
   keisen: {
     borderBottom: 'double 2px rgba(0,0,0,0.55)',
+  },
+  gou: {
+    fill: 'pink',
   },
   nen: {
     fill: 'red',
@@ -26,7 +29,7 @@ const useStyles = makeStyles({
 
 
 const Kaminashi = ({ seinen }) => {
-  console.log('kaminashi', seinen);
+  // console.log('kaminashi', seinen);
   const classes = useStyles();
   const ToP = (i) => {
     if (i === 'nen') { return <Favorite key="a1" className={classes.nen} />; }
@@ -44,13 +47,15 @@ const Kaminashi = ({ seinen }) => {
     }
     return ' ';
   };
-  const goujyunArr = genGoujyunArr({ seinen }).map((v) => InCell(v));
-  // console.log('gou', goujyunArr);
+  const goujyunArr = OldgenGoujyunArr({ seinen }).map((v) => InCell(v));
+  const gouArr = genGoujyunArr({ seinen }).map((v, i) => (v
+    ? <Favorite key={`gou${i}`} className={classes.gou} /> : ''
+  ));
 
   return (
     <TableRow>
       <TableCell>合巡</TableCell>
-      <Cells index="nashinen" arr={goujyunArr} />
+      <Cells index="nashinen" arr={gouArr} />
     </TableRow>
   );
 };
