@@ -9,7 +9,6 @@ import Radio from './input.radio';
 const useStyles = makeStyles({
   date: {
     textAlign: 'end',
-    margin: '0',
   },
 });
 
@@ -37,7 +36,7 @@ const Input = ({
         </p>
       </Grid>
       <Grid
-        className={classes.input}
+        className="MuiGrid-justify-xs-center"
         container
         spacing={5}
         justify="center"
@@ -48,7 +47,7 @@ const Input = ({
           <InputData index="生年月日" value={seinen} />
           <InputData index="性別" value={seibetuKanji[seibetu]} />
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid className="MuiGrid-justify-xs-center" item xs={12} sm={4}>
           {dialog}
         </Grid>
       </Grid>

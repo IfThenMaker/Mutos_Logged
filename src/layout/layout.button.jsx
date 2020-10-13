@@ -26,7 +26,7 @@ const SenKou = ({ dispatch }) => {
   return (
     <MuiThemeProvider theme={Theme}>
       <Grid container spacing={5} justify="center">
-        <Grid item>
+        <Grid item sm={5}>
           <Button
             className={classes.link}
             size="large"
@@ -38,7 +38,7 @@ const SenKou = ({ dispatch }) => {
             先天予定運
           </Button>
         </Grid>
-        <Grid item>
+        <Grid item sm={5}>
           <Button
             className={classes.link}
             size="large"

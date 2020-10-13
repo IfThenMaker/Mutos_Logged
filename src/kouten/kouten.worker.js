@@ -441,26 +441,10 @@ export const genKaminashiNeniArr = ({ seinen }) => {
   const meisu = genMesu({ seinen });
   console.log('命数：', meisu);
   const kaminashi = genKaminashi(meisu);
-  // if (teikeimei <= 10) {
-  //   kaminashi = kaminashiData[1];
-  // } else if (teikeimei <= 20) {
-  //   kaminashi = kaminashiData[2];
-  // } else if (teikeimei <= 30) {
-  //   kaminashi = kaminashiData[3];
-  // } else if (teikeimei <= 40) {
-  //   kaminashi = kaminashiData[4];
-  // } else if (teikeimei <= 50) {
-  //   kaminashi = kaminashiData[5];
-  // } else if (teikeimei <= 60) {
-  //   kaminashi = kaminashiData[6];
-  // }
-  // console.log(kaminashi.eto);
   const EtoArr = genEtoArr({ firstYear: genNenArr()[0] });
-  // console.log(EtoArr);
   const etoNashiArr = EtoArr.map((v) => (
     kaminashi.eto.indexOf(v) > -1 ? 'nen' : ' '
   ));
-  // console.log(etoNashiArr);
   return etoNashiArr;
 };
 
@@ -660,6 +644,95 @@ export const genUnseiData = ({ teikeimei, seinen, seibetu }) => {
   // console.log('dr', dataArr);
   return dataArr;
 };
+
+
+/*
+  -------- senten.extend.daijyunkashin  ----------
+*/
+export const genDaijyunKashin = ({ seinen, seibetu, teikeimei }) => {
+  const inyo = inyoChecker({ seinen, seibetu });
+  const date = new Date(seinen);
+  const year = date.getYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  // console.log('seinen', seinen);
+  console.log('陰陽:', inyo ? '陽' : '陰');
+  // console.log('tuki', tukijyunsu);
+  const jyunsetu = inyo ? junsetuYou : junsetuIn;
+  const setusu = Number(jyunsetu[month][day]);
+  console.log('巡節年:', setusu);
+  const toshi = new Date().getYear() - year;
+  console.log('toshi', toshi);
+  const daijyunArr = genDaijyunArr({ seinen, seibetu });
+  console.log(daijyunArr);
+  const resultObj = {
+    title: '大巡華神',
+    index: '',
+    value: '',
+  };
+  let index;
+  for (let i = 0; i < daijyunArr.length; i += 1) {
+    const check = daijyunArr[i].slice(0, 2).replace('歳', '');
+    console.log('check', check);
+    if (check > toshi) {
+      index = i;
+      break;
+    }
+  }
+  console.log('index', index);
+  console.log('teikei', teikeimei);
+  const kashinArr = genJyunkashinArr({ teikeimei });
+  resultObj.index = daijyunArr[index];
+  resultObj.value = kashinArr[index].kashin;
+  console.log('result', resultObj);
+  return resultObj;
+};
+
+
+
+/*
+  -------- senten.extend.nenjyunkashin  ----------
+*/
+export const genNenjyunKashin = ({ teikeimei }) => {
+  const kashinArr = genJyunkashinArr({ teikeimei });
+  const date = setuChecker(new Date());
+  console.log(date);
+  return {
+    title: '年巡華神',
+    index: `${new Date(date).getYear() + 1900}年`,
+    value: kashinArr[7].kashin,
+  };
+};
+
+
+/*
+  -------- senten.extend.tukijyunkashin  ----------
+*/
+export const genTukijyunKashin = ({ teikeimei }) => {
+  const kashinArr = genJyunkashinArr({ teikeimei });
+  const date = setuChecker(new Date());
+  console.log(date);
+  return {
+    title: '月巡華神',
+    index: `${new Date(date).getMonth() + 1}月`,
+    value: kashinArr[genJyunsu().month].kashin,
+  };
+};
+
+
+/*
+  -------- senten.extend.kanna  ----------
+*/
+export const genKana = ({ seinen }) => {
+  const kaminashi = genKaminashi(genMesu({ seinen }));
+  console.log('kaminashi', kaminashi);
+  return {
+    title: '神無節',
+    tuki: `毎年 ${kaminashi.tuki[0]} , ${kaminashi.tuki[1]}月`,
+    eto: `干支 ${kaminashi.eto[0]} , ${kaminashi.eto[1]}`,
+  };
+};
+
 
 
 
