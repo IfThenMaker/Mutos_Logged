@@ -72,7 +72,7 @@ const Layout = ({
       </Grid>
       <Grid className={classes.imput} item xs={12}>
         {contents === 'senten'
-          ? Senten({ seinen })
+          ? Senten({ teikeimei, seinen, seibetu })
           : Kouten({ teikeimei, seinen, seibetu })}
       </Grid>
       <Grid className={classes.imput} item xs={12}>
