@@ -31,10 +31,8 @@ const Header = ({ title }) => {
   const classes = useStyles();
 
   return (
-    <Grid container>
-      <Grid className={classes.base} container justify="center">
-        <p className={classes.caption}>{title}</p>
-      </Grid>
+    <Grid className={classes.base} container justify="center">
+      <p className={classes.caption}>{title}</p>
     </Grid>
   );
 };

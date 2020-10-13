@@ -12,9 +12,6 @@ import {
 
 
 const useStyles = makeStyles({
-  wrapper: {
-    maxWidth: '840px',
-  },
   cap: {
     margin: '20px 0 0 0',
     '& h4': {
@@ -41,7 +38,6 @@ const Senten = ({ seinen, seibetu }) => {
 
   return (
     <Grid
-      className={classes.wrapper}
       container
       justify="center"
       spacing={3}

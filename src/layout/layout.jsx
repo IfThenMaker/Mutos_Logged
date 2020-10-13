@@ -14,28 +14,7 @@ import { teikeimeiCalc } from '../senten/senten.worker';
 const useStyles = makeStyles({
   wrapper: {
     maxWidth: '840px',
-    margin: '0 auto',
     padding: '10px',
-  },
-  imput: {
-    margin: '12px 0',
-  },
-  cap: {
-    margin: '20px 0 0 0',
-    '& h4': {
-      marginBottom: '5px',
-    },
-  },
-  table: {
-    margin: '12px 0',
-  },
-  jintai: {
-    minWidth: '320px',
-    margin: '12px 0',
-  },
-  link: {
-    backgroundColor: '#ffaa56',
-    margin: '30px auto',
   },
 });
 
@@ -59,10 +38,10 @@ const Layout = ({
       justify="center"
       spacing={3}
     >
-      <Grid className={classes.imput} item xs={12}>
+      <Grid item xs={12}>
         <Header title={titleKanji[contents]} />
       </Grid>
-      <Grid className={classes.imput} item xs={12}>
+      <Grid item xs={12}>
         <Input
           seinen={seinen}
           seibetu={seibetu}
@@ -70,12 +49,12 @@ const Layout = ({
           dialog={dialog}
         />
       </Grid>
-      <Grid className={classes.imput} item xs={12}>
+      <Grid item xs={12}>
         {contents === 'senten'
           ? Senten({ teikeimei, seinen, seibetu })
           : Kouten({ teikeimei, seinen, seibetu })}
       </Grid>
-      <Grid className={classes.imput} item xs={12}>
+      <Grid item xs={12}>
         <Button dispatch={contentsDispatch} />
       </Grid>
     </Grid>
