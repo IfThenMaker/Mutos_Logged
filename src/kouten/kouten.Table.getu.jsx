@@ -5,7 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 
 import Cells from './kouten.Table.cells';
 import {
-  genGetuArr, genGetuEtoArr, genGetuJyunsuArr,
+  genGetuArr, genGetuEtoArr,
 } from './kouten.worker';
 
 

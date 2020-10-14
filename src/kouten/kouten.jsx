@@ -39,6 +39,7 @@ const Kouten = ({
           seibetu={seibetu}
         />
       </Grid>
+      <p>＊　注釈</p>
     </Grid>
   );
 };

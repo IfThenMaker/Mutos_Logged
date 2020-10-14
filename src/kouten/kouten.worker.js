@@ -112,6 +112,7 @@ export const genNenJyunsuArr = () => (
 */
 export const genGetuArr = () => {
   const tukiSt = genTenArr(genJyunsu().month).indexOf(1) + 1;
+  console.log('tuki', tukiSt);
   return genTwelveArr(tukiSt);
   // const nenDef = 13 - genNenJyunsuArr().indexOf(1);
   // const tukiArr = genTwelveArr(genJyunsu().month + (nenDef === 13 ? 1 : nenDef));
