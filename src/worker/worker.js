@@ -165,7 +165,7 @@ const genTukiNumArr = () => {
 };
 
 const genMesu = (seinen) => {
-  console.log('seinein', seinen);
+  // console.log('seinein', seinen);
   const { year, month, day } = dateData(seinen);
   // console.log(year, month, day);
   const daijyunsu = himeguriData[year].month[month];

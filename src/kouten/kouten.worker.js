@@ -151,7 +151,7 @@ export const genGetuArr = () => {
   // const kashinArr = genJyunkashinArr({ teikeimei });
   // console.log('tei', kashinArr)
   const tukiSt = genTenRowArr(genJyunsu().month).indexOf(1) + 1;
-  console.log('tuki', genJyunsu().month);
+  // console.log('tuki', genJyunsu().month);
   return genTwelveArr(tukiSt);
   // const nenDef = 13 - genNenJyunsuArr().indexOf(1);
   // const tukiArr = genTwelveArr(genJyunsu().month + (nenDef === 13 ? 1 : nenDef));
@@ -248,11 +248,11 @@ export const genDaijyunArr = ({ seinen, seibetu }) => {
   const month = date.getMonth() + 1;
   const day = date.getDate();
   // console.log('seinen', seinen);
-  console.log('陰陽:', inyo ? '陽' : '陰');
+  // console.log('陰陽:', inyo ? '陽' : '陰');
   // console.log('tuki', tukijyunsu);
   const jyunsetu = inyo ? junsetuYou : junsetuIn;
   const setusu = Number(jyunsetu[month][day]);
-  console.log('巡節年:', setusu);
+  // console.log('巡節年:', setusu);
   const daijyunsu = genTukijyunsu({ seinen });
   console.log('生月巡数:', daijyunsu);
   const jyunArr = inyo ? genTenArr(daijyunsu) : genInArr(daijyunsu);
@@ -654,8 +654,8 @@ export const genUnseiData = ({ teikeimei, seinen, seibetu }) => {
   // const getuData = genTukiChart({ teikeimei });
   const aData = genChartA({ teikeimei });
   const bData = genChartB({ teikeimei });
-  console.log('getuA', aData);
-  console.log('getub', bData);
+  // console.log('getuA', aData);
+  // console.log('getub', bData);
   // const getuData = genGetuData({ teikeimei });
   const omeguriData = genOmeguriData({ teikeimei, seinen, seibetu });
   const dataArr = Array.from({ length: 12 }, (v, k) => ({ colmn: k + 1 }));
@@ -698,9 +698,9 @@ export const genDaijyunKashin = ({ seinen, seibetu, teikeimei }) => {
   const setusu = Number(jyunsetu[month][day]);
   console.log('巡節年:', setusu);
   const toshi = new Date().getYear() - year;
-  console.log('toshi', toshi);
+  console.log('年齢', toshi);
   const daijyunArr = genDaijyunArr({ seinen, seibetu });
-  console.log(daijyunArr);
+  // console.log(daijyunArr);
   const resultObj = {
     title: '大巡華神',
     index: '',
@@ -709,18 +709,18 @@ export const genDaijyunKashin = ({ seinen, seibetu, teikeimei }) => {
   let index;
   for (let i = 0; i < daijyunArr.length; i += 1) {
     const check = daijyunArr[i].slice(0, 2).replace('歳', '');
-    console.log('check', check);
+    // console.log('check', check);
     if (check > toshi) {
       index = i;
       break;
     }
   }
-  console.log('index', index);
-  console.log('teikei', teikeimei);
+  // console.log('index', index);
+  // console.log('teikei', teikeimei);
   const kashinArr = genJyunkashinArr({ teikeimei });
   resultObj.index = daijyunArr[index];
   resultObj.value = kashinArr[index].kashin;
-  console.log('result', resultObj);
+  // console.log('result', resultObj);
   return resultObj;
 };
 
@@ -732,7 +732,7 @@ export const genDaijyunKashin = ({ seinen, seibetu, teikeimei }) => {
 export const genNenjyunKashin = ({ teikeimei }) => {
   const kashinArr = genJyunkashinArr({ teikeimei });
   const date = setuChecker(new Date());
-  console.log(date);
+  // console.log(date);
   return {
     title: '年巡華神',
     index: `${new Date(date).getYear() + 1900}年`,
@@ -747,7 +747,7 @@ export const genNenjyunKashin = ({ teikeimei }) => {
 export const genTukijyunKashin = ({ teikeimei }) => {
   const kashinArr = genJyunkashinArr({ teikeimei });
   const date = setuChecker(new Date());
-  console.log(date);
+  // console.log(date);
   return {
     title: '月巡華神',
     index: `${new Date(date).getMonth() + 1}月`,
@@ -761,7 +761,7 @@ export const genTukijyunKashin = ({ teikeimei }) => {
 */
 export const genKana = ({ seinen }) => {
   const kaminashi = genKaminashi(genMesu({ seinen }));
-  console.log('kaminashi', kaminashi);
+  // console.log('kaminashi', kaminashi);
   return {
     title: '神無節',
     tuki: `毎年 ${kaminashi.tuki[0]} , ${kaminashi.tuki[1]}月`,

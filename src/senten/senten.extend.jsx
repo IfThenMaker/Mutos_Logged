@@ -36,13 +36,13 @@ const SentenTable = ({
 }) => {
   const classes = useStyles();
   const daijyun = genDaijyunKashin({ teikeimei, seinen, seibetu });
-  console.log('daijyun', daijyun);
+  // console.log('daijyun', daijyun);
   const nenjyun = genNenjyunKashin({ teikeimei });
-  console.log('nenjyun', nenjyun);
+  // console.log('nenjyun', nenjyun);
   const tukijyun = genTukijyunKashin({ teikeimei });
-  console.log('tukijyun', tukijyun);
+  // console.log('tukijyun', tukijyun);
   const kanna = genKana({ seinen });
-  console.log('kanna', kanna);
+  // console.log('kanna', kanna);
 
   const Cells = (props) => {
     const { title, index, value } = props;
