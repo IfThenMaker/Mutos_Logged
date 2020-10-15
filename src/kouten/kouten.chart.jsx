@@ -29,7 +29,7 @@ const Chart = ({ teikeimei, seinen, seibetu }) => {
     getuB: '該当月(後半)',
     omeguri: '大巡運',
   };
-  const formatter = (v, name) => [v, labelJa[name]];
+  const formatter = (v, name) => [v || '無', labelJa[name]];
   const colorText = (value, entry) => {
     const { color } = entry;
     return (
