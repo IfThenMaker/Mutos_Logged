@@ -26,6 +26,7 @@ const Layout = ({
   const classes = useStyles();
   const [contents, contentsDispatch] = useReducer(reducer, 'senten');
   const { teikeimei } = teikeimeiCalc({ birthday: seinen });
+  console.log('提携命:', teikeimei);
   const titleKanji = {
     senten: '先天予定運',
     kouten: '後天予定運',

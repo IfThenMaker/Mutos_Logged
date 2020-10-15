@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import { Link } from 'gatsby';
 
 import Layout from '../layout/layout';
 import Dialog from '../dialog/entry';

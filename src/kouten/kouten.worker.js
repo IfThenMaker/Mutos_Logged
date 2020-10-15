@@ -9,6 +9,8 @@ import kaminashiData from './datas/kaminashi';
 import goujyunData from './datas/goujyun';
 import unseiData from './datas/unsei';
 
+import { genChartA, genChartB } from '../worker/worker';
+
 
 //   pass num return 12nums array
 //   genEtoArr
@@ -87,6 +89,23 @@ const genJyunsu = () => {
 
 
 /*
+  -------- kouten.Table.kashin  ----------
+*/
+export const genJyunkashinArr = ({ teikeimei }) => {
+  const jyunsu = genJyunsu().year;
+  console.log('占い日年巡数:', jyunsu);
+  //   create kashinsu array
+  const kashinsuArr = genTenArr(jyunsu);
+  // console.log('kashinsuArr', kashinsuArr);
+  const kashinData = jyunkashinData[teikeimei];
+  // console.log('kashinData', kashinData);
+  const kashinArr = kashinsuArr.map((num) => kashinData[String(num)]);
+  // console.log('kashinArr', kashinArr);
+  return kashinArr;
+};
+
+
+/*
   -------- kouten.Table.nen  ----------
 */
 export const genNenArr = () => {
@@ -110,9 +129,29 @@ export const genNenJyunsuArr = () => (
 /*
   -------- kouten.Table.getu  ----------
 */
+const genTenRowArr = (num) => {
+  const arr = [num];
+  let counter = num;
+  const intArr = Array.from({ length: 9 }, (v, k) => k + 1);
+  // console.log('int', intArr);
+  intArr.forEach(() => {
+    if (counter < 10) {
+      counter += 1;
+    } else {
+      counter = 1;
+    }
+    arr.push(counter);
+  });
+  return arr;
+};
+
+
 export const genGetuArr = () => {
-  const tukiSt = genTenArr(genJyunsu().month).indexOf(1) + 1;
-  console.log('tuki', tukiSt);
+  // console.log('getsarr', teikeimei);
+  // const kashinArr = genJyunkashinArr({ teikeimei });
+  // console.log('tei', kashinArr)
+  const tukiSt = genTenRowArr(genJyunsu().month).indexOf(1) + 1;
+  console.log('tuki', genJyunsu().month);
   return genTwelveArr(tukiSt);
   // const nenDef = 13 - genNenJyunsuArr().indexOf(1);
   // const tukiArr = genTwelveArr(genJyunsu().month + (nenDef === 13 ? 1 : nenDef));
@@ -148,22 +187,7 @@ export const genGetuJyunsuArr = () => (
 // };
 
 
-/*
-  -------- kouten.Table.kashin  ----------
-*/
-export const genJyunkashinArr = ({ teikeimei }) => {
-  const jyunsu = genJyunsu().year;
-  console.log('提携命:', teikeimei);
-  console.log('占い日年巡数:', jyunsu);
-  //   create kashinsu array
-  const kashinsuArr = genTenArr(jyunsu);
-  // console.log('kashinsuArr', kashinsuArr);
-  const kashinData = jyunkashinData[teikeimei];
-  // console.log('kashinData', kashinData);
-  const kashinArr = kashinsuArr.map((num) => kashinData[String(num)]);
-  // console.log('kashinArr', kashinArr);
-  return kashinArr;
-};
+
 
 
 /*
@@ -627,7 +651,12 @@ export const genOmeguriData = ({ teikeimei, seinen, seibetu }) => {
 export const genUnseiData = ({ teikeimei, seinen, seibetu }) => {
   const kashinData = genKashinData({ teikeimei });
   const nenData = genNenData({ teikeimei });
-  const getuData = genGetuData({ teikeimei });
+  // const getuData = genTukiChart({ teikeimei });
+  const aData = genChartA({ teikeimei });
+  const bData = genChartB({ teikeimei });
+  console.log('getuA', aData);
+  console.log('getub', bData);
+  // const getuData = genGetuData({ teikeimei });
   const omeguriData = genOmeguriData({ teikeimei, seinen, seibetu });
   const dataArr = Array.from({ length: 12 }, (v, k) => ({ colmn: k + 1 }));
   kashinData.forEach((item, i) => {
@@ -636,8 +665,14 @@ export const genUnseiData = ({ teikeimei, seinen, seibetu }) => {
   nenData.forEach((item, i) => {
     dataArr[i].nen = item;
   });
-  getuData.forEach((item, i) => {
+  aData.forEach((item, i) => {
     dataArr[i].getu = item;
+  });
+  aData.forEach((item, i) => {
+    dataArr[i].getuA = item;
+  });
+  bData.forEach((item, i) => {
+    dataArr[i].getuB = item;
   });
   omeguriData.forEach((item, i) => {
     dataArr[i].omeguri = item;
