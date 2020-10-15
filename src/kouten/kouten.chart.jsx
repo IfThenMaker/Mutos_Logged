@@ -11,7 +11,6 @@ import {
 } from './kouten.worker';
 
 
-
 const useStyles = makeStyles({
   keisen: {
     borderBottom: 'double 2px rgba(0,0,0,0.55)',
@@ -20,7 +19,7 @@ const useStyles = makeStyles({
 
 
 const Chart = ({ teikeimei, seinen, seibetu }) => {
-  console.log('chart', teikeimei, seinen, seibetu);
+  // console.log('chart', teikeimei, seinen, seibetu);
   const unseiData = genUnseiData({ teikeimei, seinen, seibetu });
   const labelJa = {
     kashin: '巡華神',

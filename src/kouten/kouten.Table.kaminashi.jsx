@@ -8,7 +8,6 @@ import Favorite from '@material-ui/icons/Brightness4';
 import Cells from './kouten.Table.cells';
 import {
   genKaminashiNeniArr,
-  genKaminashiTukiArr,
   genkaminashiDaiArr,
 } from './kouten.worker';
 import { genKaminashiGetuArr } from '../worker/worker';
@@ -44,8 +43,7 @@ const zip = (arr, Arr, sArr) => {
 
 const Kaminashi = ({ seinen, seibetu }) => {
   // console.log('kaminashi', seinen);
-  const getu = genKaminashiGetuArr({ seinen });
-  console.log('getsu', getu);
+  // const getu = genKaminashiGetuArr({ seinen });
   const classes = useStyles();
   const ToP = (i) => {
     if (i === 'nen') { return <Favorite key="a1" className={classes.nen} />; }
