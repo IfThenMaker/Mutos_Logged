@@ -64,7 +64,7 @@ const Kaminashi = ({ seinen, seibetu }) => {
 
   return (
     <TableRow>
-      <TableCell>ç¥žç„¡ç¯€</TableCell>
+      <TableCell>神無節</TableCell>
       <Cells index="nashituki" arr={kaminashi} />
     </TableRow>
   );
