@@ -4,10 +4,10 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 import Cells from './kouten.Table.cells';
-import {
-  genGetuArr, genGetuEtoArr, genGetuJyunsuArr,
-} from './kouten.worker';
-
+// import {
+//   genGetuEtoArr,
+// } from './kouten.worker';
+import { genGetuArr, genGetuEtoArr } from '../worker/worker';
 
 const useStyles = makeStyles({
   keisen: {
@@ -35,11 +35,9 @@ const Getu = () => {
 };
 // Getu.defaultProps = {
 //   teikeimei: '厳山命',
-//   inyou: true,
 // };
 // Getu.propTypes = {
-//   teikeimei: PropTypes.string,
-//   inyou: PropTypes.bool,
+  // teikeimei: PropTypes.string,
 // };
 
 export default Getu;

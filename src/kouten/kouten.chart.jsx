@@ -11,6 +11,7 @@ import {
 } from './kouten.worker';
 
 
+
 const useStyles = makeStyles({
   keisen: {
     borderBottom: 'double 2px rgba(0,0,0,0.55)',
@@ -24,10 +25,11 @@ const Chart = ({ teikeimei, seinen, seibetu }) => {
   const labelJa = {
     kashin: '巡華神',
     nen: '該当年',
-    getu: '該当月',
+    getuA: '該当月(前半)',
+    getuB: '該当月(後半)',
     omeguri: '大巡運',
   };
-  const formatter = (v, name) => [v, labelJa[name]];
+  const formatter = (v, name) => [v || '無', labelJa[name]];
   const colorText = (value, entry) => {
     const { color } = entry;
     return (
@@ -53,7 +55,8 @@ const Chart = ({ teikeimei, seinen, seibetu }) => {
       />
       <Line dataKey="kashin" stroke="black" />
       <Line dataKey="nen" stroke="red" />
-      <Line dataKey="getu" stroke="green" />
+      <Line dataKey="getuA" stroke="yellowgreen" connectNulls />
+      <Line dataKey="getuB" stroke="green" connectNulls />
       <Line dataKey="omeguri" stroke="blue" />
     </LineChart>
   );

@@ -36,7 +36,7 @@ const KoutenTable = ({
           <Jyunsu />
           <Kashin teikeimei={teikeimei} />
           <Year />
-          <Month />
+          <Month teikeimei={teikeimei} />
           <Omeguri seinen={seinen} seibetu={seibetu} />
           <Kaminashi seinen={seinen} seibetu={seibetu} />
           <Goujyun seinen={seinen} />

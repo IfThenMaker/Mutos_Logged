@@ -11,6 +11,7 @@ import {
   genKaminashiTukiArr,
   genkaminashiDaiArr,
 } from './kouten.worker';
+import { genKaminashiGetuArr } from '../worker/worker';
 
 
 const useStyles = makeStyles({
@@ -43,6 +44,8 @@ const zip = (arr, Arr, sArr) => {
 
 const Kaminashi = ({ seinen, seibetu }) => {
   // console.log('kaminashi', seinen);
+  const getu = genKaminashiGetuArr({ seinen });
+  console.log('getsu', getu);
   const classes = useStyles();
   const ToP = (i) => {
     if (i === 'nen') { return <Favorite key="a1" className={classes.nen} />; }
@@ -55,7 +58,7 @@ const Kaminashi = ({ seinen, seibetu }) => {
     return ' ';
   };
   const kaminashiNen = genKaminashiNeniArr({ seinen }).map((v) => InCell(v));
-  const kaminashiTuki = genKaminashiTukiArr({ seinen }).map((v) => InCell(v));
+  const kaminashiTuki = genKaminashiGetuArr({ seinen }).map((v) => InCell(v));
   const kaminashiDai = genkaminashiDaiArr({ seinen, seibetu }).map((v) => InCell(v));
   const kaminashi = zip(kaminashiNen, kaminashiTuki, kaminashiDai);
 
