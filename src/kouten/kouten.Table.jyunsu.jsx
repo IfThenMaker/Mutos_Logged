@@ -20,7 +20,7 @@ const Jyunsu = () => {
 
   return (
     <TableRow className={classes.keisen}>
-      <TableCell>大巡数</TableCell>
+      <TableCell>巡数</TableCell>
       <Cells index="nen" arr={nenJyunsuArr} />
     </TableRow>
   );

@@ -658,7 +658,9 @@ export const genUnseiData = ({ teikeimei, seinen, seibetu }) => {
   // console.log('getub', bData);
   // const getuData = genGetuData({ teikeimei });
   const omeguriData = genOmeguriData({ teikeimei, seinen, seibetu });
-  const dataArr = Array.from({ length: 12 }, (v, k) => ({ colmn: k + 1 }));
+  const dataArr = Array.from({ length: 12 }, (v, k) => (
+    { colmn: k < 10 ? k + 1 : String(k - 9) }
+  ));
   kashinData.forEach((item, i) => {
     dataArr[i].kashin = item;
   });

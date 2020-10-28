@@ -21,14 +21,16 @@ const useStyles = makeStyles({
 const Chart = ({ teikeimei, seinen, seibetu }) => {
   // console.log('chart', teikeimei, seinen, seibetu);
   const unseiData = genUnseiData({ teikeimei, seinen, seibetu });
+  console.log('un', unseiData);
   const labelJa = {
     kashin: '巡華神',
     nen: '該当年',
-    getuA: '該当月(前半)',
-    getuB: '該当月(後半)',
+    getuA: '該当月(後半)',
+    getuB: '該当月(前半)',
     omeguri: '大巡運',
   };
-  const formatter = (v, name) => [v || '無', labelJa[name]];
+  const formatter = (v, name) => [v || 0, labelJa[name]];
+  const ticFormatter = (v) => (v > 11 ? v % 10 : `ore${v}`);
   const colorText = (value, entry) => {
     const { color } = entry;
     return (
@@ -43,7 +45,7 @@ const Chart = ({ teikeimei, seinen, seibetu }) => {
       data={unseiData}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="colmn" />
+      <XAxis dataKey="colmn" ticks={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '1', '2']} />
       <YAxis />
       <Tooltip
         formatter={formatter}

@@ -1,24 +1,15 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 import Cells from './kouten.Table.cells';
-import { genNenArr, genEtoArr, genNenJyunsuArr } from './kouten.worker';
-
-
-const useStyles = makeStyles({
-  keisen: {
-    borderBottom: 'double 2px rgba(0,0,0,0.55)',
-  },
-});
+import { genNenArr, genEtoArr } from '../worker';
 
 
 const Nen = () => {
-  const classes = useStyles();
   const yearArr = genNenArr();
   const eto = genEtoArr({ firstYear: yearArr[0] });
-  const nenJyunsuArr = genNenJyunsuArr();
+
   return (
     <>
       <TableRow>
@@ -35,7 +26,3 @@ const Nen = () => {
 
 
 export default Nen;
-// <TableRow className={classes.keisen}>
-//   <TableCell>年巡数</TableCell>
-//   <Cells index="nenjyun" arr={nenJyunsuArr} />
-// </TableRow>

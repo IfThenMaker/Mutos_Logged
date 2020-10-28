@@ -84,7 +84,7 @@ const EntryData = (props) => {
             style={{ fontWeight: 'bold', letterSpacing: '0.2em' }}
             onClick={handleClose}
           >
-            登録
+            結果を見る
           </Button>
         </DialogActions>
       </Dialog>
