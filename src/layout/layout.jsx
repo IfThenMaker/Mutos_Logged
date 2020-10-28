@@ -9,7 +9,7 @@ import Button from './layout.button';
 import Senten from '../senten/senten';
 import Kouten from '../kouten/kouten';
 import { teikeimeiCalc } from '../senten/senten.worker';
-
+import { MutosProvider } from '../context';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -32,33 +32,48 @@ const Layout = ({
     kouten: '後天予定運',
   };
 
+  const [birthday, birthdayDispatch] = useReducer(reducer, '1940-01-02');
+  const [sex, sexDispatch] = useReducer(reducer, 'male');
+  const [customer, customerDispatch] = useReducer(reducer, 'お客様名');
+  console.log('se', sex);
+
   return (
-    <Grid
-      className={classes.wrapper}
-      container
-      justify="center"
-      spacing={3}
+    <MutosProvider value={{
+      birthday,
+      sex,
+      customer,
+      birthdayDispatch,
+      sexDispatch,
+      customerDispatch,
+    }}
     >
-      <Grid item xs={12}>
-        <Header title={titleKanji[contents]} />
+      <Grid
+        className={classes.wrapper}
+        container
+        justify="center"
+        spacing={3}
+      >
+        <Grid item xs={12}>
+          <Header title={titleKanji[contents]} />
+        </Grid>
+        <Grid item xs={12}>
+          <Input
+            seinen={seinen}
+            seibetu={seibetu}
+            cosName={cosName}
+            dialog={dialog}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          {contents === 'senten'
+            ? Senten({ teikeimei, seinen, seibetu })
+            : Kouten({ teikeimei, seinen, seibetu })}
+        </Grid>
+        <Grid item xs={12}>
+          <Button dispatch={contentsDispatch} />
+        </Grid>
       </Grid>
-      <Grid item xs={12}>
-        <Input
-          seinen={seinen}
-          seibetu={seibetu}
-          cosName={cosName}
-          dialog={dialog}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        {contents === 'senten'
-          ? Senten({ teikeimei, seinen, seibetu })
-          : Kouten({ teikeimei, seinen, seibetu })}
-      </Grid>
-      <Grid item xs={12}>
-        <Button dispatch={contentsDispatch} />
-      </Grid>
-    </Grid>
+    </MutosProvider>
   );
 };
 Layout.defaultProps = {

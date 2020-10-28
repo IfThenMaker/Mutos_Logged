@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 import InputData from './input.textField';
+import MutosContext from '../context';
 
 
 const useStyles = makeStyles({
@@ -22,6 +23,8 @@ const Input = ({
     male: '男性',
     female: '女性',
   };
+  const { sex } = useContext(MutosContext);
+  console.log('sex', sex);
 
   return (
     <div>
