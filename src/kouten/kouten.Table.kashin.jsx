@@ -1,30 +1,21 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
-import { genJyunkashinArr } from './kouten.worker';
-
-
-const useStyles = makeStyles({
-  keisen: {
-    borderBottom: 'double 2px rgba(0,0,0,0.55)',
-  },
-});
+import { genJyunkashinArr } from '../worker';
 
 
 const Kashin = ({ teikeimei }) => {
-  // console.log('teikeimei', teikeimei);
-  const classes = useStyles();
   const kashinArr = genJyunkashinArr({ teikeimei });
-  // console.log('kashin', kashinArr);
+
   return (
     <TableRow>
       <TableCell>巡華神</TableCell>
-      {kashinArr.map((data, num) => (
-        <TableCell key={`kami${num}`} align="center">
+      {kashinArr.map((data) => (
+        <TableCell key={nanoid()} align="center">
           <Grid>
             {data.kashin}
           </Grid>
@@ -38,11 +29,10 @@ const Kashin = ({ teikeimei }) => {
 };
 Kashin.defaultProps = {
   teikeimei: '厳山命',
-  // inyou: true,
 };
 Kashin.propTypes = {
   teikeimei: PropTypes.string,
-  // inyou: PropTypes.bool,
 };
+
 
 export default Kashin;
