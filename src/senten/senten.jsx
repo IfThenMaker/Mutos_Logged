@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -25,17 +25,16 @@ const useStyles = makeStyles({
 
 
 const Senten = ({ seinen, seibetu }) => {
-  console.log('senten', seinen, seibetu);
   const classes = useStyles();
-  console.log('kkore');
+
   const {
     teikeimei, teikeimeiNum, jinColor,
   } = teikeimeiCalc({ seinen });
-  const { syugokashin, syugoColor } = syugokashinCalc({
+  const { syugoColor } = syugokashinCalc({
     seinen,
     teikeimeiNum,
   });
-  const { bodykashin, bodyColor } = bodykashinCalc({ seinen });
+  const { bodyColor } = bodykashinCalc({ seinen });
 
 
   return (
@@ -48,7 +47,7 @@ const Senten = ({ seinen, seibetu }) => {
         <h4>診断結果</h4>
       </Grid>
       <Grid className={classes.table} item xs={12} sm={6}>
-        <SentenTable teikeimei={teikeimei} syugokashin={syugokashin} bodykashin={bodykashin} />
+        <SentenTable />
       </Grid>
       <Grid className={classes.jintai} item xs={12} sm={4}>
         <h4>イメージカラー</h4>

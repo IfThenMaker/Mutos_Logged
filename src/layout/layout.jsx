@@ -31,12 +31,13 @@ const Layout = (
   const [cosName, cosNameDispatch] = useReducer(reducer, 'index');
   const [contents, contentsDispatch] = useReducer(reducer, 'senten');
   const { teikeimei } = teikeimeiCalc({ seinen });
-  console.log('提携命:', teikeimei);
+  console.log('提携命:', teikeimei, seinen);
   const titleKanji = {
     senten: '先天予定運',
     kouten: '後天予定運',
   };
-
+  // const SentenContents = Senten();
+  // const KoutenContents = Kouten();
 
   return (
     <MutosProvider value={{
@@ -46,6 +47,7 @@ const Layout = (
       seinenDispatch,
       seibetuDispatch,
       cosNameDispatch,
+      teikeimei,
     }}
     >
       <Grid
@@ -61,6 +63,9 @@ const Layout = (
           <Input />
         </Grid>
         <Grid item xs={12}>
+          {contents === 'senten'
+            ? Senten({ teikeimei, seinen, seibetu })
+            : Kouten()}
         </Grid>
         <Grid item xs={12}>
           <Button dispatch={contentsDispatch} />
@@ -83,8 +88,3 @@ Layout.propTypes = {
 };
 
 export default Layout;
-
-
-// {contents === 'senten'
-//   ? Senten({ teikeimei, seinen, seibetu })
-//   : Kouten({ teikeimei, seinen, seibetu })}

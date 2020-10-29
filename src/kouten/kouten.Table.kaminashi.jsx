@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
@@ -11,6 +10,7 @@ import {
   genkaminashiDaiArr,
 } from './kouten.worker';
 import { genKaminashiGetuArr } from '../worker/worker';
+import MutosContext from '../context';
 
 
 const useStyles = makeStyles({
@@ -41,10 +41,9 @@ const zip = (arr, Arr, sArr) => {
   return nArr;
 };
 
-const Kaminashi = ({ seinen, seibetu }) => {
-  // console.log('kaminashi', seinen);
-  // const getu = genKaminashiGetuArr({ seinen });
+const Kaminashi = () => {
   const classes = useStyles();
+  const { seinen, seibetu } = useContext(MutosContext);
   const ToP = (i) => {
     if (i === 'nen') { return <Favorite key="a1" className={classes.nen} />; }
     if (i === 'tuki') { return <Favorite key="a2" className={classes.tuki} />; }
@@ -60,8 +59,6 @@ const Kaminashi = ({ seinen, seibetu }) => {
   const kaminashiDai = genkaminashiDaiArr({ seinen, seibetu }).map((v) => InCell(v));
   const kaminashi = zip(kaminashiNen, kaminashiTuki, kaminashiDai);
 
-  // console.log('kaminashi', kaminashi);
-
   return (
     <TableRow>
       <TableCell>神無節</TableCell>
@@ -69,14 +66,6 @@ const Kaminashi = ({ seinen, seibetu }) => {
     </TableRow>
   );
 };
-Kaminashi.defaultProps = {
-  seinen: '1940-01-01',
-  seibetu: 'male',
-};
-Kaminashi.propTypes = {
-  seinen: PropTypes.string,
-  seibetu: PropTypes.string,
-};
 
-//
+
 export default Kaminashi;

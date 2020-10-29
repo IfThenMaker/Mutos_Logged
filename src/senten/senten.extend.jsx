@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -15,6 +14,8 @@ import {
   genTukijyunKashin,
   genKana,
 } from '../kouten/kouten.worker';
+import MutosContext from '../context';
+
 
 const useStyles = makeStyles({
   num: {
@@ -31,21 +32,15 @@ const useStyles = makeStyles({
 });
 
 
-const SentenTable = ({
-  seinen, seibetu, teikeimei,
-}) => {
+const SentenTable = () => {
   const classes = useStyles();
+  const { seinen, seibetu, teikeimei } = useContext(MutosContext);
   const daijyun = genDaijyunKashin({ teikeimei, seinen, seibetu });
-  // console.log('daijyun', daijyun);
   const nenjyun = genNenjyunKashin({ teikeimei });
-  // console.log('nenjyun', nenjyun);
   const tukijyun = genTukijyunKashin({ teikeimei });
-  // console.log('tukijyun', tukijyun);
   const kanna = genKana({ seinen });
-  // console.log('kanna', kanna);
 
-  const Cells = (props) => {
-    const { title, index, value } = props;
+  const Cells = ({ title, index, value }) => {
     return (
       <TableRow>
         <TableCell className={classes.th} component="th">{title}</TableCell>
@@ -94,21 +89,6 @@ const SentenTable = ({
       </Grid>
     </Paper>
   );
-};
-
-SentenTable.defaultProps = {
-  seinen: '1950-01-01',
-  seibetu: 'male',
-  teikeimei: 'inochi',
-  syugokashin: 'kashin',
-  bodykashin: 'bodys',
-};
-SentenTable.propTypes = {
-  seinen: PropTypes.string,
-  seibetu: PropTypes.string,
-  teikeimei: PropTypes.string,
-  syugokashin: PropTypes.string,
-  bodykashin: PropTypes.string,
 };
 
 

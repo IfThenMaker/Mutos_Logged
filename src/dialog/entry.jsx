@@ -1,5 +1,4 @@
 import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -28,11 +27,6 @@ const dateValidate = (dateStr) => {
 
 
 const EntryData = () => {
-  // const {
-  //   seinenDispatch,
-  //   seibetuDispatch,
-  //   cosNameDispatch,
-  // } = props;
   const {
     seinen, seibetu, cosName,
     seinenDispatch, seibetuDispatch, cosNameDispatch,
@@ -41,8 +35,6 @@ const EntryData = () => {
   const [birth, setBirth] = useState(seinen);
   const [sex, setSex] = useState(seibetu);
   const [open, setOpen] = useState(true);
-
-  // console.log('n,b', name, birth);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -57,7 +49,6 @@ const EntryData = () => {
       setOpen(false);
     }
   };
-  // console.log('cosNameDispatch', birthDateDispatch);
 
 
   return (
@@ -95,16 +86,6 @@ const EntryData = () => {
       </Dialog>
     </Grid>
   );
-};
-EntryData.defaultProps = {
-  seinenDispatch: () => {},
-  seibetuDispatch: () => {},
-  cosNameDispatch: () => {},
-};
-EntryData.propTypes = {
-  seinenDispatch: PropTypes.func,
-  seibetuDispatch: PropTypes.func,
-  cosNameDispatch: PropTypes.func,
 };
 
 
