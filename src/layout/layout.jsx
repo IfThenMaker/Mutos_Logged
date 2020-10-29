@@ -19,32 +19,33 @@ const useStyles = makeStyles({
 });
 
 
-const Layout = ({
-  seinen, seibetu, cosName, dialog,
-}) => {
+const Layout = (
+  // {
+  // seinen, seibetu, cosName, dialog,
+// }
+) => {
   const reducer = (s, a) => a;
   const classes = useStyles();
+  const [seinen, seinenDispatch] = useReducer(reducer, '1940-01-02');
+  const [seibetu, seibetuDispatch] = useReducer(reducer, 'male');
+  const [cosName, cosNameDispatch] = useReducer(reducer, 'index');
   const [contents, contentsDispatch] = useReducer(reducer, 'senten');
-  const { teikeimei } = teikeimeiCalc({ birthday: seinen });
+  const { teikeimei } = teikeimeiCalc({ seinen });
   console.log('提携命:', teikeimei);
   const titleKanji = {
     senten: '先天予定運',
     kouten: '後天予定運',
   };
 
-  const [birthday, birthdayDispatch] = useReducer(reducer, '1940-01-02');
-  const [sex, sexDispatch] = useReducer(reducer, 'male');
-  const [customer, customerDispatch] = useReducer(reducer, 'お客様名');
-  console.log('se', sex);
 
   return (
     <MutosProvider value={{
-      birthday,
-      sex,
-      customer,
-      birthdayDispatch,
-      sexDispatch,
-      customerDispatch,
+      seinen,
+      seibetu,
+      cosName,
+      seinenDispatch,
+      seibetuDispatch,
+      cosNameDispatch,
     }}
     >
       <Grid
@@ -57,17 +58,9 @@ const Layout = ({
           <Header title={titleKanji[contents]} />
         </Grid>
         <Grid item xs={12}>
-          <Input
-            seinen={seinen}
-            seibetu={seibetu}
-            cosName={cosName}
-            dialog={dialog}
-          />
+          <Input />
         </Grid>
         <Grid item xs={12}>
-          {contents === 'senten'
-            ? Senten({ teikeimei, seinen, seibetu })
-            : Kouten({ teikeimei, seinen, seibetu })}
         </Grid>
         <Grid item xs={12}>
           <Button dispatch={contentsDispatch} />
@@ -90,3 +83,8 @@ Layout.propTypes = {
 };
 
 export default Layout;
+
+
+// {contents === 'senten'
+//   ? Senten({ teikeimei, seinen, seibetu })
+//   : Kouten({ teikeimei, seinen, seibetu })}

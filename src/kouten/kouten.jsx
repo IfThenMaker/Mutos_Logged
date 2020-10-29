@@ -18,7 +18,7 @@ const Kouten = ({
   teikeimei, seinen, seibetu,
 }) => {
   const classes = useStyles();
-
+  console.log('kouten', teikeimei, seinen, seibetu);
   return (
     <Grid container>
       <Grid item xs={12}>

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
 
-const NameField = ({ dispatch }) => (
+const NameField = ({ defaultValue, dispatch }) => (
   <TextField
     autoFocus
     required
@@ -12,13 +12,16 @@ const NameField = ({ dispatch }) => (
     label="お名前"
     type="text"
     fullWidth
+    defaultValue={defaultValue}
     onChange={(e) => dispatch(e.target.value)}
   />
 );
 NameField.defaultProps = {
+  defaultValue: '1940-01-01',
   dispatch: (e) => e,
 };
 NameField.propTypes = {
+  defaultValue: PropTypes.string,
   dispatch: PropTypes.func,
 };
 

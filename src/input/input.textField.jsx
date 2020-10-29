@@ -22,6 +22,7 @@ const useStyles = makeStyles({
 });
 
 const InputData = ({ index, value }) => {
+  console.log('field', index, value);
   const classes = useStyles();
 
   return (

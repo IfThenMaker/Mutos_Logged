@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
+import Dialog from '../dialog/entry';
 import InputData from './input.textField';
 import MutosContext from '../context';
 
@@ -14,17 +15,22 @@ const useStyles = makeStyles({
 });
 
 
-const Input = ({
-  seinen, seibetu, cosName, dialog,
-}) => {
+const Input = (
+  // {
+  // seinen, seibetu, cosName, dialog,
+// }
+) => {
   const classes = useStyles();
   const today = new Date();
   const seibetuKanji = {
     male: '男性',
     female: '女性',
   };
-  const { sex } = useContext(MutosContext);
-  console.log('sex', sex);
+  const {
+    seinen, seibetu, cosName,
+    seinenDispatch, seibetuDispatch, cosNameDispatch,
+  } = useContext(MutosContext);
+  console.log('input', seinen, seibetu, cosName);
 
   return (
     <div>
@@ -46,12 +52,16 @@ const Input = ({
         alignItems="center"
       >
         <Grid item xs={12} sm={8}>
-          <InputData index="お名前" value={cosName} />
+          <InputData index="お名前" value={cosName.cosName} />
           <InputData index="生年月日" value={seinen} />
-          <InputData index="性別" value={seibetuKanji[seibetu]} />
+          <InputData index="性別" value={seibetuKanji[seibetu.seibetu]} />
         </Grid>
         <Grid className="MuiGrid-justify-xs-center" item xs={12} sm={4}>
-          {dialog}
+          <Dialog
+            seinenDispatch={seinenDispatch}
+            seibetuDispatch={seibetuDispatch}
+            cosNameDispatch={cosNameDispatch}
+          />
         </Grid>
       </Grid>
     </div>

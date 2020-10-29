@@ -15,8 +15,9 @@ class ExtendedUtils extends DateFnsUtils {
   }
 }
 
-const BirthField = ({ dispatch }) => {
-  const [selectedDate, setSelectedDate] = React.useState(new Date('1950-01-01T00:00:00'));
+const BirthField = ({ defaultValue, dispatch }) => {
+  const [selectedDate, setSelectedDate] = React.useState(defaultValue);
+  // new Date('1950-01-01T00:00:00')
   const handleDateChange = (date) => {
     let std;
     if (date) {
@@ -50,9 +51,11 @@ const BirthField = ({ dispatch }) => {
   );
 };
 BirthField.defaultProps = {
+  defaultValue: '1940-01-01',
   dispatch: (e) => e,
 };
 BirthField.propTypes = {
+  defaultValue: PropTypes.string,
   dispatch: PropTypes.func,
 };
 

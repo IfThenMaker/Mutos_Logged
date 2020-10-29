@@ -25,15 +25,17 @@ const useStyles = makeStyles({
 
 
 const Senten = ({ seinen, seibetu }) => {
+  console.log('senten', seinen, seibetu);
   const classes = useStyles();
+  console.log('kkore');
   const {
     teikeimei, teikeimeiNum, jinColor,
-  } = teikeimeiCalc({ birthday: seinen });
+  } = teikeimeiCalc({ seinen });
   const { syugokashin, syugoColor } = syugokashinCalc({
-    birthday: seinen,
+    seinen,
     teikeimeiNum,
   });
-  const { bodykashin, bodyColor } = bodykashinCalc({ birthday: seinen });
+  const { bodykashin, bodyColor } = bodykashinCalc({ seinen });
 
 
   return (
