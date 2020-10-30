@@ -30,7 +30,7 @@ const Input = (
     seinen, seibetu, cosName,
     seinenDispatch, seibetuDispatch, cosNameDispatch,
   } = useContext(MutosContext);
-  console.log('input', seinen, seibetu, cosName);
+
 
   return (
     <div>

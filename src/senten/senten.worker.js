@@ -7,7 +7,6 @@ import syugokashinData from './datas/syugokashinData';
 
 
 const dateData = ({ seinen }) => {
-  console.log('sei', seinen);
   const mo = seinen.slice(5, 7);
   // console.log('nmi', mo.slice(0, 1));
   return {
@@ -30,9 +29,9 @@ export const teikeimeiCalc = ({ seinen }) => {
     }
     return kari;
   })();
-  // console.log('mesu', mesu);
+  console.log('命数:', mesu);
   const himeguri = mesu % 10;
-  // console.log('himegu', himeguri);
+  console.log('生年日巡数:', himeguri);
   return jinColorData[himeguri];
 };
 

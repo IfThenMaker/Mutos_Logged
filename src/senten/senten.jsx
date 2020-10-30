@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -26,7 +26,6 @@ const useStyles = makeStyles({
 
 const Senten = ({ seinen, seibetu }) => {
   const classes = useStyles();
-
   const {
     teikeimei, teikeimeiNum, jinColor,
   } = teikeimeiCalc({ seinen });

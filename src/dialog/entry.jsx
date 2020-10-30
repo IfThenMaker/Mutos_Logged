@@ -32,7 +32,7 @@ const EntryData = () => {
     seinenDispatch, seibetuDispatch, cosNameDispatch,
   } = useContext(MutosContext);
   const [name, setName] = useState(cosName);
-  const [birth, setBirth] = useState(seinen);
+  const [birth, setBierth] = useState(seinen);
   const [sex, setSex] = useState(seibetu);
   const [open, setOpen] = useState(true);
 
@@ -50,6 +50,13 @@ const EntryData = () => {
     }
   };
 
+  // useEffect(() => {
+  //   setHero({ ...heroData });
+  //   setAbout({ ...aboutData });
+  //   setProjects([...projectsData]);
+  //   setContact({ ...contactData });
+  //   setFooter({ ...footerData });
+  // }, []);
 
   return (
     <Grid>
@@ -66,7 +73,7 @@ const EntryData = () => {
         <DialogContent>
           <NameField defaultValue={name} dispatch={setName} />
           <SexField defaultValue={sex} dispatch={setSex} />
-          <BirthField defaultValue={birth} dispatch={setBirth} />
+          <BirthField defaultValue={birth} dispatch={setBierth} />
         </DialogContent>
         <DialogActions style={{
           justifyContent: 'center',
@@ -77,6 +84,7 @@ const EntryData = () => {
             variant="contained"
             color="primary"
             size="large"
+            disabled={birth === 'fail'}
             style={{ fontWeight: 'bold', letterSpacing: '0.2em' }}
             onClick={handleClose}
           >

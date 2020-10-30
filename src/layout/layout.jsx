@@ -19,25 +19,24 @@ const useStyles = makeStyles({
 });
 
 
-const Layout = (
-  // {
-  // seinen, seibetu, cosName, dialog,
-// }
-) => {
+const Layout = () => {
   const reducer = (s, a) => a;
   const classes = useStyles();
-  const [seinen, seinenDispatch] = useReducer(reducer, '1940-01-02');
+  const [seinen, seinenDispatch] = useReducer(reducer, '1940-01-01');
   const [seibetu, seibetuDispatch] = useReducer(reducer, 'male');
   const [cosName, cosNameDispatch] = useReducer(reducer, 'index');
   const [contents, contentsDispatch] = useReducer(reducer, 'senten');
   const { teikeimei } = teikeimeiCalc({ seinen });
-  console.log('提携命:', teikeimei, seinen);
+  console.log('～～～　新規計算スタート　～～～');
+  console.log('お名前:', cosName.cosName);
+  console.log('生年月日:', seinen);
+  console.log('性別', seibetu.seibetu);
+  console.log('提携命:', teikeimei);
   const titleKanji = {
     senten: '先天予定運',
     kouten: '後天予定運',
   };
-  // const SentenContents = Senten();
-  // const KoutenContents = Kouten();
+
 
   return (
     <MutosProvider value={{
@@ -73,18 +72,6 @@ const Layout = (
       </Grid>
     </MutosProvider>
   );
-};
-Layout.defaultProps = {
-  seinen: '1940-01-01',
-  seibetu: 'male',
-  cosName: 'お客様名',
-  dialog: {},
-};
-Layout.propTypes = {
-  seinen: PropTypes.string,
-  seibetu: PropTypes.string,
-  cosName: PropTypes.string,
-  dialog: PropTypes.object,
 };
 
 export default Layout;

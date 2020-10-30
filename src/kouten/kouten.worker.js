@@ -93,7 +93,7 @@ const genJyunsu = () => {
 */
 export const genJyunkashinArr = ({ teikeimei }) => {
   const jyunsu = genJyunsu().year;
-  console.log('占い日年巡数:', jyunsu);
+  // console.log('占い日年巡数:', jyunsu);
   //   create kashinsu array
   const kashinsuArr = genTenArr(jyunsu);
   // console.log('kashinsuArr', kashinsuArr);
