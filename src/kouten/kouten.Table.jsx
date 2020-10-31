@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -23,10 +22,7 @@ const useStyles = makeStyles({
 });
 
 
-const KoutenTable = ({
-  seinen, seibetu, teikeimei,
-}) => {
-  // console.log('table', seinen, seibetu);
+const KoutenTable = () => {
   const classes = useStyles();
 
   return (
@@ -34,27 +30,16 @@ const KoutenTable = ({
       <Table size="small">
         <TableBody>
           <Jyunsu />
-          <Kashin teikeimei={teikeimei} />
+          <Kashin />
           <Year />
-          <Month teikeimei={teikeimei} />
-          <Omeguri seinen={seinen} seibetu={seibetu} />
-          <Kaminashi seinen={seinen} seibetu={seibetu} />
-          <Goujyun seinen={seinen} />
+          <Month />
+          <Omeguri />
+          <Kaminashi />
+          <Goujyun />
         </TableBody>
       </Table>
     </TableContainer>
   );
-};
-
-KoutenTable.defaultProps = {
-  teikeimei: '厳山命',
-  seinen: '1940-01-01',
-  seibetu: 'male',
-};
-KoutenTable.propTypes = {
-  seinen: PropTypes.string,
-  seibetu: PropTypes.string,
-  teikeimei: PropTypes.string,
 };
 
 

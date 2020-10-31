@@ -1,4 +1,4 @@
-{
+export default {
   "豪風命": {
     "1": {
       "kashin": "雷光神",

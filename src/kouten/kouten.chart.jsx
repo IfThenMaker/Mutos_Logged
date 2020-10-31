@@ -1,7 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-
+import React, { useContext } from 'react';
 import {
   LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend,
 } from 'recharts';
@@ -9,26 +6,20 @@ import {
 import {
   genUnseiData,
 } from './kouten.worker';
+import MutosContext from '../context';
 
 
-const useStyles = makeStyles({
-  keisen: {
-    borderBottom: 'double 2px rgba(0,0,0,0.55)',
-  },
-});
-
-
-const Chart = ({ teikeimei, seinen, seibetu }) => {
-  // console.log('chart', teikeimei, seinen, seibetu);
+const Chart = () => {
+  const { teikeimei, seinen, seibetu } = useContext(MutosContext);
   const unseiData = genUnseiData({ teikeimei, seinen, seibetu });
   const labelJa = {
     kashin: '巡華神',
     nen: '該当年',
-    getuA: '該当月(前半)',
-    getuB: '該当月(後半)',
+    getuA: '該当月(後半)',
+    getuB: '該当月(前半)',
     omeguri: '大巡運',
   };
-  const formatter = (v, name) => [v || '無', labelJa[name]];
+  const formatter = (v, name) => [v || 0, labelJa[name]];
   const colorText = (value, entry) => {
     const { color } = entry;
     return (
@@ -43,7 +34,7 @@ const Chart = ({ teikeimei, seinen, seibetu }) => {
       data={unseiData}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="colmn" />
+      <XAxis dataKey="colmn" ticks={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '1', '2']} />
       <YAxis />
       <Tooltip
         formatter={formatter}
@@ -60,15 +51,6 @@ const Chart = ({ teikeimei, seinen, seibetu }) => {
     </LineChart>
   );
 };
-Chart.defaultProps = {
-  teikeimei: '厳山命',
-  seinen: '2010-01-01',
-  seibetu: 'male',
-};
-Chart.propTypes = {
-  teikeimei: PropTypes.string,
-  seinen: PropTypes.string,
-  seibetu: PropTypes.string,
-};
+
 
 export default Chart;

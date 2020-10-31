@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -15,6 +15,8 @@ import {
   genTukijyunKashin,
   genKana,
 } from '../kouten/kouten.worker';
+import MutosContext from '../context';
+
 
 const useStyles = makeStyles({
   num: {
@@ -31,30 +33,31 @@ const useStyles = makeStyles({
 });
 
 
-const SentenTable = ({
-  seinen, seibetu, teikeimei,
-}) => {
+const SentenTable = () => {
   const classes = useStyles();
+  const { seinen, seibetu, teikeimei } = useContext(MutosContext);
   const daijyun = genDaijyunKashin({ teikeimei, seinen, seibetu });
-  // console.log('daijyun', daijyun);
   const nenjyun = genNenjyunKashin({ teikeimei });
-  // console.log('nenjyun', nenjyun);
   const tukijyun = genTukijyunKashin({ teikeimei });
-  // console.log('tukijyun', tukijyun);
   const kanna = genKana({ seinen });
-  // console.log('kanna', kanna);
 
-  const Cells = (props) => {
-    const { title, index, value } = props;
-    return (
-      <TableRow>
-        <TableCell className={classes.th} component="th">{title}</TableCell>
-        <TableCell>{index}</TableCell>
-        <TableCell>{value}</TableCell>
-      </TableRow>
-    );
+  const Cells = ({ title, index, value }) => (
+    <TableRow>
+      <TableCell className={classes.th} component="th">{title}</TableCell>
+      <TableCell>{index}</TableCell>
+      <TableCell>{value}</TableCell>
+    </TableRow>
+  );
+  Cells.defaultProps = {
+    title: 'title',
+    index: 'index',
+    value: 'value',
   };
-
+  Cells.propTypes = {
+    title: PropTypes.string,
+    index: PropTypes.string,
+    value: PropTypes.string,
+  };
 
   return (
     <Paper variant="outlined">
@@ -94,21 +97,6 @@ const SentenTable = ({
       </Grid>
     </Paper>
   );
-};
-
-SentenTable.defaultProps = {
-  seinen: '1950-01-01',
-  seibetu: 'male',
-  teikeimei: 'inochi',
-  syugokashin: 'kashin',
-  bodykashin: 'bodys',
-};
-SentenTable.propTypes = {
-  seinen: PropTypes.string,
-  seibetu: PropTypes.string,
-  teikeimei: PropTypes.string,
-  syugokashin: PropTypes.string,
-  bodykashin: PropTypes.string,
 };
 
 

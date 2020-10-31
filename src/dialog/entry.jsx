@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useContext } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -9,6 +8,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import NameField from './entry.textField.name';
 import BirthField from './entry.textField.seinen';
 import SexField from './entry.textField.seibetu';
+import MutosContext from '../context';
 
 
 const dateValidate = (dateStr) => {
@@ -26,34 +26,37 @@ const dateValidate = (dateStr) => {
 };
 
 
-const EntryData = (props) => {
+const EntryData = () => {
   const {
-    seinenDispatch,
-    seibetuDispatch,
-    cosNameDispatch,
-  } = props;
-  const [name, setName] = useState();
-  const [birth, setBirth] = useState();
-  const [sex, setSex] = useState();
+    seinen, seibetu, cosName,
+    seinenDispatch, seibetuDispatch, cosNameDispatch,
+  } = useContext(MutosContext);
+  const [name, setName] = useState(cosName);
+  const [birth, setBierth] = useState(seinen);
+  const [sex, setSex] = useState(seibetu);
   const [open, setOpen] = useState(true);
-
-  // console.log('n,b', name, birth);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
-    cosNameDispatch(name);
-    seibetuDispatch(sex);
-    const check = dateValidate(birth);
+    cosNameDispatch({ cosName: name });
+    seibetuDispatch({ seibetu: sex });
+    const check = dateValidate({ seinen: birth });
     if (check) {
       seinenDispatch(birth);
       setOpen(false);
     }
   };
-  // console.log('cosNameDispatch', birthDateDispatch);
 
+  // useEffect(() => {
+  //   setHero({ ...heroData });
+  //   setAbout({ ...aboutData });
+  //   setProjects([...projectsData]);
+  //   setContact({ ...contactData });
+  //   setFooter({ ...footerData });
+  // }, []);
 
   return (
     <Grid>
@@ -68,9 +71,9 @@ const EntryData = (props) => {
       </Button>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogContent>
-          <NameField dispatch={setName} />
-          <SexField dispatch={setSex} />
-          <BirthField dispatch={setBirth} />
+          <NameField defaultValue={name} dispatch={setName} />
+          <SexField defaultValue={sex} dispatch={setSex} />
+          <BirthField defaultValue={birth} dispatch={setBierth} />
         </DialogContent>
         <DialogActions style={{
           justifyContent: 'center',
@@ -81,25 +84,16 @@ const EntryData = (props) => {
             variant="contained"
             color="primary"
             size="large"
+            disabled={birth === 'fail'}
             style={{ fontWeight: 'bold', letterSpacing: '0.2em' }}
             onClick={handleClose}
           >
-            登録
+            結果を見る
           </Button>
         </DialogActions>
       </Dialog>
     </Grid>
   );
-};
-EntryData.defaultProps = {
-  seinenDispatch: () => {},
-  seibetuDispatch: () => {},
-  cosNameDispatch: () => {},
-};
-EntryData.propTypes = {
-  seinenDispatch: PropTypes.func,
-  seibetuDispatch: PropTypes.func,
-  cosNameDispatch: PropTypes.func,
 };
 
 

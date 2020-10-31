@@ -9,7 +9,7 @@ import Button from './layout.button';
 import Senten from '../senten/senten';
 import Kouten from '../kouten/kouten';
 import { teikeimeiCalc } from '../senten/senten.worker';
-
+import { MutosProvider } from '../context';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -19,59 +19,58 @@ const useStyles = makeStyles({
 });
 
 
-const Layout = ({
-  seinen, seibetu, cosName, dialog,
-}) => {
+const Layout = () => {
   const reducer = (s, a) => a;
   const classes = useStyles();
+  const [seinen, seinenDispatch] = useReducer(reducer, '1940-01-01');
+  const [seibetu, seibetuDispatch] = useReducer(reducer, 'male');
+  const [cosName, cosNameDispatch] = useReducer(reducer, '');
   const [contents, contentsDispatch] = useReducer(reducer, 'senten');
-  const { teikeimei } = teikeimeiCalc({ birthday: seinen });
+  const { teikeimei } = teikeimeiCalc({ seinen });
+  console.log('お名前:', cosName.cosName);
+  console.log('生年月日:', seinen);
+  console.log('性別', seibetu.seibetu);
   console.log('提携命:', teikeimei);
   const titleKanji = {
     senten: '先天予定運',
     kouten: '後天予定運',
   };
 
+
   return (
-    <Grid
-      className={classes.wrapper}
-      container
-      justify="center"
-      spacing={3}
+    <MutosProvider value={{
+      seinen,
+      seibetu,
+      cosName,
+      seinenDispatch,
+      seibetuDispatch,
+      cosNameDispatch,
+      teikeimei,
+    }}
     >
-      <Grid item xs={12}>
-        <Header title={titleKanji[contents]} />
+      <Grid
+        className={classes.wrapper}
+        container
+        justify="center"
+        spacing={3}
+      >
+        <Grid item xs={12}>
+          <Header title={titleKanji[contents]} />
+        </Grid>
+        <Grid item xs={12}>
+          <Input />
+        </Grid>
+        <Grid item xs={12}>
+          {contents === 'senten'
+            ? Senten({ teikeimei, seinen, seibetu })
+            : Kouten()}
+        </Grid>
+        <Grid item xs={12}>
+          <Button dispatch={contentsDispatch} />
+        </Grid>
       </Grid>
-      <Grid item xs={12}>
-        <Input
-          seinen={seinen}
-          seibetu={seibetu}
-          cosName={cosName}
-          dialog={dialog}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        {contents === 'senten'
-          ? Senten({ teikeimei, seinen, seibetu })
-          : Kouten({ teikeimei, seinen, seibetu })}
-      </Grid>
-      <Grid item xs={12}>
-        <Button dispatch={contentsDispatch} />
-      </Grid>
-    </Grid>
+    </MutosProvider>
   );
-};
-Layout.defaultProps = {
-  seinen: '1940-01-01',
-  seibetu: 'male',
-  cosName: 'お客様名',
-  dialog: {},
-};
-Layout.propTypes = {
-  seinen: PropTypes.string,
-  seibetu: PropTypes.string,
-  cosName: PropTypes.string,
-  dialog: PropTypes.object,
 };
 
 export default Layout;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -15,11 +15,9 @@ const useStyles = makeStyles({
   },
 });
 
-const SexField = ({ dispatch }) => {
+const SexField = ({ defaultValue, dispatch }) => {
   const classes = useStyles();
-  const [value, setValue] = useState('male');
   const handleChange = (e) => {
-    setValue(e.target.value);
     dispatch(e.target.value);
   };
 
@@ -28,7 +26,7 @@ const SexField = ({ dispatch }) => {
       className={classes.gender}
       aria-label="gender"
       name="gender1"
-      value={value}
+      value={defaultValue}
       onChange={handleChange}
     >
       <FormControlLabel value="male" control={<Radio />} label="男性" />
@@ -37,9 +35,11 @@ const SexField = ({ dispatch }) => {
   );
 };
 SexField.defaultProps = {
+  defaultValue: 'male',
   dispatch: (e) => e,
 };
 SexField.propTypes = {
+  defaultValue: PropTypes.string,
   dispatch: PropTypes.func,
 };
 
