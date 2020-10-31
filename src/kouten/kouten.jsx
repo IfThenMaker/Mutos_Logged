@@ -14,6 +14,7 @@ const useStyles = makeStyles({
 });
 
 const Kouten = () => {
+  console.log('～～～　後天計算スタート　～～～');
   const classes = useStyles();
   return (
     <Grid container>

@@ -252,7 +252,7 @@ export const genDaijyunArr = ({ seinen, seibetu }) => {
   // console.log('tuki', tukijyunsu);
   const jyunsetu = inyo ? junsetuYou : junsetuIn;
   const setusu = Number(jyunsetu[month][day]);
-  // console.log('巡節年:', setusu);
+  console.log('巡節年:', setusu);
   const daijyunsu = genTukijyunsu({ seinen });
   console.log('生月巡数:', daijyunsu);
   const jyunArr = inyo ? genTenArr(daijyunsu) : genInArr(daijyunsu);
@@ -693,7 +693,7 @@ export const genDaijyunKashin = ({ seinen, seibetu, teikeimei }) => {
   const year = date.getYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
-  // console.log('seinen', seinen);
+  // console.log('month', month);
   console.log('陰陽:', inyo ? '陽' : '陰');
   // console.log('tuki', tukijyunsu);
   const jyunsetu = inyo ? junsetuYou : junsetuIn;
@@ -702,30 +702,49 @@ export const genDaijyunKashin = ({ seinen, seibetu, teikeimei }) => {
   const toshi = new Date().getYear() - year;
   console.log('年齢', toshi);
   const daijyunArr = genDaijyunArr({ seinen, seibetu });
-  // console.log(daijyunArr);
+  // console.log('dai', daijyunArr);
   const resultObj = {
     title: '大巡華神',
     index: '',
     value: '',
   };
-  let index;
-  for (let i = 0; i < daijyunArr.length; i += 1) {
-    const check = daijyunArr[i].slice(0, 2).replace('歳', '');
-    // console.log('check', check);
-    if (check > toshi) {
-      index = i;
-      break;
-    }
+
+  // let index;
+  // for (let i = 0; i < daijyunArr.length; i += 1) {
+  //   const check = daijyunArr[i].slice(0, 2).replace('歳', '');
+  //   console.log('check', check);
+  //   if (check > toshi) {
+  //     index = i;
+  //     break;
+  //   }
+  // }
+  const dai = Math.floor(toshi / 10) * 10;
+  const keta = toshi < 10 ? 0 : toshi % 10;
+  // console.log('ka', keta);
+  // console.log('ten', dai);
+
+  let birthIndex;
+  if (toshi === 0) {
+    birthIndex = 0;
+  } else if (keta < setusu) {
+    birthIndex = (dai / 10);
+    // console.log('maru', birthIndex);
+  } else {
+    birthIndex = (dai / 10) + 1;
   }
+  // console.log('birthIndex', birthIndex);
+
+  let index = genTukijyunsu({ seinen }) - 1 + birthIndex;
+  if (index >= 10) { index %= 10; }
   // console.log('index', index);
   // console.log('teikei', teikeimei);
   const kashinArr = genJyunkashinArr({ teikeimei });
+
   resultObj.index = daijyunArr[index];
   resultObj.value = kashinArr[index].kashin;
   // console.log('result', resultObj);
   return resultObj;
 };
-
 
 
 /*
@@ -738,7 +757,7 @@ export const genNenjyunKashin = ({ teikeimei }) => {
   return {
     title: '年巡華神',
     index: `${new Date(date).getYear() + 1900}年`,
-    value: kashinArr[7].kashin,
+    value: kashinArr[6].kashin,
   };
 };
 

@@ -25,15 +25,16 @@ const useStyles = makeStyles({
 
 
 const Senten = ({ seinen, seibetu }) => {
+  console.log('～～～　先天計算スタート　～～～');
   const classes = useStyles();
   const {
     teikeimei, teikeimeiNum, jinColor,
   } = teikeimeiCalc({ seinen });
-  const { syugoColor } = syugokashinCalc({
+  const { syugokashin, syugoColor } = syugokashinCalc({
     seinen,
     teikeimeiNum,
   });
-  const { bodyColor } = bodykashinCalc({ seinen });
+  const { bodykashin, bodyColor } = bodykashinCalc({ seinen });
 
 
   return (
@@ -46,7 +47,10 @@ const Senten = ({ seinen, seibetu }) => {
         <h4>診断結果</h4>
       </Grid>
       <Grid className={classes.table} item xs={12} sm={6}>
-        <SentenTable />
+        <SentenTable
+          syugokashin={syugokashin}
+          bodykashin={bodykashin}
+        />
       </Grid>
       <Grid className={classes.jintai} item xs={12} sm={4}>
         <h4>イメージカラー</h4>

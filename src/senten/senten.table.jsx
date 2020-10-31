@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -24,8 +25,8 @@ const useStyles = makeStyles({
 
 const createData = (title, value) => ({ title, value });
 
-const SentenTable = () => {
-  const { teikeimei, syugokashin, bodykashin } = useContext(MutosContext);
+const SentenTable = ({ syugokashin, bodykashin }) => {
+  const { teikeimei } = useContext(MutosContext);
   const classes = useStyles();
   const rows = [
     createData('teikeimei', teikeimei),
@@ -73,6 +74,14 @@ const SentenTable = () => {
       </Table>
     </TableContainer>
   );
+};
+SentenTable.defaultProps = {
+  syugokashin: '天 空',
+  bodykashin: '大 地',
+};
+SentenTable.propTypes = {
+  syugokashin: PropTypes.string,
+  bodykashin: PropTypes.string,
 };
 
 

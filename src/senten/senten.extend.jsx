@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -40,16 +41,23 @@ const SentenTable = () => {
   const tukijyun = genTukijyunKashin({ teikeimei });
   const kanna = genKana({ seinen });
 
-  const Cells = ({ title, index, value }) => {
-    return (
-      <TableRow>
-        <TableCell className={classes.th} component="th">{title}</TableCell>
-        <TableCell>{index}</TableCell>
-        <TableCell>{value}</TableCell>
-      </TableRow>
-    );
+  const Cells = ({ title, index, value }) => (
+    <TableRow>
+      <TableCell className={classes.th} component="th">{title}</TableCell>
+      <TableCell>{index}</TableCell>
+      <TableCell>{value}</TableCell>
+    </TableRow>
+  );
+  Cells.defaultProps = {
+    title: 'title',
+    index: 'index',
+    value: 'value',
   };
-
+  Cells.propTypes = {
+    title: PropTypes.string,
+    index: PropTypes.string,
+    value: PropTypes.string,
+  };
 
   return (
     <Paper variant="outlined">

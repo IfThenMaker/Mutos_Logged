@@ -24,10 +24,9 @@ const Layout = () => {
   const classes = useStyles();
   const [seinen, seinenDispatch] = useReducer(reducer, '1940-01-01');
   const [seibetu, seibetuDispatch] = useReducer(reducer, 'male');
-  const [cosName, cosNameDispatch] = useReducer(reducer, 'index');
+  const [cosName, cosNameDispatch] = useReducer(reducer, '');
   const [contents, contentsDispatch] = useReducer(reducer, 'senten');
   const { teikeimei } = teikeimeiCalc({ seinen });
-  console.log('～～～　新規計算スタート　～～～');
   console.log('お名前:', cosName.cosName);
   console.log('生年月日:', seinen);
   console.log('性別', seibetu.seibetu);

@@ -1,11 +1,41 @@
-const date = new Date('2020-01-01');
-
-const arr =  ["辰", "巳"]
-const am = '辰';
 
 
-console.log(am === arr[0]);
 
+const setusu = 5;
+const toshi = 14;
+const dai = Math.floor(toshi / 10) * 10;
+const keta = toshi < 10 ? 0 : toshi % 10;
+console.log('ka', keta);
+console.log('ten', dai);
+
+let birthIndex;
+if (toshi === 0) {
+  birthIndex = 0;
+} else if (keta < setusu) {
+  birthIndex = (dai / 10);
+  console.log('maru', birthIndex);
+} else {
+  birthIndex = (dai / 10) + 1;
+}
+console.log('birthIndex', birthIndex);
+
+
+// let birthText;
+// if (toshi === 0) {
+//   birthText = '0 ~ 1歳';
+// } else (toshi % 10 === 0) {
+//   birthText = `${dai} ~ ${dai + 9}歳`;
+// }
+//
+// console.log('by', birthText);
+
+// const date = new Date('2020-01-01');
+//
+// const arr =  ["辰", "巳"]
+// const am = '辰';
+//
+//
+// console.log(am === arr[0]);
 
 
 
