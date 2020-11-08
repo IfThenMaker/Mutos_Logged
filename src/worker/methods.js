@@ -80,18 +80,20 @@ export const setuChecker = (dateStr) => {
 //   check if it is in or you
 export const inyoChecker = ({ seinen, seibetu }) => {
   const checkedDate = setuChecker(seinen);
-  const bdate = seinen.slice(0, 4);
-  const y = checkedDate.slice(0, 4);
+  const bDate = seinen.slice(0, 4);
+  const cDate = checkedDate.slice(0, 4);
   // console.log('seinen', seinen);
-  // console.log('cd', checkedDate);
-  console.log('setuOn', bdate === y);
-  const check = bdate === y
-    ? jyunsuData[Number(y) % 10].year % 2
-    : (jyunsuData[Number(y) % 10].year - 1) % 2;
-  console.log('worker c', check);
+  console.log('cd', bDate, cDate, checkedDate);
+  console.log('setuOn', bDate === cDate);
+  // const check = bDate === cDate
+  //   ? jyunsuData[Number(cDate) % 10].year % 2
+  //   : (jyunsuData[Number(cDate) % 10].year - 1) % 2;
+  // console.log('worker c', check);
+  const check = jyunsuData[Number(cDate) % 10].year % 2;
   // console.log('seibe', seibetu, seibetu.seibetu === 'male');
   let inyo = true;
   if (check !== 0 && seibetu.seibetu === 'female') { inyo = false; }
   if (check === 0 && seibetu.seibetu === 'male') { inyo = false; }
+  console.log('陰陽:', inyo ? '陽' : '陰');
   return inyo;
 };

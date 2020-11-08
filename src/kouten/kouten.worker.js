@@ -702,7 +702,7 @@ export const genDaijyunKashin = ({ seinen, seibetu, teikeimei }) => {
   const month = date.getMonth() + 1;
   const day = date.getDate();
   // console.log('month', month);
-  console.log('陰陽:', inyo ? '陽' : '陰');
+  // console.log('陰陽:', inyo ? '陽' : '陰');
   // console.log('tuki', tukijyunsu);
   const jyunsetu = inyo ? junsetuYou : junsetuIn;
   const setusu = Number(jyunsetu[month][day]);

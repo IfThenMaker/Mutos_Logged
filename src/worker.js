@@ -1,13 +1,11 @@
 import jyunkashinData from './datas/jyunkashin';
 import etoData from './datas/eto';
-import jyunsuData from './datas/jyunsu';
 
 import {
   genCycleArr, genCycleRevArr,
   genJyunsu,
   setuChecker, inyoChecker,
 } from './worker/methods';
-
 
 
 /*
