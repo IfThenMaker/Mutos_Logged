@@ -1,102 +1,13 @@
 import jyunkashinData from './datas/jyunkashin';
 import etoData from './datas/eto';
 import jyunsuData from './datas/jyunsu';
-import setuData from './datas/setu';
 
+import {
+  genCycleArr, genCycleRevArr,
+  genJyunsu,
+  setuChecker, inyoChecker,
+} from './worker/methods';
 
-/* -----  methods  ----- */
-//   generate int cycle arr
-const genCycleArr = (
-  startNumber,
-  colmuns = 12,
-  count = 12,
-) => {
-  const arr = [startNumber];
-  let counter = startNumber;
-  const intArr = Array.from({ length: colmuns - 1 }, (v, k) => k + 1);
-  intArr.forEach(() => {
-    if (counter < count) {
-      counter += 1;
-    } else {
-      counter = 1;
-    }
-    arr.push(counter);
-  });
-  return arr;
-};
-
-//   generate int cycle reverse arr
-const genCycleRevArr = (
-  startNumber,
-  colmuns = 12,
-  count = 12,
-) => {
-  const arr = [startNumber];
-  let counter = startNumber;
-  const intArr = Array.from({ length: colmuns - 1 }, (v, k) => colmuns - k - 1);
-  intArr.forEach(() => {
-    if (counter > 1) {
-      counter -= 1;
-    } else {
-      counter = count;
-    }
-    arr.push(counter);
-  });
-  return arr;
-};
-
-//   junsu object nen and tuki
-const genJyunsu = (dateStr) => {
-  const date = new Date(dateStr);
-  const year = date.getYear();
-  const month = date.getMonth();
-  const data = jyunsuData[year % 10];
-  const tukijyunArr = genCycleArr(data.month, 12, 10);
-  const result = {
-    year: data.year,
-    month: tukijyunArr[month],
-  };
-  return result;
-};
-
-//   setu check with birthdate string
-export const setuChecker = (dateStr) => {
-  const dt = new Date(dateStr);
-  const y = dt.getYear() + 1900;
-  const m = dt.getMonth() + 1;
-  const setu = setuData[String(y)];
-  let ny = y;
-  let nm = m;
-  const nd = dt.getDate();
-  //   yearCheck
-  const setuYear = new Date(`${y}-2-${setu.startDate}`);
-  if (dt < setuYear) { ny -= 1; }
-  //   month chack
-  const setuMonth = new Date(`${y}-${m}-${setu.tuki[m]}`);
-  if (dt < setuMonth) { nm = (nm - 1) !== 0 ? (nm - 1) : 12; }
-  const res = `${ny}-${nm}-${nd}`;
-  // console.log(dateStr, 'che', res);
-  return res;
-};
-
-//   check if it is in or you
-export const inyoChecker = ({ seinen, seibetu }) => {
-  const checkedDate = setuChecker(seinen);
-  const bdate = seinen.slice(0, 4);
-  const y = checkedDate.slice(0, 4);
-  // console.log('seinen', seinen);
-  // console.log('cd', checkedDate);
-  console.log('setuOn', bdate === y);
-  const check = bdate === y
-    ? jyunsuData[Number(y) % 10].year % 2
-    : (jyunsuData[Number(y) % 10].year - 1) % 2;
-  console.log('worker c', check);
-  // console.log('seibe', seibetu, seibetu.seibetu === 'male');
-  let inyo = true;
-  if (check !== 0 && seibetu.seibetu === 'female') { inyo = false; }
-  if (check === 0 && seibetu.seibetu === 'male') { inyo = false; }
-  return inyo;
-};
 
 
 /*

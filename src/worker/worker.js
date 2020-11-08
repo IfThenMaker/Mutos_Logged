@@ -6,7 +6,7 @@ import kaminashiData from '../datas/kaminashi';
 import himeguriData from '../datas/himeguri';
 import goujyunData from '../datas/goujyun';
 import unseiData from '../datas/unsei';
-import { setuChecker } from '../worker';
+import { setuChecker } from './methods';
 
 
 /* -----  methods  ----- */
@@ -30,23 +30,6 @@ const genCycleArr = (
   return arr;
 };
 
-//   setuCheck
-// const setuChecker = (dateStr) => {
-//   const dt = new Date(dateStr);
-//   const y = dt.getYear() + 1900;
-//   const m = dt.getMonth() + 1;
-//   const setu = setuData[String(y)];
-//   let ny = y;
-//   let nm = m;
-//   const nd = dt.getDate();
-//   //   yearCheck
-//   const setuYear = new Date(`${y}-2-${setu.startDate}`);
-//   if (dt < setuYear) { ny -= 1; }
-//   //   month chack
-//   const setuMonth = new Date(`${y}-${m}-${setu.tuki[m]}`);
-//   if (dt < setuMonth) { nm = (nm - 1) !== 0 ? (nm - 1) : 12; }
-//   return `${ny}-${nm}-${nd}`;
-// };
 
 //   junsu object nen and tuki
 const genJyunsu = (dateStr) => {

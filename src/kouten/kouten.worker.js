@@ -10,9 +10,8 @@ import goujyunData from '../datas/goujyun';
 import unseiData from '../datas/unsei';
 
 import { genChartA, genChartB } from '../worker/worker';
-import {
-  inyoChecker, setuChecker, genDaijyunEtoArr,
-} from '../worker';
+import { genDaijyunEtoArr } from '../worker';
+import { inyoChecker, setuChecker } from '../worker/methods';
 
 //   pass num return 12nums array
 //   genEtoArr
