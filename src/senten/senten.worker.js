@@ -1,9 +1,9 @@
-import data from './datas/himeguri';
-import jinColorData from './datas/jinColor';
-import syugoColorData from './datas/syugoColor';
-import bodyColorData from './datas/bodyColor';
-import syugoIndex from './datas/syugoIndex';
-import syugokashinData from './datas/syugokashinData';
+import data from '../datas/himeguri';
+import jinColorData from '../datas/jinColor';
+import syugoColorData from '../datas/syugoColor';
+import bodyColorData from '../datas/bodyColor';
+import syugoIndex from '../datas/syugoIndex';
+import syugokashinData from '../datas/syugokashinData';
 
 
 const dateData = ({ seinen }) => {

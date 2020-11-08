@@ -3,7 +3,8 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 import Cells from './kouten.Table.cells';
-import { genDaijyunArr, genDaijyunEtoArr } from './kouten.worker';
+import { genDaijyunArr } from './kouten.worker';
+import { genDaijyunEtoArr } from '../worker';
 import MutosContext from '../context';
 
 

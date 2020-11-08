@@ -1,12 +1,12 @@
-import setuData from './setu';
-import jyunsuData from './jyunsu';
-import jyunkashinData from './jyunkashin';
-import etoData from './eto';
-import kaminashiData from './kaminashi';
+import jyunsuData from '../datas/jyunsu';
+import jyunkashinData from '../datas/jyunkashin';
+import etoData from '../datas/eto';
+import kaminashiData from '../datas/kaminashi';
 
-import himeguriData from './himeguri';
-import goujyunData from './goujyun';
-import unseiData from './unsei';
+import himeguriData from '../datas/himeguri';
+import goujyunData from '../datas/goujyun';
+import unseiData from '../datas/unsei';
+import { setuChecker } from '../worker';
 
 
 /* -----  methods  ----- */
@@ -31,22 +31,22 @@ const genCycleArr = (
 };
 
 //   setuCheck
-const setuChecker = (dateStr) => {
-  const dt = new Date(dateStr);
-  const y = dt.getYear() + 1900;
-  const m = dt.getMonth() + 1;
-  const setu = setuData[String(y)];
-  let ny = y;
-  let nm = m;
-  const nd = dt.getDate();
-  //   yearCheck
-  const setuYear = new Date(`${y}-2-${setu.startDate}`);
-  if (dt < setuYear) { ny -= 1; }
-  //   month chack
-  const setuMonth = new Date(`${y}-${m}-${setu.tuki[m]}`);
-  if (dt < setuMonth) { nm = (nm - 1) !== 0 ? (nm - 1) : 12; }
-  return `${ny}-${nm}-${nd}`;
-};
+// const setuChecker = (dateStr) => {
+//   const dt = new Date(dateStr);
+//   const y = dt.getYear() + 1900;
+//   const m = dt.getMonth() + 1;
+//   const setu = setuData[String(y)];
+//   let ny = y;
+//   let nm = m;
+//   const nd = dt.getDate();
+//   //   yearCheck
+//   const setuYear = new Date(`${y}-2-${setu.startDate}`);
+//   if (dt < setuYear) { ny -= 1; }
+//   //   month chack
+//   const setuMonth = new Date(`${y}-${m}-${setu.tuki[m]}`);
+//   if (dt < setuMonth) { nm = (nm - 1) !== 0 ? (nm - 1) : 12; }
+//   return `${ny}-${nm}-${nd}`;
+// };
 
 //   junsu object nen and tuki
 const genJyunsu = (dateStr) => {
