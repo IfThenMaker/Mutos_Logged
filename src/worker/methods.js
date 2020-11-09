@@ -83,8 +83,8 @@ export const inyoChecker = ({ seinen, seibetu }) => {
   const bDate = seinen.slice(0, 4);
   const cDate = checkedDate.slice(0, 4);
   // console.log('seinen', seinen);
-  console.log('cd', bDate, cDate, checkedDate);
-  console.log('setuOn', bDate === cDate);
+  // console.log('cd', bDate, cDate, checkedDate);
+  // console.log('setuOn', bDate === cDate);
   // const check = bDate === cDate
   //   ? jyunsuData[Number(cDate) % 10].year % 2
   //   : (jyunsuData[Number(cDate) % 10].year - 1) % 2;

@@ -66,7 +66,7 @@ export const genGetuEtoArr = () => {
   });
   arr[10] = '-';
   arr[11] = '-';
-  console.log('tukieto', arr);
+  // console.log('tukieto', arr);
   return arr;
 };
 
@@ -76,9 +76,10 @@ export const genGetuEtoArr = () => {
 */
 export const genDaijyunEtoArr = ({ seinen, seibetu }) => {
   const inyo = inyoChecker({ seinen, seibetu });
-  console.log('inyo', inyo);
+  // console.log('inyo', inyo);
   const newSeinen = setuChecker(seinen);
   const startJyunsu = genJyunsu(newSeinen).month;
+  // const indexArr = genCycleArr(startJyunsu, 12, 10);
   const indexArr = (inyo
     ? genCycleArr(startJyunsu, 12, 10)
     : genCycleRevArr(startJyunsu, 12, 10)
@@ -86,12 +87,16 @@ export const genDaijyunEtoArr = ({ seinen, seibetu }) => {
   const startEtoJyunsu = new Date(setuChecker(seinen)).getMonth() + 1;
   console.log('大巡開始巡数:', startJyunsu);
   console.log('生月干支:', etoData[startEtoJyunsu]);
-  const etoArr = genCycleArr(startEtoJyunsu, 12, 12).map(
-    (i) => etoData[i],
+  const etoArr = (inyo
+    ? genCycleArr(startEtoJyunsu, 12, 12).map(
+      (i) => etoData[i],
+    )
+    : genCycleRevArr(startEtoJyunsu, 12, 12).map(
+      (i) => etoData[i],
+    )
   );
   const resultArr = [];
   indexArr.forEach((item, i) => {
-    // console.log(item, i);
     resultArr[item - 1] = resultArr[item - 1]
       ? `${resultArr[item - 1]}, ${etoArr[i]}`
       : etoArr[i];
