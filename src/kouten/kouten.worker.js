@@ -472,36 +472,36 @@ export const genKaminashiNeniArr = ({ seinen }) => {
   return etoNashiArr;
 };
 
-export const genKaminashiTukiArr = ({ seinen }) => {
-  const teikeimei = genMesu({ seinen });
-  // console.log(teikeimei);
-  let kaminashi = {};
-  if (teikeimei <= 10) {
-    kaminashi = kaminashiData[1];
-  } else if (teikeimei <= 20) {
-    kaminashi = kaminashiData[2];
-  } else if (teikeimei <= 30) {
-    kaminashi = kaminashiData[3];
-  } else if (teikeimei <= 40) {
-    kaminashi = kaminashiData[4];
-  } else if (teikeimei <= 50) {
-    kaminashi = kaminashiData[5];
-  } else if (teikeimei <= 60) {
-    kaminashi = kaminashiData[6];
-  }
-  // console.log(kaminashi.tuki);
-  const tukiArr = genGetuArr();
-  // console.log(tukiArr);
-  const NashiArr = tukiArr.map((v) => (
-    kaminashi.tuki.indexOf(v) > -1 ? 'tuki' : ' '
-  ));
-  // console.log(NashiArr);
-  return NashiArr;
-};
+// export const genKaminashiTukiArr = ({ seinen }) => {
+//   const teikeimei = genMesu({ seinen });
+//   // console.log(teikeimei);
+//   let kaminashi = {};
+//   if (teikeimei <= 10) {
+//     kaminashi = kaminashiData[1];
+//   } else if (teikeimei <= 20) {
+//     kaminashi = kaminashiData[2];
+//   } else if (teikeimei <= 30) {
+//     kaminashi = kaminashiData[3];
+//   } else if (teikeimei <= 40) {
+//     kaminashi = kaminashiData[4];
+//   } else if (teikeimei <= 50) {
+//     kaminashi = kaminashiData[5];
+//   } else if (teikeimei <= 60) {
+//     kaminashi = kaminashiData[6];
+//   }
+//   // console.log(kaminashi.tuki);
+//   const tukiArr = genGetuArr();
+//   // console.log(tukiArr);
+//   console.log('eto', tukiArr);
+//   const NashiArr = tukiArr.map((v) => (
+//     kaminashi.tuki.indexOf(v) > -1 ? 'tuki' : ' '
+//   ));
+//   // console.log(NashiArr);
+//   return NashiArr;
+// };
 
 export const genkaminashiDaiArr = ({ seinen, seibetu }) => {
   const teikeimei = genMesu({ seinen });
-  // console.log(teikeimei);
   let kaminashi = {};
   if (teikeimei <= 10) {
     kaminashi = kaminashiData[1];
@@ -516,14 +516,26 @@ export const genkaminashiDaiArr = ({ seinen, seibetu }) => {
   } else if (teikeimei <= 60) {
     kaminashi = kaminashiData[6];
   }
-
+  // console.log('kaminashi', kaminashi);
   const etoArr = genDaijyunEtoArr({ seinen, seibetu });
+  // console.log('etoArr', etoArr);
   const NashiArr = etoArr.map((v) => {
-    // console.log(v, kaminashi.eto);
     const e = kaminashi.eto;
-    return (
-      v === e[0] || v === e[1] ? 'dai' : ' '
+    const isEto = (eto) => (
+      eto === e[0] || eto === e[1] ? 'dai' : ' '
     );
+    let result;
+    // console.log(v.length);
+    if (v.length > 2) {
+      const eto1 = isEto(v.slice(0, 1));
+      const eto2 = isEto(v.slice(-1, v.length));
+      result = eto1 === 'dai' || eto2 === 'dai'
+        ? 'dai' : ' ';
+    } else {
+      result = isEto(v);
+    }
+    // console.log('res', result);
+    return result;
   });
   // console.log('dai', NashiArr);
   return NashiArr;
@@ -683,22 +695,22 @@ export const genUnseiData = ({ teikeimei, seinen, seibetu }) => {
 };
 
 
+
+
+
 /*
   -------- senten.extend.daijyunkashin  ----------
 */
 export const genDaijyunKashin = ({ seinen, seibetu, teikeimei }) => {
   const inyo = inyoChecker({ seinen, seibetu });
   const date = new Date(setuChecker(seinen));
-  console.log('dd', date);
+  // console.log('dd', date);
   const year = date.getYear();
   const month = date.getMonth() + 1;
   const day = date.getDate();
-  // console.log('month', month);
-  // console.log('陰陽:', inyo ? '陽' : '陰');
-  // console.log('tuki', tukijyunsu);
   const jyunsetu = inyo ? junsetuYou : junsetuIn;
   const setusu = Number(jyunsetu[month][day]);
-  console.log('巡節年:', setusu);
+  // console.log('巡節年:', setusu);
   const toshi = new Date().getYear() - new Date(seinen).getYear();
   console.log('年齢', toshi);
   const daijyunArr = genDaijyunArr({ seinen, seibetu });
@@ -709,69 +721,70 @@ export const genDaijyunKashin = ({ seinen, seibetu, teikeimei }) => {
     value: '',
   };
 
-  // let index;
-  // for (let i = 0; i < daijyunArr.length; i += 1) {
-  //   const check = daijyunArr[i].slice(0, 2).replace('歳', '');
-  //   console.log('check', check);
-  //   if (check > toshi) {
-  //     index = i;
-  //     break;
-  //   }
-  // }
   const dai = Math.floor(toshi / 10) * 10;
   const keta = toshi < 10 ? 0 : toshi % 10;
-  // console.log('ka', keta);
-  // console.log('ten', dai);
-
-  const jyu = dai;
-  const ichi = keta;
-  let ans;
-  if (toshi === 0) {
-    ans = '0歳';
-  } else if (toshi <= setusu) {
-    ans = `0 ~ ${setusu}歳`;
-  } else if (keta <= setusu) {
-    ans = `${dai - 10 + setusu}歳 ~ ${dai + setusu - 1}歳`;
-  } else {
-    ans = `${dai + setusu}歳 ~ ${dai + setusu + 9}歳`;
-  }
-  // const ans = '';
-  const result = toshi === 0 ? '0歳' : ans;
-  // console.log(result);
-
   let birthIndex;
+  // console.log('setu, keta', setusu, keta);
   if (toshi === 0) {
     birthIndex = 0;
   } else if (keta < setusu) {
     birthIndex = (dai / 10);
-    // console.log('maru', birthIndex);
+    // console.log('ika');
   } else {
     birthIndex = (dai / 10) + 1;
+    // console.log('ijyo');
   }
+  // if (toshi > 10) {
+  //   birthIndex += 1;
+  // }
   // console.log('birthIndex', birthIndex);
   const tuki = genTukijyunsu({ seinen });
+  // console.log('tuki', tuki);
   let index;
   if (inyo) {
     index = tuki - 1 + birthIndex;
-    // console.log('bi', birthIndex, tuki);
+    // console.log('you');
     if (index >= 10) { index %= 10; }
   } else {
     // console.log('nega', tuki - birthIndex - 1);
     index = tuki > birthIndex
       ? tuki - birthIndex - 1
-      : 12 + (tuki - birthIndex - 1);
+      : 10 + (tuki - birthIndex - 1);
   }
-
-  // if (index >= 10) { index %= 10; }
   // console.log('index', index);
-  // console.log('teikei', teikeimei);
   const kashinArr = genJyunkashinArr({ teikeimei });
-
+  // console.log('kashinA', kashinArr);
   resultObj.index = daijyunArr[index];
   resultObj.value = kashinArr[index].kashin;
   // console.log('result', resultObj);
   return resultObj;
 };
+
+  // console.log('ka', keta);
+  // console.log('ten', dai);
+
+  // const jyu = dai;
+  // const ichi = keta;
+  // let ans;
+  // if (toshi === 0) {
+  //   ans = '0歳';
+  // } else if (toshi <= setusu) {
+  //   ans = `0 ~ ${setusu}歳`;
+  // } else if (keta <= setusu) {
+  //   ans = `${dai - 10 + setusu}歳 ~ ${dai + setusu - 1}歳`;
+  // } else {
+  //   ans = `${dai + setusu}歳 ~ ${dai + setusu + 9}歳`;
+  // }
+  // const ans = '';
+  // const result = toshi === 0 ? '0歳' : ans;
+  // console.log(result);
+
+
+
+  // if (index >= 10) { index %= 10; }
+  // console.log('index', index);
+  // console.log('teikei', teikeimei);
+
 
 
 /*
@@ -795,7 +808,7 @@ export const genNenjyunKashin = ({ teikeimei }) => {
 export const genTukijyunKashin = ({ teikeimei }) => {
   const kashinArr = genJyunkashinArr({ teikeimei });
   const date = setuChecker(new Date());
-  // console.log(date);
+  // console.log('kashinnarr', kashinArr);
   return {
     title: '月巡華神',
     index: `${new Date(date).getMonth() + 1}月`,

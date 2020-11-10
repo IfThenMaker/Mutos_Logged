@@ -102,16 +102,16 @@ export const inyoChecker = ({ seinen, seibetu }) => {
 //   return seinen tukijyunnsu
 export const genTukijyunsu = ({ seinen }) => {
   const date = new Date(seinen);
-  console.log('method', date.getMonth());
+  // console.log('method', date.getMonth());
   const y = date.getYear() + 1900;
   const nm = new Date(setuChecker((seinen))).getMonth() + 1;
-  console.log('nm', nm);
+  // console.log('nm', nm);
 
-  console.log('ch', y, jyunsuData[Number(y) % 10]);
+  // console.log('ch', y, jyunsuData[Number(y) % 10]);
   const jyunsu = jyunsuData[Number(y) % 10].month;
-  console.log('jyunsu', jyunsu);
+  // console.log('jyunsu', jyunsu);
   const arr = genCycleArr(jyunsu, 12, 10);
-  console.log('arr', arr);
+  // console.log('arr', arr);
   return arr[nm - 1];
 };
 
