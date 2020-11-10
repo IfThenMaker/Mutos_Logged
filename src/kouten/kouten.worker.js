@@ -11,7 +11,7 @@ import unseiData from '../datas/unsei';
 
 import { genChartA, genChartB } from '../worker/worker';
 import { genDaijyunEtoArr } from '../worker';
-import { inyoChecker, setuChecker } from '../worker/methods';
+import { inyoChecker, setuChecker, genTukijyunsu } from '../worker/methods';
 
 //   pass num return 12nums array
 //   genEtoArr
@@ -206,15 +206,7 @@ export const genGetuJyunsuArr = () => (
 //   return inyo;
 // };
 
-const genTukijyunsu = ({ seinen }) => {
-  const checkedDate = setuChecker(seinen);
-  const date = new Date(checkedDate);
-  // console.log('cc', date.getMonth());
-  const y = date.getYear() + 1900;
-  const m = date.getMonth();
-  const arr = genTenArr(jyunsuData[Number(y) % 10].month);
-  return arr[m];
-};
+
 
 const genInArr = (num) => {
   const arr = [num];

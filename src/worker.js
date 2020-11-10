@@ -4,6 +4,7 @@ import etoData from './datas/eto';
 import {
   genCycleArr, genCycleRevArr,
   genJyunsu,
+  genTukijyunsu,
   setuChecker, inyoChecker,
 } from './worker/methods';
 
@@ -77,8 +78,9 @@ export const genGetuEtoArr = () => {
 export const genDaijyunEtoArr = ({ seinen, seibetu }) => {
   const inyo = inyoChecker({ seinen, seibetu });
   // console.log('inyo', inyo);
-  const newSeinen = setuChecker(seinen);
-  const startJyunsu = genJyunsu(newSeinen).month;
+  // const newSeinen = setuChecker(seinen);
+  // const startJyunsu = genJyunsu(newSeinen).month;
+  const startJyunsu = genTukijyunsu({ seinen });
   // const indexArr = genCycleArr(startJyunsu, 12, 10);
   const indexArr = (inyo
     ? genCycleArr(startJyunsu, 12, 10)
