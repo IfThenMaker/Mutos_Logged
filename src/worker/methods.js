@@ -100,19 +100,74 @@ export const inyoChecker = ({ seinen, seibetu }) => {
 };
 
 //   return seinen tukijyunnsu
-export const genTukijyunsu = ({ seinen }) => {
-  const date = new Date(seinen);
-  // console.log('method', date.getMonth());
-  const y = date.getYear() + 1900;
-  const nm = new Date(setuChecker((seinen))).getMonth() + 1;
-  // console.log('nm', nm);
+// export const genTukijyunsu = ({ seinen }) => {
+//   const date = new Date(seinen);
+//   const chakeddate = new Date(setuChecker(seinen));
+//   const y = date.getYear();
+//   const m = date.getMonth();
+//   const cy = date.getYear();
+//   const cm = date.getMonth();
+//   let ansYear = cy;
+//   let ansMonth = cm;
+//   if (m === 1 || m === 2) {
+//     ansYear =
+//   }
+//   // const changedYear = y === cy ? y : cy;
+//   // const changedMonth = (() => {
+//   //   let result;
+//   //   if (m === cm) {
+//   //     result = m;
+//   //   } else {
+//   //     result = y === cy
+//   //       ?
+//   //
+//   //   }
+//   // })();
+// };
 
-  // console.log('ch', y, jyunsuData[Number(y) % 10]);
-  const jyunsu = jyunsuData[Number(y) % 10].month;
-  // console.log('jyunsu', jyunsu);
-  const arr = genCycleArr(jyunsu, 12, 10);
-  // console.log('arr', arr);
-  return arr[nm - 1];
+// export const genTukijyunsu = ({ seinen }) => {
+//   const date = new Date(seinen);
+//   // console.log('method', date.getMonth());
+//   const y = date.getYear() + 1900;
+//   const nm = new Date(setuChecker(seinen)).getMonth() + 1;
+//   console.log('setuc', setuChecker(seinen), 'seinen', seinen);
+//   console.log('nm', nm);
+//
+//   // console.log('ch', y, jyunsuData[Number(y) % 10]);
+//   const jyunsu = jyunsuData[Number(y) % 10].month;
+//   console.log('jyunsu', jyunsu);
+//   const arr = genCycleArr(jyunsu, 12, 10);
+//   // console.log('arr', arr);
+//   return arr[nm - 1];
+// };
+
+// export const genTukijyunsu = ({ seinen }) => {
+//   const checkedDate = setuChecker(seinen);
+//   const date = new Date(checkedDate);
+//   // console.log('cc', date.getMonth());
+//   console.log('setuc', setuChecker(seinen), 'seinen', seinen);
+//   const y = date.getYear() + 1900;
+//   const m = date.getMonth();
+//   const startJynsu = jyunsuData[Number(y) % 10].month;
+//   const arr = genCycleArr(startJynsu, 12, 10);
+//   return arr[m];
+// };
+
+export const genTukijyunsu = ({ seinen }) => {
+  const cd = new Date(setuChecker(seinen));
+  const d = new Date(seinen);
+  const cy = cd.getYear() + 1900;
+  const cm = cd.getMonth();
+  const y = d.getYear() + 1900;
+  const m = d.getMonth();
+  let startJynsu = jyunsuData[Number(cy) % 10].month;
+  console.log(cy, cm, y, m);
+  if (cy !== y && cm === m) {
+    startJynsu = jyunsuData[Number(y) % 10].month;
+    console.log('ireg', startJynsu);
+  }
+  const arr = genCycleArr(startJynsu, 12, 10);
+  return arr[cm];
 };
 
 // const genTukijyunsu = ({ seinen }) => {
