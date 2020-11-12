@@ -469,6 +469,8 @@ export const genKaminashiNeniArr = ({ seinen }) => {
   const etoNashiArr = EtoArr.map((v) => (
     kaminashi.eto.indexOf(v) > -1 ? 'nen' : ' '
   ));
+  if (etoNashiArr[10] === 'nen') { etoNashiArr[0] = 'nen'; }
+  if (etoNashiArr[11] === 'nen') { etoNashiArr[1] = 'nen'; }
   return etoNashiArr;
 };
 

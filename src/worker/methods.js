@@ -161,10 +161,10 @@ export const genTukijyunsu = ({ seinen }) => {
   const y = d.getYear() + 1900;
   const m = d.getMonth();
   let startJynsu = jyunsuData[Number(cy) % 10].month;
-  console.log(cy, cm, y, m);
+  // console.log(cy, cm, y, m);
   if (cy !== y && cm === m) {
     startJynsu = jyunsuData[Number(y) % 10].month;
-    console.log('ireg', startJynsu);
+    // console.log('ireg', startJynsu);
   }
   const arr = genCycleArr(startJynsu, 12, 10);
   return arr[cm];

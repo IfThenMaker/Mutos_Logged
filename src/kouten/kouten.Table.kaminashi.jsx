@@ -58,6 +58,9 @@ const Kaminashi = () => {
   const kaminashiTuki = genKaminashiGetuArr({ seinen }).map((v) => InCell(v));
   const kaminashiDai = genkaminashiDaiArr({ seinen, seibetu }).map((v) => InCell(v));
   const kaminashi = zip(kaminashiNen, kaminashiTuki, kaminashiDai);
+  // if ()
+  // console.log('n', genKaminashiNeniArr({ seinen }));
+  // console.log('nen', kaminashiNen);
 
   return (
     <TableRow>
