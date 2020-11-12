@@ -1,23 +1,26 @@
 
+const arr = ['a'];
+const arrb = null;
 
+console.log(arr.concat(arrb));
 
-const setusu = 5;
-const toshi = 14;
-const dai = Math.floor(toshi / 10) * 10;
-const keta = toshi < 10 ? 0 : toshi % 10;
-console.log('ka', keta);
-console.log('ten', dai);
-
-let birthIndex;
-if (toshi === 0) {
-  birthIndex = 0;
-} else if (keta < setusu) {
-  birthIndex = (dai / 10);
-  console.log('maru', birthIndex);
-} else {
-  birthIndex = (dai / 10) + 1;
-}
-console.log('birthIndex', birthIndex);
+// const setusu = 5;
+// const toshi = 14;
+// const dai = Math.floor(toshi / 10) * 10;
+// const keta = toshi < 10 ? 0 : toshi % 10;
+// console.log('ka', keta);
+// console.log('ten', dai);
+//
+// let birthIndex;
+// if (toshi === 0) {
+//   birthIndex = 0;
+// } else if (keta < setusu) {
+//   birthIndex = (dai / 10);
+//   console.log('maru', birthIndex);
+// } else {
+//   birthIndex = (dai / 10) + 1;
+// }
+// console.log('birthIndex', birthIndex);
 
 
 // let birthText;

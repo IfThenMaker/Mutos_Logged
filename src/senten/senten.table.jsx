@@ -50,6 +50,9 @@ const SentenTable = ({ syugokashin, bodykashin }) => {
       sub: '（印象・仮のテーマ）',
     },
   };
+  // console.log('提携命:', rows[0].value);
+  // console.log('守護華神:', rows[1].value);
+  // console.log('ボディ華神:', rows[2].value);
 
   return (
     <TableContainer className={classes.th}>
