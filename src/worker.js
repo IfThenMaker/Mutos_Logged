@@ -1,5 +1,7 @@
 import jyunkashinData from './datas/jyunkashin';
 import etoData from './datas/eto';
+import unseiData from './datas/unsei';
+import { genChartA, genChartB } from './worker/worker';
 
 import {
   genCycleArr, genCycleRevArr,
@@ -107,6 +109,111 @@ export const genDaijyunEtoArr = ({ seinen, seibetu }) => {
 };
 
 
+/*
+  -------- kouten.chart  ----------
+*/
+const genKashinData = ({ teikeimei }) => {
+  const kashinArr = genJyunkashinArr({ teikeimei });
+  const dataArr = kashinArr.map((v) => (
+    Number(v.ten.slice(0, 1))
+  ));
+  return dataArr;
+};
+
+const genNenData = ({ teikeimei }) => {
+  const firstYear = { firstYear: genNenArr()[0] };
+  const etoArr = genEtoArr(firstYear);
+  const data = unseiData[teikeimei];
+  return etoArr.map((k) => Number(data[k]));
+};
+
+const genOmeguriData = ({ teikeimei, seinen, seibetu }) => {
+  const etoArr = genDaijyunEtoArr({ seinen, seibetu });
+  const data = unseiData[teikeimei];
+  return etoArr.map((k) => {
+    const index = k.length === 1
+      ? k
+      : k.slice(-1, k.length);
+    return Number(data[index]);
+  });
+};
+
+// const genGetuData = ({ teikeimei }) => {
+//   const etoArr = genGetuEtoArr();
+//   const data = unseiData[teikeimei];
+//   return etoArr.map((k) => Number(data[k]));
+// };
+
+// const genGetuData = ({ teikeimei }) => {
+//   const etoArr = genGetuEtoArr();
+//   const data = unseiData[teikeimei];
+//   // console.log('d', data);
+//   const resArr = etoArr.map((k) => {
+//     let result;
+//     console.log('k', k);
+//     if (k.length === 1) {
+//       result = [Number(data[k])];
+//     } else {
+//       const etoA = data[k.slice(0, 1)];
+//       const etoB = data[k.slice(-1, k.length)];
+//       result = [Number(etoA), Number(etoB)];
+//     }
+//     return result;
+//   });
+//   console.log('res', resArr.slice(0, 10));
+//   return resArr.slice(0, 10);
+// };
+//
+// const genChartAdata = (arr) => {
+//   let st = 0;
+//   let ed = 0;
+//   for (let i = 0; arr.length > i; i += 1) {
+//     if (arr[i].length === 2) { ed = i; }
+//   }
+//   for (let i = arr.length - 1; i > 0; i -= 1) {
+//     if (arr[i].length === 2) { st = i; }
+//   }
+//   const arrA = arr.slice(0, st);
+//   const arrB = [[arr[st][1]], [arr[ed][1]]];
+//   const arrC = arr.slice(ed, arr.length - 1).map(() => []);
+//   const sum = arrA.concat(arrB).concat(arrC);
+//   console.log('sum', sum);
+//   return sum;
+// };
+
+// const
+
+export const genUnseiData = ({ teikeimei, seinen, seibetu }) => {
+  // genChartAdata(genGetuData({ teikeimei }));
+  const kashinData = genKashinData({ teikeimei });
+  const nenData = genNenData({ teikeimei });
+  const aData = genChartA({ teikeimei });
+  const bData = genChartB({ teikeimei });
+  const omeguriData = genOmeguriData({ teikeimei, seinen, seibetu });
+  console.log('omeguriData', omeguriData);
+  const dataArr = Array.from({ length: 12 }, (v, k) => (
+    { colmn: k < 10 ? k + 1 : String(k - 9) }
+  ));
+  kashinData.forEach((item, i) => {
+    dataArr[i].kashin = item;
+  });
+  nenData.forEach((item, i) => {
+    dataArr[i].nen = item;
+  });
+  aData.forEach((item, i) => {
+    dataArr[i].getu = item;
+  });
+  aData.forEach((item, i) => {
+    dataArr[i].getuA = item;
+  });
+  bData.forEach((item, i) => {
+    dataArr[i].getuB = item;
+  });
+  omeguriData.forEach((item, i) => {
+    dataArr[i].omeguri = item;
+  });
+  return dataArr;
+};
 
 
 
