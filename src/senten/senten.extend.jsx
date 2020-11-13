@@ -39,7 +39,7 @@ const SentenTable = () => {
   const daijyun = genDaijyunKashin({ teikeimei, seinen, seibetu });
   const nenjyun = genNenjyunKashin({ teikeimei });
   const tukijyun = genTukijyunKashin({ teikeimei });
-  console.log('tuki', tukijyun);
+  // console.log('tuki', tukijyun);
   const kanna = genKana({ seinen });
 
   const Cells = ({ title, index, value }) => (

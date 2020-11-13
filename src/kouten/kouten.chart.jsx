@@ -5,7 +5,7 @@ import {
 
 import {
   genUnseiData,
-} from './kouten.worker';
+} from '../worker';
 import MutosContext from '../context';
 
 
