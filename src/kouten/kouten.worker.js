@@ -6,9 +6,9 @@ import junsetuIn from '../datas/jyunsetuIn';
 import himeguriData from '../datas/himeguri';
 import kaminashiData from '../datas/kaminashi';
 import goujyunData from '../datas/goujyun';
-import unseiData from '../datas/unsei';
+// import unseiData from '../datas/unsei';
 
-import { genChartA, genChartB } from '../worker/worker';
+// import { genChartA, genChartB } from '../worker/worker';
 import { genDaijyunEtoArr } from '../worker';
 import { inyoChecker, setuChecker, genTukijyunsu } from '../worker/methods';
 
@@ -262,8 +262,8 @@ export const genKaminashiNeniArr = ({ seinen }) => {
   const etoNashiArr = EtoArr.map((v) => (
     kaminashi.eto.indexOf(v) > -1 ? 'nen' : ' '
   ));
-  if (etoNashiArr[10] === 'nen') { etoNashiArr[0] = 'nen'; }
-  if (etoNashiArr[11] === 'nen') { etoNashiArr[1] = 'nen'; }
+  // if (etoNashiArr[10] === 'nen') { etoNashiArr[0] = 'nen'; }
+  // if (etoNashiArr[11] === 'nen') { etoNashiArr[1] = 'nen'; }
   return etoNashiArr;
 };
 
@@ -331,23 +331,23 @@ export const genGoujyunArr = ({ seinen }) => {
 };
 
 
-export const OldgenGoujyunArr = ({ seinen }) => {
-  const teikeisu = genMesu({ seinen });
-  const nenjyun = genNenjyunsu({ seinen });
-  const tukijyun = genTukijyunsu({ seinen });
-  const nichijyun = teikeisu % 10 ? teikeisu % 10 : 10;
-  const nenJyunsuArr = genNenJyunsuArr();
-  const gd = goujyunData;
-  const checker = (i) => {
-    const res = [];
-    if (i === gd[nenjyun]) { res.push('nen'); }
-    if (i === gd[tukijyun]) { res.push('tuki'); }
-    if (i === gd[nichijyun]) { res.push('nichi'); }
-    return res;
-  };
-  const result = nenJyunsuArr.map((i) => checker(i));
-  return result;
-};
+// export const OldgenGoujyunArr = ({ seinen }) => {
+//   const teikeisu = genMesu({ seinen });
+//   const nenjyun = genNenjyunsu({ seinen });
+//   const tukijyun = genTukijyunsu({ seinen });
+//   const nichijyun = teikeisu % 10 ? teikeisu % 10 : 10;
+//   const nenJyunsuArr = genNenJyunsuArr();
+//   const gd = goujyunData;
+//   const checker = (i) => {
+//     const res = [];
+//     if (i === gd[nenjyun]) { res.push('nen'); }
+//     if (i === gd[tukijyun]) { res.push('tuki'); }
+//     if (i === gd[nichijyun]) { res.push('nichi'); }
+//     return res;
+//   };
+//   const result = nenJyunsuArr.map((i) => checker(i));
+//   return result;
+// };
 
 
 // /*
@@ -476,7 +476,7 @@ export const genNenjyunKashin = ({ teikeimei }) => {
 */
 export const genTukijyunKashin = ({ teikeimei }) => {
   const kashinArr = genJyunkashinArr({ teikeimei });
-  const date = setuChecker(new Date());
+  const date = new Date();
   return {
     title: '月巡華神',
     index: `${new Date(date).getMonth() + 1}月`,
