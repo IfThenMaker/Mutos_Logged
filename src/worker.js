@@ -85,8 +85,8 @@ export const genDaijyunEtoArr = ({ seinen, seibetu }) => {
   const startJyunsu = genTukijyunsu({ seinen });
   // const indexArr = genCycleArr(startJyunsu, 12, 10);
   const indexArr = (inyo
-    ? genCycleArr(startJyunsu, 12, 10)
-    : genCycleRevArr(startJyunsu, 12, 10)
+    ? genCycleArr(startJyunsu, 10, 10)
+    : genCycleRevArr(startJyunsu, 10, 10)
   );
   const startEtoJyunsu = new Date(setuChecker(seinen)).getMonth() + 1;
   console.log('大巡開始巡数:', startJyunsu);
@@ -216,8 +216,59 @@ export const genUnseiData = ({ teikeimei, seinen, seibetu }) => {
 };
 
 
-
-
+/*
+  -------- senten.extend.tukijyunkashin  ----------
+*/
+export const genTukijyunKashin = ({ teikeimei }) => {
+  console.log('woook');
+  console.log('teikei', teikeimei);
+  const kashinArr = genJyunkashinArr({ teikeimei });
+  console.log('kjashi', kashinArr);
+  const tukiJyunsu = genJyunsu(today).month;
+  const tukiJyunsuArr = genCycleArr(tukiJyunsu, 12, 10);
+  const arr = [];
+  tukiJyunsuArr.forEach((item, i) => {
+    arr[item - 1] = arr[item - 1]
+      ? [arr[item - 1], i + 1]
+      : [i + 1];
+  });
+  console.log('arr', arr);
+  const month = new Date().getMonth() + 1;
+  let index;
+  arr.forEach((item, i) => {
+    if (item.length === 1) {
+      index = item === month ? i : index;
+    } else {
+      // if (item[0] === month) { index = i; }
+      // if (item[1] === month) { index = }
+      index = item[0] === month || item[1] === month ? i : index;
+    }
+  });
+  console.log('index', index);
+  // const tukiArr = genGetuArr();
+  // const month = `${new Date().getMonth() + 1}月`;
+  // let index;
+  // tukiArr.forEach((item, i) => {
+  //   if (item.length < 4) {
+  //     if (item === month) { index = i; }
+  //     console.log('2', month, item, month===item, index);
+  //   } else {
+  //     const mArr = item.split(',');
+  //     console.log(mArr, mArr[0], mArr[1], mArr[0]===item, mArr[1]===item);
+  //     index = item.split(',')[0] === month || item.split(',')[1] === month
+  //       ? i : index;
+  //   }
+  // });
+  //
+  //
+  // console.log('tuki', tukiArr);
+  return {
+    title: '月巡華神',
+    index: `${month}月`,
+    // value: kashinArr[genJyunsu(setuChecker(seinen)).month].kashin,
+    value: kashinArr[index].kashin,
+  };
+};
 
 
 

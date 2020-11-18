@@ -12,9 +12,10 @@ import TableRow from '@material-ui/core/TableRow';
 import {
   genDaijyunKashin,
   genNenjyunKashin,
-  genTukijyunKashin,
+  // genTukijyunKashin,
   genKana,
 } from '../kouten/kouten.worker';
+import { genTukijyunKashin } from '../worker';
 import MutosContext from '../context';
 
 
